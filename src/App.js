@@ -1,9 +1,25 @@
+import React from "react";
+import { Route, BrowserRouter, Routes } from 'react-router-dom';
 
+import ClientMain from "./page/client/main/ClientMain";
+import ClientHeader from "page/client/header/ClientHeader";
+import ClientLogin from "./page/client/login/ClientLogin";
+import NotFound from "page/notfound/Notfound";
+//import ClientMain from "./page/client/main/ClientMain";
 
-function App() {
+const App = () => {
   return (
     <div>
-      사이드 프로젝트
+    <ClientHeader />
+
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<ClientLogin />} />
+        <Route path="/login/*" element={<ClientLogin />} />
+        <Route path="/main/*" element={<ClientMain />} />
+        <Route path="/*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
     </div>
   );
 }
