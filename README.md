@@ -4,8 +4,15 @@
 
 ### 📕 Usage
 
-```
+```shell
 git clone https://github.com/hdev1004/notice_board.git
 npm i
 npm start
+```
+
+<br>
+
+react-scripts 오류 발생시
+```shell
+yarn add global react-scripts 
 ```
