@@ -11,21 +11,21 @@ const ClientLogin = () => {
         <LoginDiv>
             <LoginForm>
             <LoginTitle>
-                L o g i n
+                babble
             </LoginTitle>
 
             <LoginInputDiv>
-                <input value={loginState.id}>
+                <input value={loginState.id} placeholder="아이디 입력">
                 </input>
 
-                <input value={loginState.pw}>
+                <input value={loginState.pw} placeholder="비밀번호 입력">
                     
                 </input>
             </LoginInputDiv>
            
 
             <LoginBtn>
-                로그인
+                로 그 인
             </LoginBtn>
 
 

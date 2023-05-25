@@ -1,9 +1,11 @@
 import { styled } from "styled-components"
 
+
+
 export const LoginDiv = styled.div`
-    width: 100%;
+    min-width:1340px;
     height: 100%;
-    background-color: #F5F7FF;
+    background-color: #EEF7FF;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,13 +16,13 @@ export const LoginForm = styled.div`
     transition: 0.3s;
     margin-left: auto;
     margin-right: auto;
-
-    width: 40%;
-    height: 80%;
+    width: 31.25%;
+    height: 68.79%;
+    box-sizing:border-box;
     background-color: white;
     border: 1px solid lightgray;
     box-shadow: 0px 12px 15px lightgray;
-
+    border-radius:15px;
     display: grid;
     grid-template-rows: 2fr 2fr 1fr 1fr 1fr;
     //로그인 (아이디, 비번), 로그인, 인증 로그인, (아이디 비번 찾기)
@@ -30,42 +32,51 @@ export const LoginForm = styled.div`
 export const LoginTitle = styled.div`
     margin-left: auto;
     margin-right: auto;
-    font-size: 40px;
+    font-size: 4.375rem;
     letter-spacing: 49%;
-    font-weight: bold;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    color:#0085FF;
+    font-family: 'Dongle', sans-serif;
 `
 
 export const LoginInputDiv = styled.div`
-    width: 80%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
 
     input {
-        width: 90%;
+        width:61%;
+        margin:0 auto;
         border-spacing: 0px;
         margin-top: 10px;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         height: 45px;
+        color:#828282;
+        font-weight:400;
         padding-left: 15px;
+        outline:none;
+        border:none;
+        font-size:1.25rem;
+        border-bottom:2px solid #828282;
     }
 `
 
 export const LoginBtn = styled.div`
-    background-color: #8482FF;
-    width: 50%;
+    background-color: #0085FF;
+    width:57.67%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     color: white;
-    height: 50px;
-    line-height: 50px;
-    border-radius: 43px;
+    height: 59px;
+    font-size:1.25rem;
+    font-weight:600;
+    line-height: 59px;
+    border-radius: 15px;
 `
 
 export const LoginAuth = styled.div`
