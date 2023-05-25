@@ -3,6 +3,7 @@ import { styled } from "styled-components"
 
 
 export const LoginDiv = styled.div`
+    min-height: 750px;
     min-width:1340px;
     height: 100%;
     background-color: #EEF7FF;
@@ -42,27 +43,6 @@ export const LoginTitle = styled.div`
 `
 
 export const LoginInputDiv = styled.div`
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    flex-direction: column;
-
-    input {
-        width:61%;
-        margin:0 auto;
-        border-spacing: 0px;
-        margin-top: 10px;
-        margin-bottom: 15px;
-        height: 45px;
-        color:#828282;
-        font-weight:400;
-        padding-left: 15px;
-        outline:none;
-        border:none;
-        font-size:1.25rem;
-        border-bottom:2px solid #828282;
-    }
 `
 
 export const LoginBtn = styled.div`

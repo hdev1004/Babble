@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { loginInfoState } from "state/login/recoil";
 import { LoginDiv, LoginForm, LoginTitle, LoginInputDiv, LoginBtn, LoginAuth, LoginFind } from "./Component/style";
 
+//global
+import ClassicInput from "global/Component/classicInput_01";
+
 const ClientLogin = () => {
+    const [id, setId] = useState("");
+    const [pw, setPw] = useState("");
 
     const [loginState, setLoginState] = useRecoilState(loginInfoState);
 
@@ -15,12 +20,9 @@ const ClientLogin = () => {
             </LoginTitle>
 
             <LoginInputDiv>
-                <input value={loginState.id} placeholder="아이디 입력">
-                </input>
+               <ClassicInput text={"아이디 입력"} value={id} setValue={setId}></ClassicInput>
 
-                <input value={loginState.pw} placeholder="비밀번호 입력">
-                    
-                </input>
+               <ClassicInput text={"비밀번호 입력"} value={pw} setValue={setPw} type="password"></ClassicInput>
             </LoginInputDiv>
            
 
