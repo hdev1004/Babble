@@ -4,8 +4,9 @@ import { styled } from "styled-components";
 const InputBox = styled.div`
     margin-top: 20px;
     margin-bottom: 20px;
-    width:100%;
-
+    width:71%;
+    margin-left: auto;
+    margin-right: auto;
     div {
         position: relative;
         width: 80%;
@@ -15,10 +16,10 @@ const InputBox = styled.div`
 `
 
 const Input = styled.input`
-    width: 100%;
     border-spacing: 0px;
     box-sizing : border-box; //100% 넘어가는 문제 해결
     height: 45px;
+    width:100%;
     font-weight:400;
     border: none;
     outline:none;
@@ -55,7 +56,7 @@ const Bar = styled.i`
 
     width: 100%;
     height: 2px;
-    background-color: black;
+    background-color: #828282;
     overflow: hidden;
 
     &::before {

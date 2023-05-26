@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { loginInfoState } from "state/login/recoil";
 import { LoginDiv, LoginForm, LoginTitle, LoginInputDiv, LoginBtn, LoginAuth, LoginFind } from "./Component/style";
-
+import naver from "../../../images/naver.png";
+import kakao from "../../../images/kakao.png";
 //global
 import ClassicInput from "global/Component/classicInput_01";
 
@@ -33,25 +34,25 @@ const ClientLogin = () => {
 
             <LoginAuth>
                 <div>
-                    네이버
+                    <img src = {naver} alt = "네이버" style={{marginRight: "30px"}}/>
                 </div>
 
                 <div>
-                    구글
+                    <img src = {kakao} alt = "카카오톡" style={{marginLeft: "30px"}}/>
                 </div>
             </LoginAuth>
 
 
             <LoginFind>
-                <div>
+                <div className="footer_menu line1">
                     아이디 찾기
                 </div>
 
-                <div>
+                <div className="footer_menu line2">
                     비밀번호 찾기
                 </div>
 
-                <div>
+                <div className="footer_menu">
                     회원가입
                 </div>
 
