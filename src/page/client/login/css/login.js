@@ -40,6 +40,8 @@ export const LoginTitle = styled.div`
     justify-content: center;
     color:#0085FF;
     font-family: 'Dongle', sans-serif;
+
+  
 `
 
 export const LoginInputDiv = styled.div`
@@ -81,7 +83,6 @@ export const LoginFind = styled.div`
         margin-left:15px;
         margin-right:15px;
         position:relative;
-        cursor:pointer;
     }
 
     & > .line1::after {

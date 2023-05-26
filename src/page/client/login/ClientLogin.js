@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { loginInfoState } from "state/login/recoil";
-import { LoginDiv, LoginForm, LoginTitle, LoginInputDiv, LoginBtn, LoginAuth, LoginFind } from "./Component/style";
-import naver from "../../../images/naver.png";
-import kakao from "../../../images/kakao.png";
+import { LoginDiv, LoginForm, LoginTitle, LoginInputDiv, LoginBtn, LoginAuth, LoginFind } from "./css/login";
+import naver from "images/naver.png";
+import kakao from "images/kakao.png";
 //global
 import ClassicInput from "global/Component/classicInput_01";
+import { Link } from "react-router-dom";
 
 const ClientLogin = () => {
     const [id, setId] = useState("");
@@ -44,11 +45,15 @@ const ClientLogin = () => {
 
 
             <LoginFind>
-                <div className="footer_menu line1">
+            
+                 <span className="footer_menu line1">
+                 <Link to = "/find_id">
                     아이디 찾기
-                </div>
-
+                    </Link>
+                </span>
+             
                 <div className="footer_menu line2">
+                    
                     비밀번호 찾기
                 </div>
 

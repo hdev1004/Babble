@@ -7,6 +7,7 @@ import ClientHeader from "page/client/header/ClientHeader";
 import ClientLogin from "./page/client/login/ClientLogin";
 import NotFound from "page/notfound/Notfound";
 import { styled } from "styled-components";
+import Userid from "page/client/login/Userid";
 //import ClientMain from "./page/client/main/ClientMain";
 
 const AppDiv = styled.div`
@@ -26,6 +27,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<ClientLogin />} />
         <Route path="/login/*" element={<ClientLogin />} />
+        <Route path="/find_id/*" element={<Userid />} />
         <Route path="/main/*" element={<ClientMain />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
