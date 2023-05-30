@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { LoginDiv } from './css/login';
-import { IdFoundForm, IdFoundTitle, Idtab, TabSelect } from './css/foundId';
+import { FormBox, IdFindsubmitBtn, IdFoundForm, IdFoundTitle, Idtab, TabSelect } from './css/foundId';
 
 const Userid = () => {
     const [tabBorder, setTabBorder] = useState(0);
-    console.log(tabBorder)
     return (
         <LoginDiv>
             <IdFoundForm>
@@ -21,6 +20,24 @@ const Userid = () => {
                         <span>비밀번호 찾기</span>
                     </Idtab>
                 </TabSelect>
+
+                <FormBox>
+                    <div>
+                        <label for = "email"><span style={{color:"red"}}>*</span> 이메일</label>
+                        <input type = "text" id = "email" />
+                        <button>인증번호 발송</button>
+                    </div>
+
+                    <div>
+                        <label for = "email"><span style={{color:"red"}}>*</span>인증번호</label>
+                        <input type = "text" id = "email" />
+                        <button>확인</button>
+                    </div>
+
+                    <IdFindsubmitBtn>아이디 찾기</IdFindsubmitBtn>
+                </FormBox>
+
+
             
             </IdFoundForm>
         </LoginDiv>

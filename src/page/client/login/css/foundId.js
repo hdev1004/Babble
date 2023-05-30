@@ -31,6 +31,7 @@ export const TabSelect = styled.div`
   /* background: #000000; */
   margin: 0 auto;
   align-items: center;
+  margin-bottom: 62px;
 `;
 
 export const Idtab = styled.div`
@@ -69,3 +70,49 @@ export const Idtab = styled.div`
     font-size: 18px;
   }
 `;
+
+export const FormBox = styled.form`
+    width: 66.22%;
+    margin:0 auto;
+    display: flex;
+  flex-direction: column;
+
+    div{
+        display: flex;
+        align-items: center;
+        margin-bottom: 34px;
+        label{
+            width: 16.26%;
+            margin-right: 50px;
+            box-sizing: border-box;
+        }
+        input{
+            width: 50.98%;
+            margin-right:14px;
+            height: 33px;
+            border-radius: 15px;
+            border:1px solid #828282;
+            text-size-adjust: inherit;
+        }
+        button{
+            width: 120px;
+            border-radius: 15px;
+            height: 33px;
+            border:1px solid #0085ff;
+            background: #ffffff;
+            outline: none;
+            color:#0085ff;
+            cursor: pointer;
+        }
+    }
+`
+export const IdFindsubmitBtn = styled.button `
+    width: 67.84%;
+    height: 60px;
+    border-radius: 15px;
+    background-color: #0085ff;
+    border: none;
+    color:#ffffff;
+    margin: 0 auto;
+    cursor: pointer;
+`
