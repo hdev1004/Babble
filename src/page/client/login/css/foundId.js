@@ -90,6 +90,7 @@ export const FormBox = styled.form`
             width: 50.98%;
             margin-right:14px;
             height: 33px;
+            padding: 0 10px;
             border-radius: 15px;
             border:1px solid #828282;
             text-size-adjust: inherit;
@@ -103,6 +104,7 @@ export const FormBox = styled.form`
             outline: none;
             color:#0085ff;
             cursor: pointer;
+            
         }
     }
 `
@@ -114,5 +116,10 @@ export const IdFindsubmitBtn = styled.button `
     border: none;
     color:#ffffff;
     margin: 0 auto;
+    font-weight: 600;
+    font-family: 'Dosis';
+font-style: normal;
+    letter-spacing: 0.3em;
     cursor: pointer;
+    font-size: 20px;
 `

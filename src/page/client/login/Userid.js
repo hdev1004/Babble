@@ -30,7 +30,7 @@ const Userid = () => {
 
                     <div>
                         <label for = "email"><span style={{color:"red"}}>*</span>인증번호</label>
-                        <input type = "text" id = "email" />
+                        <input type = "password" id = "email" />
                         <button>확인</button>
                     </div>
 
