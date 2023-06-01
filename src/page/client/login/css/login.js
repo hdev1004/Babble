@@ -4,7 +4,6 @@ import { styled } from "styled-components"
 
 export const LoginDiv = styled.div`
     min-height: 750px;
-    min-width:1340px;
     height: 100%;
     background-color: #EEF7FF;
     display: flex;
@@ -14,10 +13,14 @@ export const LoginDiv = styled.div`
 `
 
 export const LoginForm = styled.div`
+    min-width:600px;
+    width: 600px;
+    max-height: 689px;
+    height: 689px;
+
     transition: 0.3s;
     margin-left: auto;
     margin-right: auto;
-    width: 31.25%;
     height: 73%;
     box-sizing:border-box;
     background-color: white;
@@ -43,7 +46,6 @@ export const LoginTitle = styled.div`
 
   
 `
-
 export const LoginInputDiv = styled.div`
 
 
@@ -51,6 +53,7 @@ export const LoginInputDiv = styled.div`
 `
 
 export const LoginBtn = styled.div`
+    transition: 0.3s;
     background-color: #0085FF;
     width:57.67%;
     margin-left: auto;
@@ -65,6 +68,11 @@ export const LoginBtn = styled.div`
     display:grid;
     place-items: center;
     cursor:pointer;
+
+    &:hover {
+        background-color: #2563FF;
+        box-shadow: 2px 2px 10px lightgray;
+    }
     `
 
 export const LoginAuth = styled.div`
@@ -72,6 +80,15 @@ export const LoginAuth = styled.div`
     margin-right: auto;
     display: flex;
     flex-direction: row;
+
+
+    div > img {
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    div > img:hover {
+        filter: drop-shadow(2px 2px 10px lightgray); 
+    }
 `
 
 export const LoginFind = styled.div`

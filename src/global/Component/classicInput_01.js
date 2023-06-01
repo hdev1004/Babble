@@ -66,9 +66,8 @@ const Bar = styled.i`
         position: absolute;
         width: 100%;
         height: 100%;
-        background-color: #0085FF;
-        //background: linear-gradient(90deg, #ff1b60, #ff1b60, #2196f3, #9c27b0, #ff1b69);
-        //animation: animate 10s linear infinite;
+        background: linear-gradient(#0DB9FF, #4B9AEB, #4F81FF, #3844E8, #2200E8);
+        animation: animate 10s linear infinite;
     }
     
     @keyframes animate {

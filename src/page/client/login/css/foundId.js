@@ -4,8 +4,8 @@ export const IdFoundForm = styled.div`
   transition: 0.3s;
   margin-left: auto;
   margin-right: auto;
-  width: 40.1%;
-  height: 48.61%;
+  width: 770px;
+  height: 525px;
   /* height: 525px; */
   background-color: #ffffff;
   box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
@@ -20,6 +20,8 @@ export const IdFoundTitle = styled.div`
   text-align: center;
 
   & > .title {
+    
+  cursor: pointer;
     font-family: "Dongle", sans-serif;
   }
 `;
@@ -35,11 +37,11 @@ export const TabSelect = styled.div`
 `;
 
 export const Idtab = styled.div`
+ cursor: pointer;
   width: 50%;
   text-align: center;
   &.tab_border {
-    border: 1px solid #0085ff;
-    border-bottom: none;
+    border-bottom: 1px solid #0085ff;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -47,6 +49,7 @@ export const Idtab = styled.div`
     width: 50%;
 
     span {
+      z-index: 100;
       color: #0085ff;
     }
   }
@@ -60,6 +63,7 @@ export const Idtab = styled.div`
     width: 50%;
 
     span{
+        z-index: 100;
         color:#828282;
     }
   }
