@@ -43,8 +43,6 @@ export const LoginTitle = styled.div`
     justify-content: center;
     color:#0085FF;
     font-family: 'Dongle', sans-serif;
-
-  
 `
 export const LoginInputDiv = styled.div`
 
@@ -96,10 +94,24 @@ export const LoginFind = styled.div`
     margin-right: auto;
     display: flex;
     flex-direction: row;
+
+
     & > .footer_menu{
         margin-left:15px;
         margin-right:15px;
         position:relative;
+    }
+
+    
+    & > .footer_menu > a {
+        transition: 0.2s;
+        color: black;
+        text-decoration: none;
+    }
+
+    & > .footer_menu > a:hover {
+        color: #0085FF;
+        text-decoration: none;
     }
 
     & > .line1::after {

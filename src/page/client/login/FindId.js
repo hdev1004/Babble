@@ -4,9 +4,9 @@ import { FormBox, IdFindsubmitBtn, IdFoundForm, IdFoundTitle, Idtab, TabSelect }
 import { motion } from "framer-motion";
 import { useNavigate } from 'react-router-dom';
 
-const Userid = () => {
+const Userid = (props) => {
     const motionStyled = {zIndex: "0", position: "absolute", width: "276px", height: "56px", backgroundColor: "white", border: "1px solid #0085ff", borderBottom: "none"};
-    const [tabBorder, setTabBorder] = useState("id");
+    const [tabBorder, setTabBorder] = useState(props.find);
     const navigate = useNavigate();
 
     return (

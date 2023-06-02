@@ -47,18 +47,21 @@ const ClientLogin = () => {
             <LoginFind>
             
                  <span className="footer_menu line1">
-                 <Link to = "/find_id">
-                    아이디 찾기
+                    <Link to = "/find_id">
+                        아이디 찾기
                     </Link>
                 </span>
              
                 <div className="footer_menu line2">
-                    
-                    비밀번호 찾기
+                    <Link to = "/find_pw">
+                        비밀번호 찾기
+                    </Link>
                 </div>
 
                 <div className="footer_menu">
+                    <Link to = "/register">
                     회원가입
+                    </Link>
                 </div>
 
             </LoginFind>
