@@ -7,6 +7,19 @@ Babble은 사용자 기반에 맞춘 다목적 게시판 이며, 관리자에 �
 
 <br>
 
+### 📕 구성인원 (6명)
+
+|성명|역할|깃허브 ID|
+|------|------|------|
+|김진원|PM|[hdev1004](https://github.com/hdev1004)|
+|원영준|개발|[Reoup](https://github.com/Reoup)|
+|이시연|프론트 개발|[l7kolv](https://github.com/l7kolv)|
+|장서온|디자인 및 개발|[jxxny](https://github.com/jxxny)|
+|김유경|개발|[iam6ukk](https://github.com/iam6ukk)|
+|이솔비|디자인||
+
+<br>
+
 ### 📕 화면 구성
 
 - [2023-06-08 사용자 화면](https://github.com/hdev1004/notice_board/blob/main/resources/User_Screen_230608.png)
