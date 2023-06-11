@@ -5,7 +5,7 @@ export const IdFoundForm = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: 770px;
-  height: 525px;
+  height: ${(props) => props.tabBorder === "id" ? "525px" : "592px"};
   /* height: 525px; */
   background-color: #ffffff;
   box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
@@ -76,7 +76,8 @@ export const Idtab = styled.div`
 `;
 
 export const FormBox = styled.form`
-    width: 66.22%;
+    /*width: 66.22%;*/
+    width: 552px;
     margin:0 auto;
     display: flex;
   flex-direction: column;
@@ -86,19 +87,22 @@ export const FormBox = styled.form`
         align-items: center;
         margin-bottom: 34px;
         label{
-            width: 16.26%;
-            margin-right: 50px;
+            width: 116px;
+            /*width: 16.26%;*/
             box-sizing: border-box;
         }
+  
         input{
-            width: 50.98%;
-            margin-right:14px;
+            /*width: 50.98%;*/          
+            margin-right: 14px;
+            width: 260px;
             height: 33px;
             padding: 0 10px;
             border-radius: 15px;
             border:1px solid #828282;
             text-size-adjust: inherit;
         }
+        
         button{
             width: 120px;
             border-radius: 15px;
@@ -108,18 +112,20 @@ export const FormBox = styled.form`
             outline: none;
             color:#0085ff;
             cursor: pointer;
-            
         }
     }
 `
 export const IdFindsubmitBtn = styled.button `
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+
     width: 67.84%;
     height: 60px;
     border-radius: 15px;
     background-color: #0085ff;
     border: none;
     color:#ffffff;
-    margin: 0 auto;
     font-weight: 600;
     font-family: 'Dosis';
 font-style: normal;

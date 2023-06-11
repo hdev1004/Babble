@@ -57,7 +57,6 @@ export const LoginBtn = styled.div`
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    color: white;
     height: 59px;
     font-size:1.25rem;
     font-weight:600;
@@ -66,6 +65,11 @@ export const LoginBtn = styled.div`
     display:grid;
     place-items: center;
     cursor:pointer;
+
+    & > a {
+        color: white;
+        text-decoration: none;
+    }
 
     &:hover {
         background-color: #2563FF;

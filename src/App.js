@@ -5,6 +5,9 @@ import "./App.css";
 import ClientMain from "page/client/main/ClientMain";
 import ClientHeader from "page/client/header/ClientHeader";
 import ClientLogin from "page/client/login/ClientLogin";
+
+import ClientMainBoard from "page/client/Board/Main/ClientMainBoard";
+
 import NotFound from "page/notfound/Notfound";
 import { styled } from "styled-components";
 
@@ -35,6 +38,8 @@ const App = () => {
         <Route path="/find_id/*" element={<FindId find="id"/>} />
         <Route path="/find_pw/*" element={<FindId find="pw"/>} />
         <Route path="/register/*" element={<Regster />} />
+
+        <Route path="/board/*" element={<ClientMainBoard/>}></Route>
         
         <Route path="/main/*" element={<ClientMain />} />
 

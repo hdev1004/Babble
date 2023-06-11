@@ -29,7 +29,7 @@ const ClientLogin = () => {
            
 
             <LoginBtn>
-                <Link>
+                <Link to={"/board"}>
                 로 그 인
                 </Link>
             </LoginBtn>

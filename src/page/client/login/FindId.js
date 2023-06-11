@@ -11,7 +11,7 @@ const Userid = (props) => {
 
     return (
         <LoginDiv>
-            <IdFoundForm>
+            <IdFoundForm tabBorder={tabBorder}>
                 
                 <IdFoundTitle>
                     <span onClick={() => {navigate("/")}} className='title'>babble</span>
@@ -38,7 +38,7 @@ const Userid = (props) => {
                     tabBorder === "id" ? (
                         <FormBox>
                             <div>
-                                <label for = "email"><span style={{color:"red"}}>*</span> 이메일</label>
+                                <label for = "email"><span style={{color:"red"}}>*</span>이메일</label>
                                 <input type = "text" id = "email" />
                                 <button>인증번호 발송</button>
                             </div>
@@ -55,11 +55,11 @@ const Userid = (props) => {
                         <FormBox>
                             <div>
                                 <label for = "email"><span style={{color:"red"}}>*</span>아이디</label>
-                                <input type = "password" id = "email" />
+                                <input className='long' type = "password" id = "email" />
                             </div>
 
                             <div>
-                                <label for = "email"><span style={{color:"red"}}>*</span> 이메일</label>
+                                <label for = "email"><span style={{color:"red"}}>*</span>이메일</label>
                                 <input type = "text" id = "email" />
                                 <button>인증번호 발송</button>
                             </div>
@@ -70,7 +70,7 @@ const Userid = (props) => {
                                 <button>확인</button>
                             </div>
         
-                            <IdFindsubmitBtn>아이디 찾기</IdFindsubmitBtn>
+                            <IdFindsubmitBtn>비밀번호 찾기</IdFindsubmitBtn>
                         </FormBox>
                     )
                 }
