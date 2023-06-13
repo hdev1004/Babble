@@ -9,6 +9,10 @@ const App = () => {
         navigate("/");
     }
 
+    const register = () => {
+        alert("회원가입")
+    }
+
     return (
         <RegisterDiv>
             <RegisterForm>
@@ -83,7 +87,7 @@ const App = () => {
 
                     <div style={{marginTop: "77px"}}></div>
 
-                    <RegisterSubmit> 
+                    <RegisterSubmit onClick={register}> 
                         회원가입
                     </RegisterSubmit>
                 </RegisterBody>

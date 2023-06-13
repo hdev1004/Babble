@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Doppio+One&display=swap');
-@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css'); 
 
+@font-face { /* 애플산돌고딕 폰트 적용 */
+    font-family: "NanumGothic";
+    src: url("fonts/NanumGothic.ttf");
+} 
 
 * {
-    font-family: 'NanumBarunGothic', 'serif';
+    font-family: 'NanumGothic';
 }
