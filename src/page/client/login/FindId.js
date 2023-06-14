@@ -4,16 +4,23 @@ import { FormBox, IdFindsubmitBtn, IdFoundForm, IdFoundTitle, Idtab, TabSelect, 
 import { motion } from "framer-motion";
 import { useNavigate } from 'react-router-dom';
 
+import IdNotFoundAlert from "global/alert/IdNotFoundAlert";
+
 const Userid = (props) => {
     const motionStyled = {zIndex: "0", position: "absolute", width: "276px", height: "56px", backgroundColor: "white", border: "1px solid #0085ff", borderBottom: "none"};
     const [tabBorder, setTabBorder] = useState(props.find);
     const [idIsFind, setIdIsFind] = useState(false);
     const [pwIsFind, setPwIsFind] = useState(false);
+
+    const [idAlert, setIdAlert] = useState(false);
+    const [pwAlert, setPwAlert] = useState(false);
+
     const navigate = useNavigate();
 
 
     const checkFindId = () => {
-        setIdIsFind(true);    
+        //setIdIsFind(true);
+        setIdAlert(true);    
     }
 
     const checkFindPw = () => {
@@ -29,11 +36,12 @@ const Userid = (props) => {
     }
 
     const ReplacePw = () => {
-        alert("비번 재설정")
+        setPwAlert(true);
     }
 
     return (
         <LoginDiv>
+            <IdNotFoundAlert show={idAlert} setShow={setIdAlert}></IdNotFoundAlert>
             <IdFoundForm tabBorder={tabBorder} idIsFind={idIsFind} pwIsFind={pwIsFind}>
                 
                 <IdFoundTitle>
@@ -72,7 +80,7 @@ const Userid = (props) => {
                                     <button>확인</button>
                                 </div>
             
-                                <IdFindsubmitBtn onClick={checkFindId}>아이디 찾기</IdFindsubmitBtn>
+                                <IdFindsubmitBtn type='button' onClick={checkFindId}>아이디 찾기</IdFindsubmitBtn>
                             </FormBox>
                         ) : (
                             <FindFormBox>

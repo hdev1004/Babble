@@ -121,21 +121,21 @@ export const LoginFind = styled.div`
     & > .line1::after {
         content: "";
         position:absolute;
-        left:96px;
+        left:90px;
         top:0;
         display : block;
         width:2px;
-        height:24px;
+        height:20px;
         background:#525252;
     }
         & > .line2::after {
             content: "";
             position:absolute;
-            left:115px;
+            left:103px;
             top:0;
             display : block;
             width:2px;
-            height:24px;
+            height:20px;
             background:#525252;
     }
 `

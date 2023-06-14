@@ -42,7 +42,7 @@ export const RegisterTitle = styled.div`
     flex-direction: column;
     justify-content: center;
     color:#0085FF;
-    font-family: 'Dongle', sans-serif;
+    font-family: 'dongle';
 `
 
 export const RegisterBody = styled.div`
@@ -62,7 +62,6 @@ export const RegisterTableTitle = styled.div`
     height: 33px;
     line-height: 33px;
     font-size: 18px;
-    font-family: 'Domine';
 `
 
 export const RegisterInput = styled.input`
@@ -123,7 +122,6 @@ export const RegisterSubmit = styled.button`
     border: none;
     color:#ffffff;
     font-weight: 600;
-    font-family: 'Dosis';
     font-style: normal;
     letter-spacing: 0.3em;
     cursor: pointer;

@@ -18,6 +18,7 @@ export const MenuTitle = styled.div`
     flex-direction: column;
     justify-content: center;
     color:#0085FF;
+    
     font-family: 'Dongle', sans-serif;
 `
 

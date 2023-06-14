@@ -20,9 +20,8 @@ export const IdFoundTitle = styled.div`
   text-align: center;
 
   & > .title {
-    
-  cursor: pointer;
-    font-family: "Dongle", sans-serif;
+    font-family: 'Dongle', sans-serif;
+    cursor: pointer;
   }
 `;
 
@@ -70,7 +69,6 @@ export const Idtab = styled.div`
 
   span{
     font-weight: 700;
-    font-family: 'Domine';
     font-size: 18px;
   }
 `;
@@ -183,7 +181,6 @@ export const IdFindsubmitBtn = styled.button `
     border: none;
     color:#ffffff;
     font-weight: 600;
-    font-family: 'Dosis';
 font-style: normal;
     letter-spacing: 0.3em;
     cursor: pointer;
