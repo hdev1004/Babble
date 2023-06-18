@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useNavigate } from 'react-router-dom';
 
 import IdNotFoundAlert from "global/alert/IdNotFoundAlert";
+import PwChangeAlert from "global/alert/PwChangeAlert";
 
 const Userid = (props) => {
     const motionStyled = {zIndex: "0", position: "absolute", width: "276px", height: "56px", backgroundColor: "white", border: "1px solid #0085ff", borderBottom: "none"};
@@ -25,6 +26,7 @@ const Userid = (props) => {
 
     const checkFindPw = () => {
         setPwIsFind(true);
+        //setIdAlert(true); 
     }
 
     const FindIdlogin = () => {
@@ -42,6 +44,8 @@ const Userid = (props) => {
     return (
         <LoginDiv>
             <IdNotFoundAlert show={idAlert} setShow={setIdAlert}></IdNotFoundAlert>
+            <PwChangeAlert show={pwAlert} setShow={setPwAlert}></PwChangeAlert>
+
             <IdFoundForm tabBorder={tabBorder} idIsFind={idIsFind} pwIsFind={pwIsFind}>
                 
                 <IdFoundTitle>
