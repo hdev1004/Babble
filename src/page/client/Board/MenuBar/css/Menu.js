@@ -10,6 +10,7 @@ export const MenuForm = styled.div`
 `
 
 export const MenuTitle = styled.div`
+
     text-align: center;
     margin-left: auto;
     margin-right: auto;
