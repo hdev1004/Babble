@@ -1,15 +1,20 @@
 import React from "react";
 import Menu from "page/client/Board/MenuBar/Menu";
-import { BoardDiv } from "./css/ClientMainBoard";
+import { BoardDiv, BestPostForm, BestPostTitle, IconAndTitle } from "./css/ClientMainBoard";
+import Bell from "images/bell.png";
 
 const App = () => {
     return (
-        <BoardDiv>
-            <Menu></Menu>
-            
-            <div style={{width: "100%"}}>
-                Board
-            </div>
+        <BoardDiv>  
+            <Menu></Menu>          
+            <BestPostForm>
+                    <BestPostTitle>
+                        <IconAndTitle>
+                            <img src={Bell}></img>
+                            <div>BEST 게시판</div>
+                        </IconAndTitle>
+                    </BestPostTitle>
+                </BestPostForm>
         </BoardDiv>
     )
 }
