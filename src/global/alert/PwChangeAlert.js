@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { AlertDiv, AlertImg, AlertText, AlertTitle } from "./css/IdNotFound";
+import { AlertDiv, AlertImg, AlertText, AlertTitle } from "./css/Alert";
 import { motion } from "framer-motion";
 import Close from "images/close.png";
 import Correct from "images/correct.png";

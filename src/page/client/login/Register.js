@@ -1,20 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { RegisterDiv, RegisterForm, RegisterTitle, RegisterBody, RegisterRow, RegisterTableTitle, RegisterInput, RegisterNoti, RegisterLine, RegisterButton, RegisterSubmit, RegisterEmail} from "./css/register";
 import { useNavigate } from "react-router-dom";
+import RegisterAlert from "global/alert/RegisterAlert";
 
 const App = () => {
     let navigate = useNavigate();
+    const [isRegister, setIsRegister] = useState(false);
 
     const goHome = () => {
         navigate("/");
     }
 
     const register = () => {
-        alert("회원가입")
+        setIsRegister(true);
     }
 
     return (
         <RegisterDiv>
+            <RegisterAlert show={isRegister} setShow={setIsRegister}></RegisterAlert>
             <RegisterForm>
                 <RegisterTitle onClick={goHome}>
                     babble

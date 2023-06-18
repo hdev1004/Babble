@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { AlertDiv, AlertImg, AlertText, AlertTitle } from "./css/Alert";
 import { motion } from "framer-motion";
 import Close from "images/close.png";
-import Warning from "images/warning.png";
+import Confetti from "images/confetti.png";
 import { Link } from "react-router-dom";
 
 const App = (props) => {
@@ -32,7 +32,7 @@ const App = (props) => {
                 style={{
                     borderRadius: "15px",
                     width: "612px", 
-                    height: "213px", 
+                    height: "188px", 
                     backgroundColor: "white",
                     boxShadow: "0px 0px 10px #828282",
                     position: "relative"
@@ -43,12 +43,12 @@ const App = (props) => {
                 </AlertTitle>
 
                 <AlertImg>
-                    <img src={Warning}></img>
+                    <img src={Confetti}></img>
                 </AlertImg>
 
                 <AlertText>
-                    <div style={{fontSize: "20px"}}>회원님의 정보와 일치하는 계정을 찾을 수 없습니다.</div>
-                    <div style={{marginTop: "20px", color: "#828282"}}>이메일을 다시 한번 확인해 주세요!<br/><Link className="link" to={"/register"}>babble에 가입</Link>할까요?</div>
+                    <div style={{fontSize: "20px"}}>회원가입이 성공적으로 이루어졌어요!</div>
+                    <div style={{marginTop: "20px", color: "#828282"}}>지금 바로 <Link className="link" to={"/login"}>babble에 로그인</Link>할까요?</div>
                 </AlertText>
             </motion.div>
         </AlertDiv>
