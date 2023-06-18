@@ -24,8 +24,7 @@ export const LoginForm = styled.div`
     height: 73%;
     box-sizing:border-box;
     background-color: white;
-    border: 1px solid lightgray;
-    box-shadow: 0px 12px 15px lightgray;
+    box-shadow: 0px 0px 20px 5px lightgray;
     border-radius:15px;
     display: grid;
     grid-template-rows: 1.4fr 1.7fr 1fr 1fr 1fr;
