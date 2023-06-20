@@ -1,5 +1,8 @@
-import React from "react";
+import { PasswordView } from "page/client/login/css/login";
+import React, { useState } from "react";
 import { styled } from "styled-components";
+import view from "images/view.png";
+import viewHidden from "images/viewHidden.png";
 
 const InputBox = styled.div`
     margin-top: 20px;
@@ -7,7 +10,7 @@ const InputBox = styled.div`
     width:71%;
     margin-left: auto;
     margin-right: auto;
-    div {
+    .box {
         position: relative;
         width: 80%;
         margin: 0 auto;
@@ -87,12 +90,22 @@ const Bar = styled.i`
 `
 
 const App = ({text, value, setValue, type}) => {
+    const [pwShow, setPwShow] = useState(false);
+
     return (
         <InputBox>
-            <div>
-                <Input type={type} value={value} onChange={(e) => {setValue(e.target.value)}} required></Input>
+            <div className="box">
+                <Input type={pwShow && type ==="password" ? "text" : type} value={value} onChange={(e) => {setValue(e.target.value)}} required></Input>
                 <Span>{text}</Span>
                 <Bar></Bar>
+
+                {
+                    type === "password" ? (
+                        <PasswordView>
+                            <img src={pwShow ? viewHidden : view} onClick={() => {setPwShow(!pwShow)}}></img>   
+                        </PasswordView>
+                    ) : <></>
+                }
             </div>
             
         </InputBox>

@@ -45,6 +45,21 @@ export const MenuCalendar = styled.div`
     border: 1px solid #828282;
     border-radius: 15px;
     padding: 15px;
+    position: relative;
+
+    .weeks {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        text-align: center;
+    }
+
+    .days {
+        line-height: 35px;
+        height: 35px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        text-align: center;
+    }
 `
 
 export const MenuRow = styled.div`

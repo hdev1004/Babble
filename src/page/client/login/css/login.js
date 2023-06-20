@@ -44,10 +44,20 @@ export const LoginTitle = styled.div`
     font-family: 'Dongle', sans-serif;
 `
 export const LoginInputDiv = styled.div`
-
-
-
+    position: relative;
 `
+
+export const PasswordView = styled.div`
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    img {
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+    }
+`
+
 
 export const LoginBtn = styled.div`
     transition: 0.3s;
