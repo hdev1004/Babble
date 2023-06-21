@@ -1,9 +1,10 @@
 import React from "react";
 import Menu from "page/client/Board/MenuBar/Menu";
-import { BoardDiv, BestPostForm, BestPostTitle, IconAndTitle } from "./css/ClientMainRouter";
-import Bell from "images/bell.png";
+import { BoardDiv } from "./css/ClientMainRouter";
+
 import MainBoard from "./MainBoard";
 import {  Route, Routes } from "react-router-dom";
+import BestPost from "./BestPost";
 
 const App = () => {
 
@@ -42,15 +43,8 @@ const App = () => {
                 
             </Routes>
 
-
-            <BestPostForm>
-                <BestPostTitle>
-                    <IconAndTitle>
-                        <img src={Bell}></img>
-                        <div>BEST 게시판</div>
-                    </IconAndTitle>
-                </BestPostTitle>
-            </BestPostForm>
+            <BestPost></BestPost>
+            
         </BoardDiv>
     )
 }
