@@ -15,6 +15,7 @@ const App = () => {
             <BestNotice>
                 <div className="BNotice">좋아요를 50개 이상 받은 게시물만 보여집니다.</div>
             </BestNotice>
+            
             <BestPostList>
                 <PostRow>
                     <div className="BP_kind">자유게시판</div>
