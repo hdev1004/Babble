@@ -22,7 +22,7 @@ const AppDiv = styled.div`
   height: 100vh;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow-x: hidden;
 `
 
 const App = () => {
