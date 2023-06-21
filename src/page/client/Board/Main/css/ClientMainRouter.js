@@ -4,6 +4,7 @@ export const BoardDiv = styled.div`
     display: flex;
     flex-direction: row;
     width: 100%;
+    min-width: 1700px;
 `
 
 export const BestPostForm = styled.div`

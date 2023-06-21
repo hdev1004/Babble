@@ -1,61 +1,65 @@
 const { styled } = require("styled-components");
 
 export const MenuDiv = styled.div`
-    width: 100%;
+    width: 14.6%;
+    padding-left: 2.8%;
 `
 
 export const MenuForm = styled.div`
-    width: 282px;
-    padding-left: 55px;
+    width: 100%;
+    height: 49.5%;
 `
 
 export const MenuTitle = styled.div`
-
+    margin-top: 40px;
+    margin-bottom: 20px;
+    width: 100%;
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color:#0085FF;
-    
-    font-family: 'Dongle', sans-serif;
+
+    img {
+        width: 80%;
+    }
 `
 
 export const MenuSubForm = styled.div`
+    height: 100%;
     padding: 15px;
     border: 1px solid #828282;
-    margin-top: -35px;
     border-radius: 15px;
 `
 
 export const MenuSubGroup = styled.div`
+    transition: 0.3s;
+    height: 48%;
+    overflow: auto;
     padding-left: 15px;
 
     & > div {
+        align-items: center;
+        height: calc(100% / 4);
         font-size: 18px;
-        height: 47px;
-        line-height: 47px;
     }
 `
 
 export const MenuCalendar = styled.div`
-    height: 298px;
+    width: 100%;
+    height: 27.5%;
+    overflow: hidden;
+    margin-top: 50px;
+
     border: 1px solid #828282;
     border-radius: 15px;
-    padding: 15px;
     position: relative;
 
-    .weeks {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    .title {    
+        height: 30px;
+        line-height: 30px;
+        font-weight: bold;
         text-align: center;
     }
 
-    .days {
-        line-height: 35px;
-        height: 35px;
+    .weeks {
+        font-weight: bold;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
         text-align: center;
@@ -63,11 +67,11 @@ export const MenuCalendar = styled.div`
 `
 
 export const MenuRow = styled.div`
+    cursor: pointer;
     display: flex;
     flex-direction: row;
 
     img {
-        margin-top: 7px;
         margin-right: 18px;
         width: 29px;
         height: 29px;

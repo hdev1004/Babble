@@ -6,7 +6,7 @@ import ClientMain from "page/client/main/ClientMain";
 import ClientHeader from "page/client/header/ClientHeader";
 import ClientLogin from "page/client/login/ClientLogin";
 
-import ClientMainBoard from "page/client/Board/Main/ClientMainBoard";
+import ClientMainRouter from "page/client/Board/Main/ClientMainRouter";
 
 import NotFound from "page/notfound/Notfound";
 import { styled } from "styled-components";
@@ -39,7 +39,7 @@ const App = () => {
         <Route path="/find_pw/*" element={<FindId find="pw"/>} />
         <Route path="/register/*" element={<Regster />} />
 
-        <Route path="/board/*" element={<ClientMainBoard/>}></Route>
+        <Route path="/board/*" element={<ClientMainRouter/>}></Route>
         
         <Route path="/main/*" element={<ClientMain />} />
 
