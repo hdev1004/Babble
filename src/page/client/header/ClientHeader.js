@@ -2,7 +2,7 @@ import React from 'react';
 
 const ClientHeader = () => {
     return (
-        <div>
+        <div className='header'>
         </div>
     );
 };

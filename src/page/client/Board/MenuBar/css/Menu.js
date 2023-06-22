@@ -1,8 +1,7 @@
 const { styled } = require("styled-components");
 
 export const MenuDiv = styled.div`
-    width: 14.6%;
-    padding-left: 2.8%;
+    width: 282px;
 `
 
 export const MenuForm = styled.div`

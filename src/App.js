@@ -20,7 +20,6 @@ import Regster from "page/client/login/Register";
 const AppDiv = styled.div`
   width: 100%;
   height: 100vh;
-  margin: 0;
   padding: 0;
   overflow-x: hidden;
 `
@@ -28,26 +27,27 @@ const AppDiv = styled.div`
 const App = () => {
   return (
     <AppDiv>
-    <ClientHeader />
+      <ClientHeader />
 
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<ClientLogin />} />
-        
-        <Route path="/login/*" element={<ClientLogin />} />
-        <Route path="/find_id/*" element={<FindId find="id"/>} />
-        <Route path="/find_pw/*" element={<FindId find="pw"/>} />
-        <Route path="/register/*" element={<Regster />} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<ClientLogin />} />
+          
+          <Route path="/login/*" element={<ClientLogin />} />
+          <Route path="/find_id/*" element={<FindId find="id"/>} />
+          <Route path="/find_pw/*" element={<FindId find="pw"/>} />
+          <Route path="/register/*" element={<Regster />} />
 
-        <Route path="/board/*" element={<ClientMainRouter/>}></Route>
-        
-        <Route path="/main/*" element={<ClientMain />} />
+          <Route path="/board/*" element={<ClientMainRouter/>}></Route>
+          
+          <Route path="/main/*" element={<ClientMain />} />
 
-        <Route path="/test_editor/*" element={<Test_TextEditor />} />
-        
-        <Route path="/*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+          <Route path="/test_editor/*" element={<Test_TextEditor />} />
+          
+          <Route path="/*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+
     </AppDiv>
   );
 }

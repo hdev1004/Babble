@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Menu from "page/client/Board/MenuBar/Menu";
 import { BoardDiv } from "./css/ClientMainRouter";
 
 import MainBoard from "./MainBoard";
 import {  Route, Routes } from "react-router-dom";
 import BestPost from "./BestPost";
+import { throttle } from "lodash";
 
 const App = () => {
 
@@ -28,6 +29,7 @@ const App = () => {
         link: "/ff"
     }]
 
+
     return (
         <BoardDiv>  
             <Menu tab={tab}></Menu>
@@ -42,8 +44,10 @@ const App = () => {
                 
                 
             </Routes>
-
+            
+            
             <BestPost></BestPost>
+            
             
         </BoardDiv>
     )

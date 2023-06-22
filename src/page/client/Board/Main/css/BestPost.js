@@ -1,14 +1,35 @@
-import { styled } from "styled-components"
+import { keyframes, styled } from "styled-components"
 
 
 export const BestPostForm = styled.div`
+    transition: 0.3s;
     padding: 20px 0px 10px 0px;
-    width: 350px;
     height: 871px;
     background: #FFFFFF;
     border: 1px solid #828282;
     border-radius: 15px;
+    width: ${(props) => props.resize >= 1800 ? "350px" : "0px"};
+    margin-top: 117px;
+
+    &.show {
+        scale: 1;
+    }
+
+    &.hidden {
+        scale: 0;
+        animation: animate forwards;
+        animation-duration: 0.3s;
+        animation-delay: 0.3s;
+
+    }
+
+    @keyframes animate {
+        100% {
+            width: 0px;
+        }
+    }
 `
+
 
 export const BestPostTitle = styled.div`
     & > div {

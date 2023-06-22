@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Bell from "images/bell.png";
 import Account from "images/account.png";
 import { BestPostForm, BestPostTitle, IconAndTitle, BestNotice, BestPostList, PostRow, LIkeAComent } from "./css/BestPost";
+import { throttle } from "lodash";
 
 const App = () => {
+    const [resize, setResize] = useState(window.innerWidth);
+
+    const handleResize = throttle(() => {
+        setResize(window.innerWidth);
+    }, 200);
+
+    useEffect(() => {
+        handleResize();
+        
+        window.addEventListener("resize", handleResize);
+        return () => {
+            // cleanup
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
     return (
-        <BestPostForm>
+        <BestPostForm resize={resize} className={resize >= 1800 ? "show" : "hidden"}>
             <BestPostTitle>
                 <IconAndTitle>
                     <img src={Bell}></img>
