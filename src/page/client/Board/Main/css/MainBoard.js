@@ -1,7 +1,8 @@
 import { styled } from "styled-components";
 
 export const MainDiv = styled.div`
-  width: 70%;
+  width: 60%;
+  min-width: 870px;
   height: auto;
 `;
 

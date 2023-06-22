@@ -1,14 +1,15 @@
-import { keyframes, styled } from "styled-components"
+import { styled } from "styled-components"
 
 
 export const BestPostForm = styled.div`
     transition: 0.3s;
     padding: 20px 0px 10px 0px;
     height: 871px;
+    overflow: hidden;
     background: #FFFFFF;
     border: 1px solid #828282;
     border-radius: 15px;
-    width: ${(props) => props.resize >= 1800 ? "350px" : "0px"};
+    width: ${(props) => props.resize >= props.triggerWidth ? "350px" : "0px"};
     margin-top: 117px;
 
     &.show {
@@ -28,6 +29,7 @@ export const BestPostForm = styled.div`
             width: 0px;
         }
     }
+
 `
 
 

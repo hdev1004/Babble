@@ -170,6 +170,7 @@ export const BtnGroup = styled.div`
 `
 
 export const IdFindsubmitBtn = styled.button `
+    transition: 0.3s;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
@@ -185,6 +186,11 @@ font-style: normal;
     letter-spacing: 0.3em;
     cursor: pointer;
     font-size: 20px;
+    
+    &:hover {
+      background-color: #2563FF;
+      box-shadow: 2px 2px 10px lightgray;
+    }
 `
 
 export const TextGroup = styled.div`

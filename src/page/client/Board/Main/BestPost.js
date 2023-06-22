@@ -6,6 +6,7 @@ import { throttle } from "lodash";
 
 const App = () => {
     const [resize, setResize] = useState(window.innerWidth);
+    const triggerWidth = 1920;
 
     const handleResize = throttle(() => {
         setResize(window.innerWidth);
@@ -22,7 +23,7 @@ const App = () => {
     }, []);
 
     return (
-        <BestPostForm resize={resize} className={resize >= 1800 ? "show" : "hidden"}>
+        <BestPostForm resize={resize} triggerWidth={triggerWidth} className={resize >= triggerWidth ? "show" : "hidden"}>
             <BestPostTitle>
                 <IconAndTitle>
                     <img src={Bell}></img>

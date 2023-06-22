@@ -111,6 +111,7 @@ export const RegisterButton = styled.button`
 `
 
 export const RegisterSubmit = styled.button`
+    transition: 0.3s;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
@@ -126,6 +127,12 @@ export const RegisterSubmit = styled.button`
     letter-spacing: 0.3em;
     cursor: pointer;
     font-size: 20px;
+
+    
+  &:hover {
+    background-color: #2563FF;
+    box-shadow: 2px 2px 10px lightgray;
+  }
 `
 
 export const RegisterEmail = styled.div`

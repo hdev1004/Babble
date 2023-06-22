@@ -2,6 +2,7 @@ const { styled } = require("styled-components");
 
 export const MenuDiv = styled.div`
     width: 282px;
+    min-width: 282px;
 `
 
 export const MenuForm = styled.div`
