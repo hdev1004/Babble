@@ -90,6 +90,14 @@ export const RegisterNoti = styled.div`
     left: 129px;
 `
 
+export const RegisterNotiSuc = styled.div`
+    font-size: 12px;
+    color: #0085ff;
+    position: absolute;
+    top: 40px;
+    left: 129px;
+`
+
 export const RegisterLine = styled.div`
     width: 100%;
     height: 1px;

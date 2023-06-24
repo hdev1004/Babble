@@ -71,9 +71,9 @@ export const LoginBtn = styled.div`
     font-weight:600;
     line-height: 59px;
     border-radius: 15px;
-    display:grid;
     place-items: center;
     cursor:pointer;
+    color: white;
 
     & > a {
         color: white;
