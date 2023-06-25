@@ -13,41 +13,92 @@ import axios from "axios";
 
 const ClientLogin = () => {
     const [loginState, setLoginState] = useState(false);
+    const [loginInfo, setLoginInfo] = useRecoilState(loginInfoState);
     const [id, setId] = useState("");
     const [pw, setPw] = useState("");
     const navigate = useNavigate();
 
     const loginCheck = async () => {
         setLoginState(true);
+        let errorState = false;
         let pw_enc = "";
 
+        //ID 체크 후 Salt값 받기
         await axios.get(process.env.REACT_APP_SERVER_URL + "/login/salt/" + id).then((res) => {
             let salt = res.data.data.salt;
             pw_enc = encryption.encryptPassword(pw, salt).encryptedPassword;
             
         }).catch((err) => {
+            errorState = true;
+            console.log("GET CONNECT ERROR");
             console.log(err);
         })
+        if(errorState) {
+            alert("오류가 발생했습니다 😿");
+            setLoginState(false);
+            return;
+        }
 
         let data = {
             id: id,
             pw: pw_enc
         }
 
+        let status = false;
+        let get = null;
+        //Login 체크
         await axios.post(process.env.REACT_APP_SERVER_URL + "/login", data).then((res) => {
-            let get = res.data.data;
-            let status =  Object.keys(get).length === 0 ? false : true;
-            
-            if(status) {
-                navigate("/board");
-            } else {
-                alert("아이디 또는 비밀번호를 확인해주세요.");
-            }
-            //토큰 설정
+            get = res.data.data;
+            status =  Object.keys(get).length === 0 ? false : true;
         }).catch((err) => {
-            console.log("오류");
+            errorState = true;
+            console.log("POST CONNECT ERROR");
             console.log(err)
         })
+
+        if(errorState) {
+            alert("오류가 발생했습니다 😿");
+            setLoginState(false);
+            return;
+        }
+
+        //로그인 성공시 JWT토큰 발급
+        if(status) {
+            await axios.post(process.env.REACT_APP_SERVER_URL + "/login/jwt/token", {
+                token: get.token
+            }, {
+                headers: {
+                    Authorization: loginInfo.access_token
+                }
+            }).then((res) => {
+                let access_token = res.data.data;
+                let data = {
+                    id: get.id,
+                    token: get.token,
+                    nickname: get.nickname,
+                    access_token: access_token,
+                    email: get.email
+                }
+
+                setLoginInfo(data);
+                
+                navigate("/board");
+            }).catch((err) => {
+                errorState = true;
+                console.log("ROUTE ERROR");
+                console.log(err);
+            })
+
+            if(errorState) {
+                alert("오류가 발생했습니다 😿");
+                setLoginState(false);
+                return;
+            }
+        }
+        //로그인 실패시
+        else {  
+            alert("아이디 또는 비밀번호를 확인해주세요.");
+        }
 
         setLoginState(false);
     }

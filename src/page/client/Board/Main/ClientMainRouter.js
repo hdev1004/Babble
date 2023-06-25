@@ -3,11 +3,19 @@ import Menu from "page/client/Board/MenuBar/Menu";
 import { BoardDiv } from "./css/ClientMainRouter";
 
 import MainBoard from "./MainBoard";
-import {  Route, Routes } from "react-router-dom";
+import {  Route, Routes, useNavigate } from "react-router-dom";
 import BestPost from "./BestPost";
 import { throttle } from "lodash";
+import { loginInfoState } from "state/login/recoil";
+import { useRecoilState } from "recoil";
+import { ScaleLoader } from "react-spinners";
+import * as jwt from "./Function/jwt";
 
 const App = () => {
+    const [loginInfo, setLoginInfo] = useRecoilState(loginInfoState);
+    const naviate = useNavigate();
+
+    jwt.check_token(loginInfo, naviate); //토큰 체크
 
     let tab = [{
         title: "모모 게시판",
@@ -51,6 +59,7 @@ const App = () => {
             
         </BoardDiv>
     )
+   
 }
 
 export default App;
