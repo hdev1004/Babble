@@ -41,6 +41,12 @@ const App = () => {
 
     const nickDupCheck = () => {    
         setNameChange(false);
+        let result = reg.isNickName(nickName);
+        if(!result) {
+            alert("닉네임을 확인해주세요.");
+            return;
+        }
+
         axios.get(process.env.REACT_APP_SERVER_URL + "/register/nickname/" + nickName).then((res) => {
             setNameDup(res.data.data);
         }).catch((err) => {
