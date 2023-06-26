@@ -7,9 +7,13 @@ import * as encryption from "./Function/encryption";
 import { async } from "q";
 import axios from "axios";
 import { ScaleLoader } from "react-spinners";
+import RegisterCustomAlert from "global/alert/RegisterCustomAlert";
 
 const App = () => {
     let navigate = useNavigate();
+    const [registerAlert, setRegisterAlert] = useState(false);
+    const [registerAlertText, setRegisterAlertText] = useState("");
+
     const [id, setId] = useState('');
     const [pw, setPw] = useState('');
     const [rePw, setRePw] = useState('');
@@ -43,7 +47,8 @@ const App = () => {
         setNameChange(false);
         let result = reg.isNickName(nickName);
         if(!result) {
-            alert("닉네임을 확인해주세요.");
+            setRegisterAlertText("닉네임을 확인해주세요.");
+            setRegisterAlert(true);
             return;
         }
 
@@ -59,22 +64,28 @@ const App = () => {
         let mail = email.destination === "input" ? email.source + "@" + email.direct : email.source + "@" + email.destination;
 
         if(reg.isId(id) === false || idDup) {
-            alert("아이디를 확인해주세요.");
+            setRegisterAlertText("아이디를 확인해주세요.");
+            setRegisterAlert(true);
             return;
         } else if(reg.isSecPassword(pw) === false) {
-            alert("비밀번호를 확인해주세요.");
+            setRegisterAlertText("비밀번호를 확인해주세요.");
+            setRegisterAlert(true);
             return;
         } else if(pw !== rePw) {
-            alert("비밀번호가 일치하지 않습니다.");
+            setRegisterAlertText("비밀번호가 일치하지 않습니다.");
+            setRegisterAlert(true);
             return;
         } else if(reg.isEmail(mail) === false) {
-            alert("이메일 형식이 올바르지 않습니다.");
+            setRegisterAlertText("이메일 형식이 올바르지 않습니다.");
+            setRegisterAlert(true);
             return;
         } else if(nameChange) {
-            alert("닉네임 중복확인이 필요합니다.");
+            setRegisterAlertText("닉네임 중복확인이 필요합니다.");
+            setRegisterAlert(true);
             return;
         } else if(reg.isNickName(nickName) === false || nameDup) {
-            alert("닉네임을 확인해주세요.");
+            setRegisterAlertText("닉네임을 확인해주세요.");
+            setRegisterAlert(true);
             return;
         }
         setReigsterState(true);
@@ -97,17 +108,20 @@ const App = () => {
             if(get.message !== "200 OK") {
                 console.log(get);
                 if(get.data === 1062) {
-                    alert("아이디가 중복되었습니다.");
+                    setRegisterAlertText("아이디가 중복되었습니다.");
+                    setRegisterAlert(true);
                     return;
                 } else {
-                    alert("회원가입 중 오류가 발생했습니다.");
+                    setRegisterAlertText("회원가입 중 오류가 발생했습니다.");
+                    setRegisterAlert(true);
                     return;
                 }
             }
             setIsRegister(true);
             console.log(res);
         }).catch((err) => {
-            alert("회원가입 중 오류가 발생했습니다.");
+            setRegisterAlertText("회원가입 중 오류가 발생했습니다.");
+            setRegisterAlert(true);
             console.log(err);
         });
         
@@ -115,8 +129,9 @@ const App = () => {
     }
 
     return (
-        <RegisterDiv>
+        <RegisterDiv className="body">
             <RegisterAlert show={isRegister} setShow={setIsRegister}></RegisterAlert>
+            <RegisterCustomAlert show={registerAlert} setShow={setRegisterAlert} text={registerAlertText}></RegisterCustomAlert>
             <RegisterForm>
                 <RegisterTitle onClick={goHome}>
                     babble

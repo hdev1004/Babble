@@ -65,7 +65,9 @@ const App = ({isAlarm, setIsAlarm ,alarmMenuRef}) => {
                 </AlarmDiv>
 
                 <ChatDiv>
-                    aaa
+                    <div onClick={() => {setInnserChat(false)}}>
+                      뒤로가기
+                    </div>
                 </ChatDiv>
             </motion.div>
             

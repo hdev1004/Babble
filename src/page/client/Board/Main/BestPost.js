@@ -6,7 +6,7 @@ import { throttle } from "lodash";
 
 const App = () => {
     const [resize, setResize] = useState(window.innerWidth);
-    const triggerWidth = 1920;
+    const triggerWidth = 1600;
 
     const handleResize = throttle(() => {
         setResize(window.innerWidth);

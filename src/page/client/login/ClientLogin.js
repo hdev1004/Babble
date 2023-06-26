@@ -8,11 +8,15 @@ import {ScaleLoader } from "react-spinners";
 import * as encryption from "./Function/encryption";
 //global
 import ClassicInput from "global/Component/classicInput_01";
+import LoginFailAlert from "global/alert/LoginFaildAlert";
+
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
+
 const ClientLogin = () => {
-    const [loginState, setLoginState] = useState(false);
+    const [loginState, setLoginState] = useState(false); //로그인 중인지 확인
+    const [loginFail, setLoginFail] = useState(false); //로그인 실패 
     const [loginInfo, setLoginInfo] = useRecoilState(loginInfoState);
     const [id, setId] = useState("");
     const [pw, setPw] = useState("");
@@ -39,7 +43,7 @@ const ClientLogin = () => {
             console.log(err);
         })
         if(errorState) {
-            alert("오류가 발생했습니다 😿");
+            setLoginFail(true);
             setLoginState(false);
             return;
         }
@@ -62,7 +66,7 @@ const ClientLogin = () => {
         })
 
         if(errorState) {
-            alert("오류가 발생했습니다 😿");
+            setLoginFail(true);
             setLoginState(false);
             return;
         }
@@ -95,21 +99,22 @@ const ClientLogin = () => {
             })
 
             if(errorState) {
-                alert("오류가 발생했습니다 😿");
+                setLoginFail(true);
                 setLoginState(false);
                 return;
             }
         }
         //로그인 실패시
         else {  
-            alert("아이디 또는 비밀번호를 확인해주세요.");
+            setLoginFail(true);
         }
 
         setLoginState(false);
     }
 
     return (
-        <LoginDiv>
+        <LoginDiv className="body">
+            <LoginFailAlert show={loginFail} setShow={setLoginFail}></LoginFailAlert>
             <LoginForm>
             <LoginTitle>
                 babble

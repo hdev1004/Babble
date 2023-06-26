@@ -39,7 +39,7 @@ const App = () => {
 
 
     return (
-        <BoardDiv>  
+        <BoardDiv className="body">  
             <Menu tab={tab}></Menu>
 
             <Routes>

@@ -43,7 +43,7 @@ const Userid = (props) => {
     }
 
     return (
-        <LoginDiv>
+        <LoginDiv className='body'>
             <IdNotFoundAlert show={idAlert} setShow={setIdAlert}></IdNotFoundAlert>
             <PwChangeAlert show={pwAlert} setShow={setPwAlert}></PwChangeAlert>
 
