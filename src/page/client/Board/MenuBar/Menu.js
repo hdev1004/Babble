@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { MenuDiv, MenuForm, MenuSubForm, MenuTitle, MenuSubGroup, MenuCalendar, MenuRow } from "./css/Menu";
 import Account from "images/account.png";
 import Bell from "images/bell.png";
@@ -8,11 +8,16 @@ import moment from "moment/moment";
 import { wrap } from "popmotion";
 import { motion, AnimatePresence } from "framer-motion";
 import Calendar from "./Calendar";
+import Alarm from "./Alarm";
 
 import babble from "images/babble.png";
 import { useNavigate } from "react-router-dom";
 
 const App = ({tab}) => {
+    const alarmMenuRef = useRef(null);
+
+    const [isAlarm, setIsAlarm] = useState(false);
+
     const [nowData, setNowData] = useState(new Date());
     const navigate = useNavigate();
 
@@ -59,6 +64,7 @@ const App = ({tab}) => {
 
     return (
         <MenuDiv>
+            <Alarm isAlarm={isAlarm} setIsAlarm={setIsAlarm} alarmMenuRef={alarmMenuRef}></Alarm>
             <MenuTitle>
                 <img src={babble}></img>
             </MenuTitle>
@@ -70,7 +76,7 @@ const App = ({tab}) => {
                             <img src={Account}></img>
                             <div>마이페이지</div>
                         </MenuRow>
-                        <MenuRow>
+                        <MenuRow onClick={() => {setIsAlarm(!isAlarm)}} ref={alarmMenuRef}>
                             <img src={Bell}></img>
                             <div>알림</div>
                         </MenuRow>

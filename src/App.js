@@ -23,6 +23,7 @@ const AppDiv = styled.div`
   overflow-x: hidden;
 `
 
+
 const App = () => {
   return (
     <AppDiv>

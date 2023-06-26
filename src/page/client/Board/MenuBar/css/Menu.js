@@ -1,6 +1,7 @@
 const { styled } = require("styled-components");
 
 export const MenuDiv = styled.div`
+    position: relative;
     width: 282px;
     min-width: 282px;
 `
