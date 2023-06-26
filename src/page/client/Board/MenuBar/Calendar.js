@@ -12,7 +12,7 @@ const App = ({data}) => {
     let res = makeCalendar(data.getFullYear(), data.getMonth());
     
     return (
-        <div style={{display: "grid", gridTemplateRows: "1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr", height: "100%"}}>
+        <div style={{display: "grid", gridTemplateRows: "1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr", height: "100%", padding: "5px 10px 0px 10px"}}>
             {
             res.map((item) => (
                 <div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr 1fr", alignItems:"center"}}>

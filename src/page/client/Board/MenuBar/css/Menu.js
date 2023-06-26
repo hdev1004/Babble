@@ -60,7 +60,7 @@ export const MenuSubGroup = styled.div`
 
 export const MenuCalendar = styled.div`
     width: 100%;
-    height: 27.5%;
+    height: 298px;
     overflow: hidden;
     margin-top: 50px;
 
@@ -69,13 +69,16 @@ export const MenuCalendar = styled.div`
     position: relative;
 
     .title {    
-        height: 30px;
-        line-height: 30px;
+        height: 50px;
+        line-height: 50px;
         font-weight: bold;
         text-align: center;
     }
 
     .weeks {
+        padding-left: 10px;
+        padding-right: 10px;
+
         font-weight: bold;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;

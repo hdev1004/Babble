@@ -18,6 +18,11 @@ const ClientLogin = () => {
     const [pw, setPw] = useState("");
     const navigate = useNavigate();
 
+    const onKeyPress = (e) => {
+        if(e.key === 'Enter') {
+            loginCheck();
+        }
+    }
     const loginCheck = async () => {
         setLoginState(true);
         let errorState = false;
@@ -110,7 +115,7 @@ const ClientLogin = () => {
                 babble
             </LoginTitle>
 
-            <LoginInputDiv>
+            <LoginInputDiv onKeyUp={onKeyPress}>
                <ClassicInput text={"아이디 입력"} value={id} setValue={setId}></ClassicInput>
 
                <ClassicInput text={"비밀번호 입력"} value={pw} setValue={setPw} type="password">
