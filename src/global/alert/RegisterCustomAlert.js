@@ -26,7 +26,7 @@ const App = (props) => {
       }, [searchRef]);
 
     return (
-        //show, setShow, title, contents, img, width(선택), height(선택)
+        //show, setShow, text
         <AlertDiv show={props.show}>
             <motion.div
                 ref={searchRef}
