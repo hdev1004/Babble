@@ -14,10 +14,11 @@ const App = ({data}) => {
     return (
         <div style={{display: "grid", gridTemplateRows: "1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr", height: "100%", padding: "5px 10px 0px 10px"}}>
             {
-            res.map((item) => (
+            res.map((item, index) => (
                 <div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr 1fr", alignItems:"center"}}>
                 {
                     item.map((day) =>(
+                        (index === 0 && day.day > 20) || ((index === 4 || index === 5) && day.day < 14) ?  <CalendarDay day={day}>{day.day}</CalendarDay> :
                         date + day.day === today ? (
                             <CalendarToday>{day.day}</CalendarToday>
                         ) : (
