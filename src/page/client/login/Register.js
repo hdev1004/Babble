@@ -264,7 +264,7 @@ const App = () => {
 
 
 
-                    <div style={{marginTop: "77px"}}></div>
+                    <div style={{marginTop: "65px"}}></div>
 
                     <RegisterSubmit onClick={register}> 
                         {
