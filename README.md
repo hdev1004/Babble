@@ -20,7 +20,7 @@ Babble은 사용자 기반에 맞춘 다목적 게시판 이며, 관리자에 �
 <br>
 
 ## 📕 Architecture
-![Archi](https://github.com/hdev1004/notice_board/blob/main/resources/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98_20230626.png)
+![Archi](https://github.com/hdev1004/notice_board/blob/main/resources/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98_20230628.png)
 
 <br>
 
