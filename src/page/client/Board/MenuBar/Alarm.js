@@ -104,6 +104,7 @@ const App = ({isAlarm, setIsAlarm ,alarmMenuRef}) => {
                       뒤로가기
                     </div>
                 </ChatDiv>
+                
             </motion.div>
             
         </motion.div>
