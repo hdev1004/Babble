@@ -1,13 +1,16 @@
 import styled from "styled-components";
 
 export const ProfileDiv = styled.div`
+    height: 100%;
+    overflow-y: auto;
     width: 43.4%;
     background-color: white;
     z-index: 20;
 `
 
 export const ProfileForm = styled.div`
-    margin-top: 160px;
+    margin-top: 10%;
+    height: 80%;
     text-align: center;
     width: 55%;
     margin-left: auto;

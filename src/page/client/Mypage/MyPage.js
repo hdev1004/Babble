@@ -18,8 +18,11 @@ const App = () => {
         <motion.div className="body" style={{
             display: "flex",
             flexDirection: "row",
-            height: "1080px",
-            minWidth: "1300px"
+            height: "100%",
+            width: "100%",
+            marginLeft: "auto",
+            marginRight: "auto",
+            boxShadow: "0px 0px 20px lightgray",
         }}
         initial={{opacity: 0}}
         animate={{opacity: 1}}
@@ -32,6 +35,7 @@ const App = () => {
             <MyPageDetail>
             </MyPageDetail>
         </motion.div>
+            
     )
 }
 
