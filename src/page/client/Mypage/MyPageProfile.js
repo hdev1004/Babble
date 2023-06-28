@@ -1,38 +1,38 @@
 import React from "react";
-import { ProfileDiv } from "./css/MyPageProfile";
+import { ProfileDiv, ProfileForm, ProfileMenuForm, ProfileSubMenuForm, ProfileUser, ProfileUserForm } from "./css/MyPageProfile";
+import account_black from "images/account_black.png";
 
 const App = () => {
     return (
         <ProfileDiv>
-            <div>
-                <div>
-                    <div>
-                        사진
+            <ProfileForm>
+                <ProfileUserForm>
+                    <div className="user">
+                        <img src={account_black}></img>
                     </div>
-                    <div>
+                    <div className="nickname">
                         닉네임
                     </div>
-                    <div>
+                    <div className="email">
                         이메일
                     </div>
-                </div>
+                </ProfileUserForm>
 
-                <div>
-                    <div>프로필 설정</div>
-                    <div>게시글 관리</div>
-                    <div>댓글 관리</div>
-                    <div>이력 관리</div>
-                </div>
+                <ProfileMenuForm>
+                    <div className="menu">프로필 설정</div>
+                    <div className="menu">게시글 관리</div>
+                    <div className="menu">댓글 관리</div>
+                    <div className="menu">이력 관리</div>
+                </ProfileMenuForm>
 
                 <hr></hr>
 
-                <div>
-                    <div>문의하기</div>
-                    <div>로그아웃</div>
-                    <div>회원탈퇴</div>
-                    
-                </div>
-            </div>
+                <ProfileSubMenuForm>
+                    <div className="menu">문의하기</div>
+                    <div className="menu">로그아웃</div>
+                    <div className="menu">회원탈퇴</div>
+                </ProfileSubMenuForm>
+            </ProfileForm>
         </ProfileDiv>
     )
 }

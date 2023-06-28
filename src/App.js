@@ -16,6 +16,7 @@ import FindId from "page/client/login/FindId";
 import Regster from "page/client/login/Register";
 
 import MyPage from "page/client/Mypage/MyPage";
+import { AnimatePresence } from "framer-motion";
 //import ClientMain from "./page/client/main/ClientMain";
 
 const AppDiv = styled.div`
@@ -32,22 +33,25 @@ const App = () => {
       <ClientHeader />
 
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<ClientLogin />} />
-          <Route path="/mypage/*" element={<MyPage/>}/>
-          <Route path="/login/*" element={<ClientLogin />} />
-          <Route path="/find_id/*" element={<FindId find="id"/>} />
-          <Route path="/find_pw/*" element={<FindId find="pw"/>} />
-          <Route path="/register/*" element={<Regster />} />
-
-          <Route path="/board/*" element={<ClientMainRouter/>}></Route>
+        <AnimatePresence>
           
-          <Route path="/main/*" element={<ClientMain />} />
+          <Routes>
+            <Route path="/" element={<ClientLogin />} />
+            <Route path="/mypage/*" element={<MyPage/>}/>
+            <Route path="/login/*" element={<ClientLogin />} />
+            <Route path="/find_id/*" element={<FindId find="id"/>} />
+            <Route path="/find_pw/*" element={<FindId find="pw"/>} />
+            <Route path="/register/*" element={<Regster />} />
 
-          <Route path="/test_editor/*" element={<Test_TextEditor />} />
-          
-          <Route path="/*" element={<NotFound />} />
-        </Routes>
+            <Route path="/board/*" element={<ClientMainRouter/>}></Route>
+            
+            <Route path="/main/*" element={<ClientMain />} />
+
+            <Route path="/test_editor/*" element={<Test_TextEditor />} />
+            
+            <Route path="/*" element={<NotFound />} />
+          </Routes>
+        </AnimatePresence>
       </BrowserRouter>
 
     </AppDiv>

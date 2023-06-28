@@ -10,6 +10,7 @@ import { loginInfoState } from "state/login/recoil";
 import { useRecoilState } from "recoil";
 import { ScaleLoader } from "react-spinners";
 import * as jwt from "./Function/jwt";
+import {motion} from "framer-motion";
 
 const App = () => {
     const [loginInfo, setLoginInfo] = useRecoilState(loginInfoState);
@@ -39,25 +40,31 @@ const App = () => {
 
 
     return (
-        <BoardDiv className="body">  
-            <Menu tab={tab}></Menu>
+        <motion.div
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}}
+        >
+            <BoardDiv className="body">  
+                <Menu tab={tab}></Menu>
 
-            <Routes>
-                <Route path="/" element = {<MainBoard type={tab[0].link}></MainBoard>}></Route>
-                {
-                    tab.map((item) => (
-                        <Route path={item.link} element={<MainBoard type={item.link}/>} />
-                    ))
-                }
+                <Routes>
+                    <Route path="/" element = {<MainBoard type={tab[0].link}></MainBoard>}></Route>
+                    {
+                        tab.map((item) => (
+                            <Route path={item.link} element={<MainBoard type={item.link}/>} />
+                        ))
+                    }
+                    
+                    
+                </Routes>
                 
                 
-            </Routes>
-            
-            
-            <BestPost></BestPost>
-            
-            
-        </BoardDiv>
+                <BestPost></BestPost>
+                
+                
+            </BoardDiv>
+        </motion.div>
     )
    
 }

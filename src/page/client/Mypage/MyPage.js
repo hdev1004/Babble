@@ -6,6 +6,7 @@ import { useRecoilValue } from "recoil";
 import {  MyPageDiv } from "./css/MyPage";
 import MyPageDetail from "./MyPageDetail";
 import MyPageProfile from "./MyPageProfile";
+import { motion } from "framer-motion";
 
 const App = () => {
     const navigate = useNavigate();
@@ -14,13 +15,21 @@ const App = () => {
     jwt.check_token(loginState, navigate);
 
     return (
-        <MyPageDiv>
+        <motion.div className="body" style={{
+            display: "flex",
+            flexDirection: "row",
+            height: "1080px",
+            minWidth: "1300px"
+        }}
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}}>
             <MyPageProfile>
             </MyPageProfile>
 
             <MyPageDetail>
             </MyPageDetail>
-        </MyPageDiv>
+        </motion.div>
     )
 }
 
