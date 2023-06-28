@@ -72,7 +72,7 @@ const App = ({tab}) => {
 
                 <MenuSubForm>
                     <MenuSubGroup>
-                        <MenuRow>
+                        <MenuRow onClick={() => {navigate('/mypage')}}>
                             <img src={Account}></img>
                             <div>마이페이지</div>
                         </MenuRow>

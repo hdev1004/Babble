@@ -22,7 +22,7 @@ export const check_token = (loginState, naviate, setLoading) => {
                     headers: {
                         Authorization: loginState.access_token
                     }
-                }).then((res2) => {
+                }).then((res2) => { 
                     console.log("TOKEN GENERRATE");
                     console.log(res2);
                 }).catch((err2) => {

@@ -14,13 +14,15 @@ import Test_TextEditor from "page/client/Test/textEditer";
 
 import FindId from "page/client/login/FindId";
 import Regster from "page/client/login/Register";
+
+import MyPage from "page/client/Mypage/MyPage";
 //import ClientMain from "./page/client/main/ClientMain";
 
 const AppDiv = styled.div`
   width: 100%;
   height: 100vh;
   padding: 0;
-  overflow-x: hidden;
+  overflow-x: auto;
 `
 
 
@@ -32,7 +34,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<ClientLogin />} />
-          
+          <Route path="/mypage/*" element={<MyPage/>}/>
           <Route path="/login/*" element={<ClientLogin />} />
           <Route path="/find_id/*" element={<FindId find="id"/>} />
           <Route path="/find_pw/*" element={<FindId find="pw"/>} />
