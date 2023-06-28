@@ -27,6 +27,8 @@ const App = () => {
             <MyPageProfile>
             </MyPageProfile>
 
+            <div style={{height: "100%", width: "2px", boxShadow: "0px 0px 30px black", backgroundColor: "white", zIndex: 10}}></div>
+
             <MyPageDetail>
             </MyPageDetail>
         </motion.div>
