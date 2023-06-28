@@ -57,7 +57,8 @@ Babble은 사용자 기반에 맞춘 다목적 게시판 이며, 관리자에 �
 <br>
 
 ## 📕 API 문서
-- [Babble API](https://docs.google.com/spreadsheets/d/1jO5B2n5D7ImJ6p0xD0Wx-NmlcN1veVCEk6u1-_atU9Y/edit#gid=0)
+- [Babble API Swagger](http://210.114.19.32:5000/api-docs)
+- [Babble API Google Sheet](https://docs.google.com/spreadsheets/d/1jO5B2n5D7ImJ6p0xD0Wx-NmlcN1veVCEk6u1-_atU9Y/edit#gid=0)
 
 <br>
 
