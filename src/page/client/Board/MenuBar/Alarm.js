@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { AlarmDiv, AlarmForm, AlarmSubForm, AlarmTitle, ChatDiv } from "./css/Alarm";
+import { AlarmDiv, AlarmForm, AlarmSubForm, AlarmTitle, ChatDiv, AlarmList, AlarmRow, AlarmRow2, ChattingList, Chatting } from "./css/Alarm";
 import { motion } from "framer-motion";
 
 const App = ({isAlarm, setIsAlarm ,alarmMenuRef}) => {
@@ -56,10 +56,45 @@ const App = ({isAlarm, setIsAlarm ,alarmMenuRef}) => {
 
                     <motion.div style={{position: "relative"}} animate={{x: tab === "alarm" ? 0 : -380}}>
                         <AlarmSubForm className="left">
-                            aa
+                            <AlarmList>
+                              <AlarmRow>
+                                <div className="Alarm_kind">자유게시판</div>
+                                <div className="Alarm_time">5.31 11:15</div>
+                              </AlarmRow>
+                              <AlarmRow2>
+                                <div className="Alarm_content">새로운 댓글이 달렸습니다.</div>
+                              </AlarmRow2>
+                            </AlarmList>
+
+                            <AlarmList>
+                              <AlarmRow>
+                                <div className="Alarm_kind">친구추가</div>
+                                <div className="Alarm_time">5.29 22:43</div>
+                              </AlarmRow>
+                              <AlarmRow2>
+                                <div className="Alarm_content">남고상언 님이 친구추가를 했습니다.</div>
+                              </AlarmRow2>
+                            </AlarmList>
+
+                            <AlarmList>
+                              <AlarmRow>
+                                <div className="Alarm_kind">덕질게시판</div>
+                                <div className="Alarm_time">5.26 14:15</div>
+                              </AlarmRow>
+                              <AlarmRow2>
+                                <div className="Alarm_content">꼬순내마루 님이 태그했습니다.</div>
+                              </AlarmRow2>
+                            </AlarmList>
                         </AlarmSubForm>
+                        
                         <AlarmSubForm className="right">
-                            <div onDoubleClick={() => {setInnserChat(true)}}>bb</div>
+                            <div onDoubleClick={() => {setInnserChat(true)}}>
+                              <ChattingList>
+                                <Chatting>
+                                  <div>채팅1</div>
+                                </Chatting>
+                              </ChattingList>
+                            </div>
                         </AlarmSubForm>
                     </motion.div>
                 </AlarmDiv>
