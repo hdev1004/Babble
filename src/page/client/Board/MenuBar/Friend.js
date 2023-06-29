@@ -6,10 +6,17 @@ import {
   FriendSubForm,
   FriendTitle,
   FriendList,
-  ListRow,
+  FriendRow,
+  AddList,
+  AddRow,
+  AddInfo,
+  AddBtns,
+  FriendSearch,
+  Lable,
 } from "./css/Friend";
 import { motion } from "framer-motion";
 import account from "images/account.png";
+import search from "images/search_gray.png";
 
 const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
   const [tab, setTab] = useState("friend"); //friend : 친구목록, add : 친구추가, search : 검색하기
@@ -98,31 +105,79 @@ const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
           >
             <FriendSubForm className="left">
               <FriendList>
-                <ListRow>
+                <FriendRow>
                   <img src={account} />
                   <p>크롬이만든쿠키</p>
                   <button>친구끊기</button>
-                </ListRow>
-                <ListRow>
+                </FriendRow>
+                <FriendRow>
                   <img src={account} />
                   <p>쩝쩝박사</p>
                   <button>친구끊기</button>
-                </ListRow>
-                <ListRow>
+                </FriendRow>
+                <FriendRow>
                   <img src={account} />
                   <p>충격영중너구리</p>
                   <button>친구끊기</button>
-                </ListRow>
-                <ListRow>
+                </FriendRow>
+                <FriendRow>
                   <img src={account} />
                   <p>머닝러신</p>
-
                   <button>친구끊기</button>
-                </ListRow>
+                </FriendRow>
               </FriendList>
             </FriendSubForm>
-            <FriendSubForm className="mid">bb</FriendSubForm>
-            <FriendSubForm className="right">cc</FriendSubForm>
+            <FriendSubForm className="mid">
+              <AddList>
+                <AddRow>
+                  <AddInfo>
+                    <img src={account} />
+                    <div>티라노TV</div>
+                    <div>5.21 17:33</div>
+                  </AddInfo>
+                  <AddBtns>
+                    <button>수락</button>
+                    <button>거절</button>
+                  </AddBtns>
+                </AddRow>
+
+                <AddRow>
+                  <AddInfo>
+                    <img src={account} />
+                    <div>동인천크로스오버</div>
+                    <div>5.21 17:33</div>
+                  </AddInfo>
+                  <AddBtns>
+                    <button>수락</button>
+                    <button>거절</button>
+                  </AddBtns>
+                </AddRow>
+                <AddRow>
+                  <AddInfo>
+                    <img src={account} />
+                    <div>남고상언</div>
+                    <div>5.21 17:33</div>
+                  </AddInfo>
+                  <AddBtns>
+                    <button>수락</button>
+                    <button>거절</button>
+                  </AddBtns>
+                </AddRow>
+              </AddList>
+            </FriendSubForm>
+            <FriendSubForm className="right">
+              <FriendSearch>
+                <Lable>
+                  <input
+                    type=""
+                    placeholder="   사용자의 닉네임을 검색해 주세요."
+                  ></input>
+                  <button>
+                    <img src={search} />
+                  </button>
+                </Lable>
+              </FriendSearch>
+            </FriendSubForm>
           </motion.div>
         </FriendDiv>
       </motion.div>
