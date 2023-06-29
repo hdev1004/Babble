@@ -46,8 +46,18 @@ export const ProfileMenuForm = styled.div`
     margin-top: 80px;
     margin-bottom: 70px;
     .menu {
+        cursor: pointer;
+        transition: 0.3s;
         line-height: 50px;
         font-size: 23px;
+    }
+
+    .menu.active {
+        color: #0085FF;
+    }
+
+    .menu:hover {
+        color: #0085FF;
     }
 `
 

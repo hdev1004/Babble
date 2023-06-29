@@ -41,8 +41,6 @@ const App = () => {
                     </div>
                 </div>
             </div>
-
-
         </DetailDiv>
     )
 }

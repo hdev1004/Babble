@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as jwt from "page/client/Board/Main/Function/jwt";
 import { loginInfoState } from "state/login/recoil";
@@ -11,6 +11,8 @@ import { motion } from "framer-motion";
 const App = () => {
     const navigate = useNavigate();
     const loginState = useRecoilValue(loginInfoState); 
+    const [tab, setTab] = useState("profile");
+    //profile, board, comment, history
 
     jwt.check_token(loginState, navigate);
 
@@ -27,12 +29,12 @@ const App = () => {
         initial={{opacity: 0}}
         animate={{opacity: 1}}
         exit={{opacity: 0}}>
-            <MyPageProfile>
+            <MyPageProfile tab={tab} setTab={setTab}>
             </MyPageProfile>
 
             <div style={{height: "100%", width: "2px", boxShadow: "0px 0px 30px black", backgroundColor: "white", zIndex: 10}}></div>
 
-            <MyPageDetail>
+            <MyPageDetail tab={tab}>
             </MyPageDetail>
         </motion.div>
             

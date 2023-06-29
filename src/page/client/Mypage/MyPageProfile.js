@@ -2,7 +2,7 @@ import React from "react";
 import { ProfileDiv, ProfileForm, ProfileMenuForm, ProfileSubMenuForm, ProfileUser, ProfileUserForm } from "./css/MyPageProfile";
 import account_black from "images/account_black.png";
 
-const App = () => {
+const App = ({tab, setTab}) => {
     return (
         <ProfileDiv>
             <ProfileForm>
@@ -19,10 +19,10 @@ const App = () => {
                 </ProfileUserForm>
 
                 <ProfileMenuForm>
-                    <div className="menu">프로필 설정</div>
-                    <div className="menu">게시글 관리</div>
-                    <div className="menu">댓글 관리</div>
-                    <div className="menu">이력 관리</div>
+                    <div className={tab === "profile" ? "menu active" : "menu"} onClick={() => {setTab("profile")}}>프로필 설정</div>
+                    <div className={tab === "board" ? "menu active" : "menu"} onClick={() => {setTab("board")}}>게시글 관리</div>
+                    <div className={tab === "comment" ? "menu active" : "menu"} onClick={() => {setTab("comment")}}>댓글 관리</div>
+                    <div className={tab === "history" ? "menu active" : "menu"} onClick={() => {setTab("history")}}>이력 관리</div>
                 </ProfileMenuForm>
 
                 <hr></hr>

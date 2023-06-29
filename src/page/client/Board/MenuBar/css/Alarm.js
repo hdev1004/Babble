@@ -52,14 +52,14 @@ export const AlarmForm = styled.div`
 export const AlarmSubForm = styled.div`
     position: absolute;
     width: 380px;
-    padding : 25px;
 
     &.left {
+        padding: 25px;
         left: 0px;
     }
 
     &.right {
-        left: 355px
+        left: 380px
     }
 `
 
