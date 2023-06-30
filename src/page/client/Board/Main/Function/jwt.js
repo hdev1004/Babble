@@ -8,7 +8,7 @@ export const check_token = (loginState, setLoginState, naviate, setLoading) => {
         return;
     }
 
-    axios.get(process.env.REACT_APP_TEST_URL + "/login/jwt/token/" + loginState.token, {
+    axios.get(process.env.REACT_APP_SERVER_URL + "/login/jwt/token/" + loginState.token, {
         headers: {
             Authorization: loginState.access_token
         }
@@ -16,7 +16,7 @@ export const check_token = (loginState, setLoginState, naviate, setLoading) => {
         let token_valid = res.data;
         if(token_valid.refresh_token) { //Refresh Token 유효 시 Access 검사
             if(!token_valid.access_token) { //Accesss Token 만료 시 
-                axios.post(process.env.REACT_APP_TEST_URL + "/login/jwt/token", {
+                axios.post(process.env.REACT_APP_SERVER_URL + "/login/jwt/token", {
                     token: loginState.token
                 }, {
                     headers: {
