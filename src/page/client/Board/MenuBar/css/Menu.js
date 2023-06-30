@@ -91,6 +91,11 @@ export const MenuRow = styled.div`
     cursor: pointer;
     display: flex;
     flex-direction: row;
+    transition: 0.3s;
+
+    &:hover {
+        color: #0085FF;
+    }
 
     img {
         margin-right: 18px;

@@ -4,8 +4,9 @@ export const ProfileDiv = styled.div`
     height: 100%;
     overflow-y: auto;
     width: 43.4%;
+    min-width: 400px;
     background-color: white;
-    z-index: 20;
+    z-index: 50;
 `
 
 export const ProfileForm = styled.div`
@@ -37,6 +38,7 @@ export const ProfileUserForm = styled.div`
     }
 
     .email {
+        font-size: 17px;
         line-height: 40px;
         color: #828282;
     }

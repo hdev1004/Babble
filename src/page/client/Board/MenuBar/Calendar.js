@@ -7,7 +7,7 @@ const App = ({data}) => {
 
     let today = new Date();
     today = today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate();
-    console.log(date, today);
+    //console.log(date, today);
 
     let res = makeCalendar(data.getFullYear(), data.getMonth());
     

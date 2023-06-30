@@ -1,8 +1,12 @@
 import React from "react";
 import { ProfileDiv, ProfileForm, ProfileMenuForm, ProfileSubMenuForm, ProfileUser, ProfileUserForm } from "./css/MyPageProfile";
 import account_black from "images/account_black.png";
+import { useRecoilState } from "recoil";
+import { loginInfoState } from "state/login/recoil";
 
 const App = ({tab, setTab}) => {
+    const [loginInfo, setLoginInfo] = useRecoilState(loginInfoState);
+
     return (
         <ProfileDiv>
             <ProfileForm>
@@ -11,10 +15,10 @@ const App = ({tab, setTab}) => {
                         <img src={account_black}></img>
                     </div>
                     <div className="nickname">
-                        닉네임
+                        {loginInfo.nickname}
                     </div>
                     <div className="email">
-                        이메일
+                        {loginInfo.email}
                     </div>
                 </ProfileUserForm>
 

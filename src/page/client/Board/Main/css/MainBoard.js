@@ -116,6 +116,7 @@ export const BoardBtns = styled.div`
   justify-content: space-between;
 
   & > button {
+    cursor: pointer;
     width: 120px;
     height: 45px;
     font-size: 1.125rem;

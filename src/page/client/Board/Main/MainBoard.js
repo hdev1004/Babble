@@ -19,9 +19,11 @@ import more_left from "images/more_left.png";
 import more_right from "images/more_right.png";
 import number1 from "images/number1.png";
 import number2 from "images/number2.png";
+import { useNavigate } from "react-router-dom";
 
 const App = ({ type }) => {
   const [isBtnHover, setIsBtnHover] = useState(false);
+  const naviate = useNavigate();
 
   return (
     // <div>
@@ -150,7 +152,7 @@ const App = ({ type }) => {
               <img src={more_right} />
             </button>
           </BoardPage>
-          <button>글쓰기</button>
+          <button onClick={() => {naviate("/writer/자유게시판")}}>글쓰기</button>
         </BoardBtns>
       </MainBoard>
     </MainDiv>

@@ -49,8 +49,8 @@ const App = ({isAlarm, setIsAlarm ,alarmMenuRef}) => {
             <motion.div style={{position: "relative"}} animate={{x: innerChat ? -380 : 0}}>
                 <AlarmDiv>
                     <AlarmTitle tab={tab}>
-                        <div onClick={() => {setTab("alarm")}} style={{color: tab === "alarm" ? "#000" : "#828282"}}>알림</div>
-                        <div onClick={() => {setTab("chat")}} style={{color: tab === "chat" ? "#000" : "#828282"}}>채팅</div>
+                        <div className="alarm" onClick={() => {setTab("alarm")}} style={{color: tab === "alarm" ? "#000" : "#828282"}}>알림</div>
+                        <div className="chat" onClick={() => {setTab("chat")}} style={{color: tab === "chat" ? "#000" : "#828282"}}>채팅</div>
                         <i className="bar" style={{left: tab === "alarm" ? "45px" : "235px"}}></i>
                     </AlarmTitle>
 

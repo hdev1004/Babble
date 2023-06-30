@@ -12,11 +12,28 @@ import { ScaleLoader } from "react-spinners";
 import * as jwt from "./Function/jwt";
 import {motion} from "framer-motion";
 
+//firebase
+import { db } from "noSQL/firebase";
+import { collection, addDoc,  getDocs } from "firebase/firestore"; 
+
 const App = () => {
     const [loginInfo, setLoginInfo] = useRecoilState(loginInfoState);
     const naviate = useNavigate();
 
-    jwt.check_token(loginInfo, naviate); //토큰 체크
+    const firebaseRead = async () => {
+        const querySnapshot = await getDocs(collection(db, "Chat"));
+
+        querySnapshot.forEach((doc) => {
+            console.log(doc.id);
+            console.log(doc.data())
+        });
+    }
+
+    useEffect(() => {
+        firebaseRead();
+    })
+
+    jwt.check_token(loginInfo, setLoginInfo, naviate); //토큰 체크
 
     let tab = [{
         title: "모모 게시판",
@@ -55,7 +72,6 @@ const App = () => {
                             <Route path={item.link} element={<MainBoard type={item.link}/>} />
                         ))
                     }
-                    
                     
                 </Routes>
                 

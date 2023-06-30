@@ -38,6 +38,7 @@ export const AlarmTitle = styled.div`
         background-color: #0085ff;
         top: 60px;
     }
+
 `
 
 export const AlarmForm = styled.div`

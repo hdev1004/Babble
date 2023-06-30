@@ -11,6 +11,7 @@ import NotFound from "page/notfound/Notfound";
 import { styled } from "styled-components";
 
 import Test_TextEditor from "page/client/Test/textEditer";
+import Writer from "page/client/Board/Writer/Write";
 
 import FindId from "page/client/login/FindId";
 import Regster from "page/client/login/Register";
@@ -26,8 +27,8 @@ const AppDiv = styled.div`
   overflow-x: auto;
 `
 
-
 const App = () => {
+
   return (
     <AppDiv>
       <ClientHeader />
@@ -46,9 +47,11 @@ const App = () => {
             <Route path="/board/*" element={<ClientMainRouter/>}></Route>
             
             <Route path="/main/*" element={<ClientMain />} />
+            <Route path="/writer/*" element={<Writer/>}></Route>
 
             <Route path="/test_editor/*" element={<Test_TextEditor />} />
             
+
             <Route path="/*" element={<NotFound />} />
           </Routes>
         </AnimatePresence>
