@@ -1,5 +1,5 @@
 // eslint-disable-next-line jsx-a11y/alt-text
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   MainDiv,
   MainHeader,
@@ -21,9 +21,40 @@ import number1 from "images/number1.png";
 import number2 from "images/number2.png";
 import { useNavigate } from "react-router-dom";
 
+import { db } from "noSQL/firebase";
+import { doc, setDoc, onSnapshot } from "firebase/firestore"; 
+import { useRecoilValue } from "recoil";
+import { loginInfoState } from "state/login/recoil";
+
 const App = ({ type }) => {
   const [isBtnHover, setIsBtnHover] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
   const naviate = useNavigate();
+  const loginInfo = useRecoilValue(loginInfoState);
+
+  const dataEnter = async () => {
+    await setDoc(doc(db, "USER", "d4c23e80db39c6f6ca06b78da643bb84"), {
+      data: searchInput
+    }).catch((err) => {
+      alert("오류가 발생했습니다.");
+    });
+    alert("등록되었습니다.");
+  }
+
+  useEffect(() => {
+    const unsub = onSnapshot(doc(db, "USER", loginInfo.token), {includeMetadataChanges: true}, (doc) => {
+      console.log("Current data: ", doc.data());
+  });
+  }, [])
+  
+
+
+
+  const keyPress = (e) => {
+    if(e.key === "Enter") {
+      dataEnter();
+    }
+  }
 
   return (
     // <div>
@@ -36,7 +67,7 @@ const App = ({ type }) => {
           <div>자유게시판</div>
         </BoardTitle>
         <SearchForm>
-          <input type="" placeholder="검색어를 입력해 주세요" />
+          <input value={searchInput} onChange={(e) => {setSearchInput(e.target.value)}} onKeyUp={keyPress} placeholder="검색어를 입력해 주세요" />
           <button
             onMouseOver={() => {
               setIsBtnHover(true);
