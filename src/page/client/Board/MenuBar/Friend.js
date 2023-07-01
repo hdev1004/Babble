@@ -39,7 +39,7 @@ const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
   }
 
   const getUserList = (name) => {
-    axios.get(process.env.REACT_APP_TEST_URL + `/user/list/${name}/${loginInfo.token}`).then((res) => {
+    axios.get(process.env.REACT_APP_SERVER_URL + `/user/list/${name}/${loginInfo.token}`).then((res) => {
       let data = res.data.data;
       setUserList(data);
     }).catch((err) => {
@@ -48,7 +48,7 @@ const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
   }
 
   const getFrinedList = () => {
-    axios.get(process.env.REACT_APP_TEST_URL + "/friend/" + loginInfo.token).then((res) => {
+    axios.get(process.env.REACT_APP_SERVER_URL + "/friend/" + loginInfo.token).then((res) => {
       setFrind(res.data.data);
     }).catch((err) => {
       alert("오류가 발생했습니다.");
