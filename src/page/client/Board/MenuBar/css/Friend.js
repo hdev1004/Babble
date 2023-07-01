@@ -41,6 +41,9 @@ export const AlarmForm = styled.div`
 export const FriendSubForm = styled.div`
   position: absolute;
   width: 380px;
+  height: 420px;
+  border-radius: 15px;
+  overflow-y: auto;
 
   &.left {
     left: 0px;
@@ -55,7 +58,8 @@ export const FriendSubForm = styled.div`
   }
 `;
 
-export const FriendList = styled.div``;
+export const FriendList = styled.div`
+`;
 
 export const FriendRow = styled.div`
   & {
@@ -160,13 +164,22 @@ export const Lable = styled.div`
   position: relative;
 
   input {
-    width: 335px;
+    transition: 0.3s;
+    outline: none;
+    padding-left: 15px;
+    width: 320px;
     height: 48px;
     margin: 20px 20px 0 20px;
-    border: none;
+    border: 1px solid lightgray;
     border-radius: 30px;
     box-shadow: 0px 0px 2px 1px lightgray;
   }
+
+  input:focus {
+    border: 1px solid #0085ff;
+    
+  }
+
   button {
     position: absolute;
     top: 32px;

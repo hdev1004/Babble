@@ -32,27 +32,12 @@ const App = ({ type }) => {
   const naviate = useNavigate();
   const loginInfo = useRecoilValue(loginInfoState);
 
-  const dataEnter = async () => {
-    await setDoc(doc(db, "USER", "d4c23e80db39c6f6ca06b78da643bb84"), {
-      data: searchInput
-    }).catch((err) => {
-      alert("오류가 발생했습니다.");
-    });
-    alert("등록되었습니다.");
-  }
-
-  useEffect(() => {
-    const unsub = onSnapshot(doc(db, "USER", loginInfo.token), {includeMetadataChanges: true}, (doc) => {
-      console.log("Current data: ", doc.data());
-  });
-  }, [])
-  
 
 
 
   const keyPress = (e) => {
     if(e.key === "Enter") {
-      dataEnter();
+      
     }
   }
 
