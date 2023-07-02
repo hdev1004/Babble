@@ -127,7 +127,7 @@ export const transDate = (data) => {
  * @param {*} token 
  */
 export const getUserList = (setUserList, name, token) => {
-    axios.get(process.env.REACT_APP_SERVER_URL + `/user/list/${name}/${token}`).then((res) => {
+    axios.get(process.env.REACT_APP_TEST_URL + `/user/list/${name}/${token}`).then((res) => {
       let data = res.data.data;
       setUserList(data);
     }).catch((err) => {
