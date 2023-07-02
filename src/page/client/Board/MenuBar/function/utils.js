@@ -1,3 +1,4 @@
+import axios from "axios";
 
 
 export const makeCalendar = (year, month) => {
@@ -86,3 +87,32 @@ export const makeCalendar = (year, month) => {
     }
     return dateArr;
 }
+
+/**
+ * 친구 목록 가져오는 함수
+ * @param {*} friend 
+ * @param {*} setFrind 
+ * @param {*} token 
+ */
+export const getFrinedList = (friend, setFrind, token) => {
+    axios.get(process.env.REACT_APP_SERVER_URL + "/friend/list/" + token).then((res) => {
+      setFrind(res.data.data);
+    }).catch((err) => {
+      alert("오류가 발생했습니다.");
+    })
+}
+
+/**
+ * 사용자 리스트 가져오는 함수
+ * @param {*} setUserList 
+ * @param {*} name 
+ * @param {*} token 
+ */
+export const getUserList = (setUserList, name, token) => {
+    axios.get(process.env.REACT_APP_SERVER_URL + `/user/list/${name}/${token}`).then((res) => {
+      let data = res.data.data;
+      setUserList(data);
+    }).catch((err) => {
+      alert("오류가 발생했습니다.");
+    })
+  }

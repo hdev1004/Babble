@@ -13,6 +13,7 @@ import {
   AddBtns,
   FriendSearch,
   Lable,
+  FriendSearchList,
 } from "./css/Friend";
 import { motion } from "framer-motion";
 import account from "images/account.png";
@@ -21,6 +22,7 @@ import axios from "axios";
 import { useRecoilValue } from "recoil";
 import { loginInfoState } from "state/login/recoil";
 import { PulseLoader } from "react-spinners";
+import { getFrinedList, getUserList } from "./function/utils";
 
 const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
   const [tab, setTab] = useState("friend"); //friend : 친구목록, add : 친구추가, search : 검색하기
@@ -34,29 +36,16 @@ const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
     if(e.key === "Enter") {
       setUserList(null);
       let name = e.target.value;
-      getUserList(name);  
+      getUserList(setUserList, name, loginInfo.token);  
     }
   }
 
-  const getUserList = (name) => {
-    axios.get(process.env.REACT_APP_SERVER_URL + `/user/list/${name}/${loginInfo.token}`).then((res) => {
-      let data = res.data.data;
-      setUserList(data);
-    }).catch((err) => {
-      alert("오류가 발생했습니다.");
-    })
-  }
-
-  const getFrinedList = () => {
-    axios.get(process.env.REACT_APP_SERVER_URL + "/friend/" + loginInfo.token).then((res) => {
-      setFrind(res.data.data);
-    }).catch((err) => {
-      alert("오류가 발생했습니다.");
-    })
+  const friendRequest = (token) => {
+    console.log(token);
   }
 
   useEffect(() => {
-    getFrinedList();
+    getFrinedList(friend, setFrind, loginInfo.token);
   }, []);
 
   useEffect(() => {
@@ -215,23 +204,26 @@ const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
                 </Lable>
               </FriendSearch>
 
-              <div> {/* 테스트 */}
+              <FriendSearchList>
                 {
                   userList === null ? (
-                    <div style={{display: "flex", flexDirection: "row", justifyContent: "center", marginTop: "20px"}}>
+                    <div className="load">
                       <PulseLoader color="#0085ff" speedMultiplier={0.85} size={10}/>
                     </div>
                   ) : userList.length === 0 ? (
-                    <div>
+                    <div className="load">
                       검색결과가 없습니다.
                     </div>
                   ) : userList.map((item, index) => (
-                    <div>
-                      {item.nickname}
-                    </div>
-                  ))
+                    <FriendRow>
+                        <img src={account} />
+                        <p>{item.nickname}</p>
+                        <button onClick={() => {friendRequest(item.token)}}>친구신청</button>
+                    </FriendRow>
+                    
+                  ) )
                 }
-              </div>
+              </FriendSearchList>
             </FriendSubForm>
           </motion.div>
         </FriendDiv>

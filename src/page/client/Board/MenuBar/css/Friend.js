@@ -43,7 +43,25 @@ export const FriendSubForm = styled.div`
   width: 380px;
   height: 420px;
   border-radius: 15px;
+  overflow-x: hidden;
   overflow-y: auto;
+
+      /* 임의의 영역 생성 */
+    /* 아래의 모든 코드는 영역::코드로 사용 */
+    &::-webkit-scrollbar {
+        width: 5px;  /* 스크롤바의 너비 */
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        height: 30%; /* 스크롤바의 길이 */
+        background: #0085FF; /* 스크롤바의 색상 */
+        
+        border-radius: 10px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: rgba(33, 122, 244, .1);  /*스크롤바 뒷 배경 색상*/
+    }
 
   &.left {
     left: 0px;
@@ -85,6 +103,8 @@ export const FriendRow = styled.div`
   }
 
   & > button {
+    cursor: pointer;
+    transition: 0.3s;
     width: 75px;
     height: 24px;
     font-size: 0.75rem;
@@ -92,6 +112,10 @@ export const FriendRow = styled.div`
     border-radius: 30px;
     background-color: #0085ff;
     color: #ffffff;
+  }
+
+  & > button:hover {
+    background-color: #2563FF;
   }
 `;
 
@@ -159,6 +183,22 @@ export const AddBtns = styled.div`
 `;
 
 export const FriendSearch = styled.div``;
+export const FriendSearchList = styled.div`
+  .load {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+`
+
+export const FriendSearchRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`
+
 
 export const Lable = styled.div`
   position: relative;
