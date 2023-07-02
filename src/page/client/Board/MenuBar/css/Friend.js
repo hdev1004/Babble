@@ -123,6 +123,7 @@ export const AddList = styled.div``;
 
 export const AddRow = styled.div`
   & {
+    transition: 0.3s;
     width: 337px;
     height: 93px;
     margin: 25px 20px 25px 20px;
@@ -154,6 +155,11 @@ export const AddInfo = styled.div`
     margin-top: 20px;
     margin-left: 20px;
   }
+
+  .date {
+    color: #828282;
+    font-size: 17px;
+  }
 `;
 export const AddBtns = styled.div`
   & {
@@ -162,19 +168,26 @@ export const AddBtns = styled.div`
     margin-top: 10px;
   }
   & > button {
+    cursor: pointer;
     width: 53px;
     height: 24px;
     border-radius: 30px;
     border: none;
   }
 
-  & > button:nth-child(1) {
+  .accept {
+    transition: 0.3s;
     background: #0085ff;
     color: #ffffff;
     margin-right: 10px;
   }
 
-  & > button:nth-child(2) {
+  .accept:hover {
+    background-color: #2563FF;
+  }
+
+  .refuse {
+    transition: 0.3s;
     background: #ffffff;
     color: #0085ff;
     border: 1px solid #0085ff;

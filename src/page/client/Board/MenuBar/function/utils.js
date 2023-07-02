@@ -94,12 +94,30 @@ export const makeCalendar = (year, month) => {
  * @param {*} setFrind 
  * @param {*} token 
  */
-export const getFrinedList = (friend, setFrind, token) => {
+export const getFrinedList = (setData, token) => {
     axios.get(process.env.REACT_APP_SERVER_URL + "/friend/list/" + token).then((res) => {
-      setFrind(res.data.data);
+      setData(res.data.data);
     }).catch((err) => {
       alert("오류가 발생했습니다.");
     })
+}
+
+export const getFriendRequest = (setData, token) => {
+    axios.get(process.env.REACT_APP_SERVER_URL + "/friend/request/" + token).then((res) => {
+        setData(res.data.data);
+      }).catch((err) => {
+        alert("오류가 발생했습니다.");
+      })
+}
+
+export const transDate = (data) => {
+    let date = new Date(data);
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+
+    let hour = date.getHours().toString();
+    let min = date.getMinutes().toString();
+    return month + "." + day + " " + hour + ":" + min;
 }
 
 /**
@@ -116,3 +134,4 @@ export const getUserList = (setUserList, name, token) => {
       alert("오류가 발생했습니다.");
     })
   }
+

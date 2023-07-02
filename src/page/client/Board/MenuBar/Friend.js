@@ -22,13 +22,14 @@ import axios from "axios";
 import { useRecoilValue } from "recoil";
 import { loginInfoState } from "state/login/recoil";
 import { PulseLoader } from "react-spinners";
-import { getFrinedList, getUserList } from "./function/utils";
+import { getFriendRequest, getFrinedList, getUserList, transDate } from "./function/utils";
 
 const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
   const [tab, setTab] = useState("friend"); //friend : 친구목록, add : 친구추가, search : 검색하기
   const tabRef = useRef(null);
   const [friend, setFrind] = useState(null);
   const [userList, setUserList] = useState([]);
+  const [requestList, setRequestList] = useState(null);
 
   const loginInfo = useRecoilValue(loginInfoState);
 
@@ -40,12 +41,21 @@ const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
     }
   }
 
+  const accpet = (token) => {
+    console.log(token);
+  }
+
+  const refuse = (token) => {
+
+  }
+
   const friendRequest = (token) => {
     console.log(token);
   }
 
   useEffect(() => {
-    getFrinedList(friend, setFrind, loginInfo.token);
+    getFrinedList(setFrind, loginInfo.token);
+    getFriendRequest(setRequestList, loginInfo.token);
   }, []);
 
   useEffect(() => {
@@ -155,40 +165,27 @@ const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
             </FriendSubForm>
             <FriendSubForm className="mid">
               <AddList>
-                <AddRow>
-                  <AddInfo>
-                    <img src={account} />
-                    <div>티라노TV</div>
-                    <div>5.21 17:33</div>
-                  </AddInfo>
-                  <AddBtns>
-                    <button>수락</button>
-                    <button>거절</button>
-                  </AddBtns>
-                </AddRow>
+                {
+                  requestList === null ? (
+                    <div className="load">
+                      <PulseLoader color="#0085ff" speedMultiplier={0.85} size={10}/>
+                    </div>
+                  ) : requestList.map((item, index) => (
+                  <AddRow style={index === 0 ? {scale: 1, height: 0, boxShadow: "none", overflow: "hidden", margin: 0} : {}}>
+                    <AddInfo>
+                      <img src={account} />
+                      <div>{item.nickname}</div>
+                      <div className="date">{transDate(item.update_date)}</div>
+                    </AddInfo>
+                    <AddBtns>
+                      <button className="accept" onClick={() => {accpet(item.friend_token)}}>수락</button>
+                      <button className="refuse" onClick={() => {refuse(item.friend_token)}}>거절</button>
+                    </AddBtns>
+                  </AddRow>
+                  ))
+                }
+                
 
-                <AddRow>
-                  <AddInfo>
-                    <img src={account} />
-                    <div>동인천크로스오버</div>
-                    <div>5.21 17:33</div>
-                  </AddInfo>
-                  <AddBtns>
-                    <button>수락</button>
-                    <button>거절</button>
-                  </AddBtns>
-                </AddRow>
-                <AddRow>
-                  <AddInfo>
-                    <img src={account} />
-                    <div>남고상언</div>
-                    <div>5.21 17:33</div>
-                  </AddInfo>
-                  <AddBtns>
-                    <button>수락</button>
-                    <button>거절</button>
-                  </AddBtns>
-                </AddRow>
               </AddList>
             </FriendSubForm>
             <FriendSubForm className="right">
