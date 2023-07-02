@@ -35,8 +35,14 @@ const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
 
   const keyPress = (e) => {
     if(e.key === "Enter") {
+      let backup = userList;
       setUserList(null);
       let name = e.target.value;
+      if(name === '') {
+        alert("닉네임을 입력해주세요.");
+        setUserList(backup);
+        return;
+      }
       getUserList(setUserList, name, loginInfo.token);  
     }
   }
