@@ -103,7 +103,7 @@ export const getFrinedList = (setData, token) => {
 }
 
 export const getFriendRequest = (setData, token) => {
-    axios.get(process.env.REACT_APP_TEST_URL + "/friend/request/" + token).then((res) => {
+    axios.get(process.env.REACT_APP_SERVER_URL + "/friend/request/" + token).then((res) => {
         setData(res.data.data);
         console.log("DATA : ", res.data.data);
       }).catch((err) => {
@@ -112,7 +112,7 @@ export const getFriendRequest = (setData, token) => {
 }
 
 export const getFriendRequestSend = (setData, token) => {
-    axios.get(process.env.REACT_APP_TEST_URL + "/friend/request/send/" + token).then((res) => {
+    axios.get(process.env.REACT_APP_SERVER_URL + "/friend/request/send/" + token).then((res) => {
         setData(res.data.data);
       }).catch((err) => {
         alert("오류가 발생했습니다.");
@@ -127,7 +127,7 @@ export const getFriendRequestSend = (setData, token) => {
  * @param {*} token 
  */
 export const getUserList = (setUserList, name, token) => {
-    axios.get(process.env.REACT_APP_TEST_URL + `/user/list/${name}/${token}`).then((res) => {
+    axios.get(process.env.REACT_APP_SERVER_URL + `/user/list/${name}/${token}`).then((res) => {
       let data = res.data.data;
       setUserList(data);
     }).catch((err) => {
@@ -147,7 +147,7 @@ export const frinedAdd = (token, friend_token, rendering) => {
         friend_token: friend_token
     }
 
-    axios.post(process.env.REACT_APP_TEST_URL + `/friend/add`, body).then((res) => {
+    axios.post(process.env.REACT_APP_SERVER_URL + `/friend/add`, body).then((res) => {
         alert("친구추가 되었습니다");
         rendering();
     }).catch((err) => {
@@ -161,7 +161,7 @@ export const frinedReq = (token, friend_token, rendering) => {
         friend_token: friend_token
     }
     
-    axios.post(process.env.REACT_APP_TEST_URL + `/friend/request`, body).then((res) => {
+    axios.post(process.env.REACT_APP_SERVER_URL + `/friend/request`, body).then((res) => {
         alert("친구요청이 되었습니다.");
         rendering();
     }).catch((err) => {
