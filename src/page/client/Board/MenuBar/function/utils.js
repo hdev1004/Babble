@@ -103,22 +103,22 @@ export const getFrinedList = (setData, token) => {
 }
 
 export const getFriendRequest = (setData, token) => {
-    axios.get(process.env.REACT_APP_SERVER_URL + "/friend/request/" + token).then((res) => {
+    axios.get(process.env.REACT_APP_TEST_URL + "/friend/request/" + token).then((res) => {
+        setData(res.data.data);
+        console.log("DATA : ", res.data.data);
+      }).catch((err) => {
+        alert("오류가 발생했습니다.");
+      })
+}
+
+export const getFriendRequestSend = (setData, token) => {
+    axios.get(process.env.REACT_APP_TEST_URL + "/friend/request/send/" + token).then((res) => {
         setData(res.data.data);
       }).catch((err) => {
         alert("오류가 발생했습니다.");
       })
 }
 
-export const transDate = (data) => {
-    let date = new Date(data);
-    let month = date.getMonth() + 1;
-    let day = date.getDate();
-
-    let hour = date.getHours().toString();
-    let min = date.getMinutes().toString();
-    return month + "." + day + " " + hour + ":" + min;
-}
 
 /**
  * 사용자 리스트 가져오는 함수
@@ -135,3 +135,51 @@ export const getUserList = (setUserList, name, token) => {
     })
   }
 
+
+/**
+ * 친구 추가 
+ * @param {*} token 사용자 토큰
+ * @param {*} friend_token 추가하고하 하는 친구 토큰
+ */
+export const frinedAdd = (token, friend_token, rendering) => {
+    let body = {
+        token: token,
+        friend_token: friend_token
+    }
+
+    axios.post(process.env.REACT_APP_TEST_URL + `/friend/add`, body).then((res) => {
+        alert("친구추가 되었습니다");
+        rendering();
+    }).catch((err) => {
+        alert("오류가 발생했습니다.");
+    })
+}
+
+export const frinedReq = (token, friend_token, rendering) => {
+    let body = {
+        token: token,
+        friend_token: friend_token
+    }
+    
+    axios.post(process.env.REACT_APP_TEST_URL + `/friend/request`, body).then((res) => {
+        alert("친구요청이 되었습니다.");
+        rendering();
+    }).catch((err) => {
+    alert("오류가 발생했습니다.");
+    })
+}
+
+/**
+ * 데이터 형식 변경
+ * @param {*} data 
+ * @returns 
+ */
+export const transDate = (data) => {
+    let date = new Date(data);
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+
+    let hour = date.getHours().toString();
+    let min = date.getMinutes().toString();
+    return month + "." + day + " " + hour + ":" + min;
+}

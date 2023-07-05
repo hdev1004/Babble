@@ -22,14 +22,17 @@ import axios from "axios";
 import { useRecoilValue } from "recoil";
 import { loginInfoState } from "state/login/recoil";
 import { PulseLoader } from "react-spinners";
-import { getFriendRequest, getFrinedList, getUserList, transDate } from "./function/utils";
+import { frinedAdd, frinedReq, getFriendRequest, getFriendRequestSend, getFrinedList, getUserList, transDate } from "./function/utils";
 
 const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
   const [tab, setTab] = useState("friend"); //friend : 친구목록, add : 친구추가, search : 검색하기
   const tabRef = useRef(null);
-  const [friend, setFrind] = useState(null);
-  const [userList, setUserList] = useState([]);
-  const [requestList, setRequestList] = useState(null);
+  const [friend, setFrind] = useState(null); //친구 리스트
+  const [friendTokenList, setFriendTokenList] = useState([]); //친구 리스트 토큰 배열만 저장
+  const [userList, setUserList] = useState([]); //검색 리스트
+  const [requestList, setRequestList] = useState(null); //친구 요청 받은 리스트
+  const [requestTokenList, setRequestTokenList] = useState([]); //친구 요청 토큰 배열만 저장
+  const [requestSendTokenList, setRequestSendTokenList] = useState(null); //직접 친구 신청을 누른 리스트
 
   const loginInfo = useRecoilValue(loginInfoState);
 
@@ -48,21 +51,41 @@ const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
   }
 
   const accpet = (token) => {
-    console.log(token);
+    frinedAdd(loginInfo.token, token, rendering);
   }
 
   const refuse = (token) => {
 
   }
 
-  const friendRequest = (token) => {
-    console.log(token);
+  const friendAddRequest = (token) => {
+    frinedReq(loginInfo.token, token, rendering);
+  }
+
+  const rendering = () => {
+    getFrinedList(setFrind, loginInfo.token);
+    getFriendRequest(setRequestList, loginInfo.token);
+    getFriendRequestSend(setRequestSendTokenList, loginInfo.token);
   }
 
   useEffect(() => {
-    getFrinedList(setFrind, loginInfo.token);
-    getFriendRequest(setRequestList, loginInfo.token);
-  }, []);
+    rendering();
+  }, [tab]);
+
+  useEffect(() => {
+    if(friend) {
+      let tokenList = friend.map(item => item.friend_token);
+      setFriendTokenList(tokenList);
+    }
+  }, [friend]);
+
+  useEffect(() => {
+    console.log(requestList);
+    if(requestList) {
+      let tokenList = requestList.map(item => item.friend_token);
+      setRequestTokenList(tokenList);
+    }
+  }, [requestList])
 
   useEffect(() => {
     function handleClickOutside(e) {
@@ -172,20 +195,20 @@ const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
             <FriendSubForm className="mid">
               <AddList>
                 {
-                  requestList === null ? (
+                  requestSendTokenList === null ? (
                     <div className="load">
                       <PulseLoader color="#0085ff" speedMultiplier={0.85} size={10}/>
                     </div>
-                  ) : requestList.map((item, index) => (
-                  <AddRow style={index === 0 ? {scale: 1, height: 0, boxShadow: "none", overflow: "hidden", margin: 0} : {}}>
+                  ) : requestSendTokenList.map((item, index) => (
+                  <AddRow style={index === 0 ? {} : {}}>
                     <AddInfo>
                       <img src={account} />
                       <div>{item.nickname}</div>
                       <div className="date">{transDate(item.update_date)}</div>
                     </AddInfo>
                     <AddBtns>
-                      <button className="accept" onClick={() => {accpet(item.friend_token)}}>수락</button>
-                      <button className="refuse" onClick={() => {refuse(item.friend_token)}}>거절</button>
+                      <button className="accept" onClick={() => {accpet(item.token)}}>수락</button>
+                      <button className="refuse" onClick={() => {refuse(item.toekn)}}>거절</button>
                     </AddBtns>
                   </AddRow>
                   ))
@@ -221,7 +244,16 @@ const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
                     <FriendRow>
                         <img src={account} />
                         <p>{item.nickname}</p>
-                        <button onClick={() => {friendRequest(item.token)}}>친구신청</button>
+                        {
+                          friendTokenList.includes(item.token) ? (
+                            <button onClick={() => {}}>친구끊기</button>
+                          ) : requestTokenList.includes(item.token) ? (
+                            <button onClick={() => {}}>신청취소</button>
+                          ) :
+                          (
+                            <button onClick={() => {friendAddRequest(item.token)}}>친구신청</button>
+                          )
+                        }
                     </FriendRow>
                     
                   ) )
