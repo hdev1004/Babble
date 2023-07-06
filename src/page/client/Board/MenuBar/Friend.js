@@ -256,7 +256,7 @@ const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
                         <p>{item.nickname}</p>
                         {
                           friendTokenList.includes(item.token) ? (
-                            <button onClick={() => {friendDel(item.token)}}>친구끊기</button>
+                            <button onClick={() => {unFriend(item.token)}}>친구끊기</button>
                           ) : requestTokenList.includes(item.token) ? (
                             <button onClick={() => {friendReqCancle(item.token)}}>신청취소</button>
                           ) :
