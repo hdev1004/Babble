@@ -22,7 +22,7 @@ import axios from "axios";
 import { useRecoilValue } from "recoil";
 import { loginInfoState } from "state/login/recoil";
 import { PulseLoader } from "react-spinners";
-import { frinedAdd, frinedReq, getFriendRequest, getFriendRequestSend, getFrinedList, getUserList, transDate } from "./function/utils";
+import { friendCancle, friendDel, friendRefuse, frinedAdd, frinedReq, getFriendRequest, getFriendRequestSend, getFrinedList, getUserList, transDate } from "./function/utils";
 
 const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
   const [tab, setTab] = useState("friend"); //friend : 친구목록, add : 친구추가, search : 검색하기
@@ -54,8 +54,19 @@ const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
     frinedAdd(loginInfo.token, token, rendering);
   }
 
+  //친구 요청 거부
   const refuse = (token) => {
+    friendRefuse(loginInfo.token, token, rendering);
+  }
 
+  //친구 끊기 
+  const unFriend = (token) => {
+    friendDel(loginInfo.token, token, rendering);
+  }
+
+  //친구 요청 취소
+  const friendReqCancle = (token) => {
+    friendCancle(loginInfo.token, token, rendering);
   }
 
   const friendAddRequest = (token) => {
@@ -80,7 +91,6 @@ const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
   }, [friend]);
 
   useEffect(() => {
-    console.log(requestList);
     if(requestList) {
       let tokenList = requestList.map(item => item.friend_token);
       setRequestTokenList(tokenList);
@@ -181,7 +191,7 @@ const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
                         <FriendRow>
                           <img src={account} />
                           <p>{item.nickname}</p>
-                          <button>친구끊기</button>
+                          <button onClick={() => {unFriend(item.friend_token)}}>친구끊기</button>
                         </FriendRow>
                       ))
                     }
@@ -208,7 +218,7 @@ const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
                     </AddInfo>
                     <AddBtns>
                       <button className="accept" onClick={() => {accpet(item.token)}}>수락</button>
-                      <button className="refuse" onClick={() => {refuse(item.toekn)}}>거절</button>
+                      <button className="refuse" onClick={() => {refuse(item.token)}}>거절</button>
                     </AddBtns>
                   </AddRow>
                   ))
@@ -246,9 +256,9 @@ const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
                         <p>{item.nickname}</p>
                         {
                           friendTokenList.includes(item.token) ? (
-                            <button onClick={() => {}}>친구끊기</button>
+                            <button onClick={() => {friendDel(item.token)}}>친구끊기</button>
                           ) : requestTokenList.includes(item.token) ? (
-                            <button onClick={() => {}}>신청취소</button>
+                            <button onClick={() => {friendReqCancle(item.token)}}>신청취소</button>
                           ) :
                           (
                             <button onClick={() => {friendAddRequest(item.token)}}>친구신청</button>

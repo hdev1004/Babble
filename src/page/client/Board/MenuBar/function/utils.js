@@ -105,7 +105,6 @@ export const getFrinedList = (setData, token) => {
 export const getFriendRequest = (setData, token) => {
     axios.get(process.env.REACT_APP_SERVER_URL + "/friend/request/" + token).then((res) => {
         setData(res.data.data);
-        console.log("DATA : ", res.data.data);
       }).catch((err) => {
         alert("오류가 발생했습니다.");
       })
@@ -166,6 +165,81 @@ export const frinedReq = (token, friend_token, rendering) => {
         rendering();
     }).catch((err) => {
     alert("오류가 발생했습니다.");
+    })
+}
+
+/**
+ * 친구 요청 거부
+ * @param {*} token 
+ * @param {*} friend_token 
+ * @param {*} rendering 
+ * @returns 
+ */
+export const friendRefuse = (token, friend_token, rendering) => {
+    let body = {
+        token: token,
+        friend_token: friend_token
+    }
+    if (!window.confirm("친구 요청을 거부하시겠습니까?")) {
+        return;
+    }
+
+    axios.delete(process.env.REACT_APP_SERVER_URL + `/friend/refuse`, {data:body}).then((res) => {
+        alert("친구 요청을 거부했습니다.");
+        rendering();
+    }).catch((err) => {
+        alert("오류가 발생했습니다.");
+    })
+}
+
+/**
+ * 친구 삭제
+ * @param {*} token 
+ * @param {*} friend_token 
+ * @param {*} rendering 
+ * @returns 
+ */
+export const friendDel = (token, friend_token, rendering) => {
+    let body = {
+        token: token,
+        friend_token: friend_token
+    }
+
+    if (!window.confirm("친구를 삭제하시겠습니까?")) {
+        return;
+    }
+
+    axios.delete(process.env.REACT_APP_SERVER_URL + `/friend`, {data:body}).then((res) => {
+        alert("친구를 삭제했습니다.");
+        rendering();
+    }).catch((err) => {
+        alert("오류가 발생했습니다.");
+    })
+}
+
+/**
+ * 친구 요청 취소
+ * @param {*} token 
+ * @param {*} friend_token 
+ * @param {*} rendering 
+ * @returns 
+ */
+export const friendCancle = (token, friend_token, rendering) => {
+    let body = {
+        token: token,
+        friend_token: friend_token
+    }
+    console.log("BODY : ", body);
+
+    if (!window.confirm("친구 요청을 취소하시겠습니까?")) {
+        return;
+    }
+
+    axios.delete(process.env.REACT_APP_SERVER_URL + `/friend/request`, {data: body}).then((res) => {
+        alert("친구 요청을 취소했습니다.");
+        rendering();
+    }).catch((err) => {
+        alert("오류가 발생했습니다.");
     })
 }
 
