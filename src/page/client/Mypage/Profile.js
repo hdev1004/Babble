@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { ProfileForm, ProfileBottom, ProfileEmail, ProfileNickname, ProfileRow, ProfileTop } from "./css/Profile";
+import { ProfileForm, ProfileBottom, ProfileEmail, ProfileNickname, ProfileRow, ProfileTop, Change } from "./css/Profile";
 
 import account_black from "images/account_black.png";
 import email from "images/email.png";
-
+import profilePw from "images/profile_pw.png";
 import { useRecoilState } from "recoil";
 import { loginInfoState } from "state/login/recoil";
-
+import RecentLog from "images/RecentLog.png"
+import LastInfoList from "images/lastInfoList.png";
 const App = () => {
     const [loginInfo, setLoginInfo] = useRecoilState(loginInfoState);
 
@@ -22,9 +23,9 @@ const App = () => {
                         <div className="email">{loginInfo.email}</div>
                     </div>
 
-                    <div className="change">
+                    <Change right = "37px" top = "50%" Margintop = "-20px">
                         닉네임 변경
-                    </div>
+                    </Change>
                 </ProfileNickname>
 
                 <div className="line"></div>
@@ -36,34 +37,37 @@ const App = () => {
                     <div className="email">
                         {loginInfo.email}
                     </div>
-                    <div className="change">
+                    <Change right = "37px" top = "50%" Margintop = "-20px">
                         수정
-                    </div>
+                    </Change>
                 </ProfileEmail>
             </ProfileTop>
 
             <ProfileBottom>
-                <div>
-                    <div>아이콘</div>
-                    <div>비밀번호</div>
+                <div className="profileSetting_pw pw_div">
+                    <div><img src = {profilePw} alt = "패스워드" /></div>
+                    <span>비밀번호</span>
+                    <Change className="update">수정</Change>
+
                 </div>
 
-                <div>
-                    <div>아이콘</div>
-                    <div>최근 로그인</div>
-                    <div>날짜</div>
+                <div className="profileSetting_pw">
+                    <div><img src = {RecentLog} alt = "최근로그인" /></div>
+                    <span>최근 로그인</span>
+                    <div className="date">2023.06.01</div>
                 </div>
 
-                <div>
-                    <div>아이콘</div>
-                    <div>마지막 정보수정 이력</div>
-                    <div>없음</div>
+                <div className="profileSetting_pw border_last">
+                    <div><img src = {LastInfoList} alt = "정보수정 이력" /></div>
+                    <div className="font">마지막 정보수정 이력</div>
+                    <div className="date">없음</div>
                 </div>
-
-                <div>
-                    회원탈퇴 
+                <div className="secession">
+                    회원탈퇴 &gt;
                 </div>
+              
             </ProfileBottom>
+          
         </ProfileForm>
     )
 }
