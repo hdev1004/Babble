@@ -1,5 +1,6 @@
 import axios from "axios";
-
+import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
+import { db } from "noSQL/firebase";
 
 export const makeCalendar = (year, month) => {
     let beforeDate = new Date(year, month, 0);
@@ -160,9 +161,17 @@ export const frinedReq = (token, friend_token, rendering) => {
         friend_token: friend_token
     }
     
-    axios.post(process.env.REACT_APP_SERVER_URL + `/friend/request`, body).then((res) => {
+    axios.post(process.env.REACT_APP_SERVER_URL + `/friend/request`, body).then(async (res) => {
         alert("친구요청이 되었습니다.");
         rendering();
+
+        let docRef = doc(db, "FriendReq", friend_token);
+        let docSnap = await getDoc(docRef);
+
+        await setDoc(doc(db, "FriendReq", friend_token), {
+            [token]: false
+        });
+          
     }).catch((err) => {
     alert("오류가 발생했습니다.");
     })
@@ -187,6 +196,7 @@ export const friendRefuse = (token, friend_token, rendering) => {
     axios.delete(process.env.REACT_APP_SERVER_URL + `/friend/refuse`, {data:body}).then((res) => {
         alert("친구 요청을 거부했습니다.");
         rendering();
+
     }).catch((err) => {
         alert("오류가 발생했습니다.");
     })
