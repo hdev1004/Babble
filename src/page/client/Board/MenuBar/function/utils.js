@@ -168,7 +168,7 @@ export const frinedReq = (token, friend_token, rendering) => {
         let docRef = doc(db, "FriendReq", friend_token);
         let docSnap = await getDoc(docRef);
 
-        await setDoc(doc(db, "FriendReq", friend_token), {
+        await updateDoc(doc(db, "FriendReq", friend_token), {
             [token]: false
         });
           
