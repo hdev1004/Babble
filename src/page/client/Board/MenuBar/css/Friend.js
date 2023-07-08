@@ -29,6 +29,21 @@ export const FriendTitle = styled.div`
     background-color: #0085ff;
     top: 60px;
   }
+
+
+  .noti {
+    transition: 0.3s;
+    top:18px;
+    left: 100px;
+    border-radius: 50px;
+    width: 8px;
+    height: 8px;
+    background-color: red;
+  }
+
+  .hidden {
+    scale: 0;
+  }
 `;
 
 export const AlarmForm = styled.div`

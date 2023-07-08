@@ -4,14 +4,8 @@ import { recoilPersist } from "recoil-persist";
 
 const { persistAtom } = recoilPersist()
 
-export const loginInfoState = atom({
-    key: 'loginInfo', // 유니크한 ID
-    default: {
-        id: "",
-        token: "",
-        nickname: "",
-        access_token: "",
-        email: "",
-    }, // 기본값
+export const friendReqState = atom({
+    key: 'friendReqState',
+    isFriendReq: false,
     effects_UNSTABLE: [persistAtom]
-  });
+});

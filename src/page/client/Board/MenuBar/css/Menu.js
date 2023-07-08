@@ -92,6 +92,7 @@ export const MenuRow = styled.div`
     display: flex;
     flex-direction: row;
     transition: 0.3s;
+    position: relative;
 
     &:hover {
         color: #0085FF;
@@ -101,5 +102,20 @@ export const MenuRow = styled.div`
         margin-right: 18px;
         width: 29px;
         height: 29px;
+    }
+
+    .alarm {
+        transition: 0.3s;
+        border-radius: 50px;
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background-color: red;
+        top: 20px;
+        left: 27px;
+    }
+
+    .hidden {
+        scale: 0;
     }
 `

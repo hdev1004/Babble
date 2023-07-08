@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   MenuDiv,
   MenuForm,
@@ -22,6 +22,7 @@ import Friend from "./Friend";
 import babble from "images/babble.png";
 import { useNavigate } from "react-router-dom";
 
+
 const App = ({ tab }) => {
   const alarmMenuRef = useRef(null);
   const friendMenuRef = useRef(null);
@@ -31,6 +32,8 @@ const App = ({ tab }) => {
 
   const [nowData, setNowData] = useState(new Date());
   const navigate = useNavigate();
+
+  const [friendReqState, setFriendReqState] = useState(false);
 
   const swipeConfidenceThreshold = 10000;
   const swipePower = (offset, velocity) => {
@@ -69,6 +72,10 @@ const App = ({ tab }) => {
     },
   };
 
+  useEffect(() => {
+    console.log("NOW : ", friendReqState);
+  }, [friendReqState])
+
   return (
     <MenuDiv>
       <Alarm
@@ -80,6 +87,8 @@ const App = ({ tab }) => {
         isFriend={isFriend}
         setIsFriend={setIsFriend}
         friendMenuRef={friendMenuRef}
+        friendReqState={friendReqState}
+        setFriendReqState={setFriendReqState}
       ></Friend>
       <MenuTitle>
         <img src={babble}></img>
@@ -111,6 +120,7 @@ const App = ({ tab }) => {
               ref={friendMenuRef}
             >
               <img src={Friends}></img>
+              <i className={friendReqState ? "alarm" : "alarm hidden"}></i>
               <div>친구</div>
             </MenuRow>
             <MenuRow>

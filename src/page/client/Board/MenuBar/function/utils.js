@@ -1,5 +1,5 @@
 import axios from "axios";
-import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "noSQL/firebase";
 
 export const makeCalendar = (year, month) => {
@@ -167,20 +167,19 @@ export const frinedReq = (token, friend_token, rendering) => {
 
         let docRef = doc(db, "FriendReq", friend_token);
         let docSnap = await getDoc(docRef);
+        let data = docSnap.exists() ? docSnap.data().token : [];
 
-        if(docSnap.exists()) {
-            await updateDoc(doc(db, "FriendReq", friend_token), {
-                [token]: false
-            });
-        } else {
-            await setDoc(doc(db, "FriendReq", friend_token), {
-                [token]: false
-            });
-        }
+        data.push({
+            token
+        })
 
+        await setDoc(doc(db, "FriendReq", friend_token), {
+            token: data
+        });
           
     }).catch((err) => {
-    alert("오류가 발생했습니다.");
+        alert("오류가 발생했습니다. Base 102");
+        console.log(err);
     })
 }
 
@@ -252,11 +251,27 @@ export const friendCancle = (token, friend_token, rendering) => {
         return;
     }
 
-    axios.delete(process.env.REACT_APP_SERVER_URL + `/friend/request`, {data: body}).then((res) => {
+    axios.delete(process.env.REACT_APP_SERVER_URL + `/friend/request`, {data: body}).then(async (res) => {
         alert("친구 요청을 취소했습니다.");
         rendering();
+
+        const docRef = doc(db, "FriendReq", friend_token);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            let data = docSnap.data().token;
+            data = data.filter((prev) => prev.token !== token)
+
+            setDoc(doc(db, "FriendReq", friend_token), {
+                token: data
+            })
+        } else {
+            alert("오류가 발생했습니다. Base 101")
+        }
+
     }).catch((err) => {
         alert("오류가 발생했습니다.");
+        console.log(err);
     })
 }
 

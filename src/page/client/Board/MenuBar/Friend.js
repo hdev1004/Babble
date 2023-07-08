@@ -19,12 +19,15 @@ import { motion } from "framer-motion";
 import account from "images/account.png";
 import search from "images/search_gray.png";
 import axios from "axios";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { loginInfoState } from "state/login/recoil";
 import { PulseLoader } from "react-spinners";
 import { friendCancle, friendDel, friendRefuse, frinedAdd, frinedReq, getFriendRequest, getFriendRequestSend, getFrinedList, getUserList, transDate } from "./function/utils";
+import { doc, onSnapshot, setDoc } from "firebase/firestore";
+import { db } from "noSQL/firebase"; 
+//import { friendReqState } from "state/friend/friend_recoil";
 
-const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
+const App = ({ isFriend, setIsFriend, friendMenuRef, friendReqState , setFriendReqState }) => {
   const [tab, setTab] = useState("friend"); //friend : 친구목록, add : 친구추가, search : 검색하기
   const tabRef = useRef(null);
   const [friend, setFrind] = useState(null); //친구 리스트
@@ -35,6 +38,7 @@ const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
   const [requestSendTokenList, setRequestSendTokenList] = useState(null); //직접 친구 신청을 누른 리스트
 
   const loginInfo = useRecoilValue(loginInfoState);
+
 
   const keyPress = (e) => {
     if(e.key === "Enter") {
@@ -80,6 +84,33 @@ const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
   }
 
   useEffect(() => {
+    const unsub = onSnapshot(doc(db, "FriendReq", loginInfo.token), (doc) => {
+      let data = doc.data();
+
+      if(data === undefined || data.token.length === 0) {
+        setFriendReqState(false);
+      } else {
+        if(isFriend && tab === "add") {
+          //이미 켜져 있을 때
+          setDoc(doc(db, "FriendReq", loginInfo.token), {
+            token: []
+          })
+          setFriendReqState(false);
+        } else {
+          setFriendReqState(true);
+        }
+      }
+      rendering();
+    });
+  }, [])
+
+  useEffect(() => {
+    if(tab === "add") {
+      setFriendReqState(false);
+      setDoc(doc(db, "FriendReq", loginInfo.token), {
+        token: []
+      })
+    }
     rendering();
   }, [tab]);
 
@@ -98,6 +129,7 @@ const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
   }, [requestList])
 
   useEffect(() => {
+
     function handleClickOutside(e) {
       const isInside = tabRef?.current?.contains(e.target);
       const menuInside = friendMenuRef?.current?.contains(e.target);
@@ -105,7 +137,6 @@ const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
         setIsFriend(false);
       }
     }
-
     document.addEventListener("click", handleClickOutside);
     return () => {
       document.removeEventListener("click", handleClickOutside);
@@ -153,9 +184,10 @@ const App = ({ isFriend, setIsFriend, friendMenuRef }) => {
               onClick={() => {
                 setTab("add");
               }}
-              style={{ color: tab === "add" ? "#000" : "#828282" }}
+              style={{ color: tab === "add" ? "#000" : "#828282", position: "relative" }}
             >
               친구추가
+              <i style={{opacity: friendReqState ? "1" : "0", position: "absolute"}} className={friendReqState ? "noti" : "noti hidden"}></i>
             </div>
             <div
               onClick={() => {
