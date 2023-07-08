@@ -68,7 +68,6 @@ export const ProfileBottom = styled.div`
     span {
       color: #2f2f2f;
       text-align: center;
-      font-family: Dosis;
       font-size: 20px;
       font-style: normal;
       font-weight: 200;
@@ -78,7 +77,6 @@ export const ProfileBottom = styled.div`
     & .font{
         color: #2F2F2F;
 text-align: center;
-font-family: Dosis;
 font-size: 20px;
 font-style: normal;
 font-weight: 200;
