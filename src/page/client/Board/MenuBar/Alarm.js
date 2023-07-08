@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { AlarmDiv, AlarmForm, AlarmSubForm, AlarmTitle, ChatDiv, AlarmList, AlarmRow, AlarmRow2, ChattingList, Chatting } from "./css/Alarm";
+import { AlarmDiv, AlarmForm, AlarmSubForm, AlarmTitle, ChatDiv, AlarmList, AlarmRow, AlarmRow2, ChattingList, ChattingOne, ChattingTwo, ChattingThree } from "./css/Alarm";
 import { motion } from "framer-motion";
+import chatprofile from "images/chatprofile.jpg";
+import left from "images/left.png";
 
 const App = ({isAlarm, setIsAlarm ,alarmMenuRef}) => {
     const [tab, setTab] = useState("alarm"); //alarm : 알림, chat : 채팅
@@ -90,9 +92,17 @@ const App = ({isAlarm, setIsAlarm ,alarmMenuRef}) => {
                         <AlarmSubForm className="right">
                             <div onDoubleClick={() => {setInnserChat(true)}}>
                               <ChattingList>
-                                <Chatting>
-                                  <div>채팅1</div>
-                                </Chatting>
+                                <ChattingOne>
+                                  <img src={chatprofile} />
+                                </ChattingOne>
+                                <ChattingTwo>
+                                  <div className="Chat_name">하얀곰</div>
+                                  <div className="Chat_content">사우지마세요 사우지마세요</div>
+                                </ChattingTwo>
+                                <ChattingThree>
+                                  <div className="Chat_lasttime">오전 11:13</div>
+                                  <div className="Chat_message">3</div>
+                                </ChattingThree>
                               </ChattingList>
                             </div>
                         </AlarmSubForm>
@@ -101,8 +111,10 @@ const App = ({isAlarm, setIsAlarm ,alarmMenuRef}) => {
 
                 <ChatDiv>
                     <div onClick={() => {setInnserChat(false)}}>
-                      뒤로가기
+                      <img src={left} />
                     </div>
+
+                    <div className="Chat_in_name">하얀곰</div>
                 </ChatDiv>
                 
             </motion.div>

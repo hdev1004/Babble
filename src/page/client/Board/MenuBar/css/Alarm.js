@@ -11,9 +11,29 @@ export const ChatDiv = styled.div`
     position: absolute;
     width: 380px;
     height: 500px;
-    background-color: lightgray;
+    background-color: #F5F6F8;
     left: 380px;
     border-radius: 14px;
+    display: flex;
+
+    img {
+        padding-top : 20px;
+        padding-left : 20px;
+        width : 30px;
+        height : 30px;
+        background-color: white;
+        
+    }
+
+    .Chat_in_name {
+        padding-top : 24px;
+        padding-left : 20px;
+        font-size: 18px;
+        font-weight : bold;
+        background-color: white;
+        height : 45px;
+        width : 310px;
+    }
 `
 
 export const AlarmTitle = styled.div`
@@ -100,9 +120,54 @@ export const AlarmRow2 = styled.div`
 
 export const ChattingList = styled.div`
     background:#FFFFFF;
-    height:50px;
+    display: flex;
 `
 
-export const Chatting = styled.div`
-    background:#FFFFFF;
+export const ChattingOne = styled.div`
+    background:white;
+    height:90px;
+    width: 90px;
+    display: flex;
+
+    img {
+        width: 70px;
+        height: 70px;
+        margin:10px;
+        border-radius: 15px;
+    }
+`
+
+export const ChattingTwo = styled.div`
+    background:white;
+    width : 190px;
+    padding-left : 10px;
+
+    .Chat_name {
+        margin-top : 20px;
+        font-size: 18px;
+        font-weight : bold;
+    }
+
+    .Chat_content {
+        margin-top : 8px;
+        font-size: 15px;
+    }
+`
+
+export const ChattingThree = styled.div`
+    font-size: 15px;
+    padding-top : 20px;
+    width:90px;
+    text-align:center;
+    background:white;
+
+    .Chat_message {
+        margin : 10px 15px; 0px; 0px;
+        font-size: 15px;
+        color : white;
+        background : #0085FF;
+        border-radius: 30px;
+        height:20px;
+        width:60px;
+    }
 `
