@@ -5,7 +5,6 @@ export const ProfileForm = styled.div`
 & .secession{
     color: #828282;
 text-align: center;
-font-family: Dosis;
 font-size: 30px;
 font-style: normal;
 font-weight: 600;
@@ -86,7 +85,6 @@ line-height: normal;
       margin-left: 33px;
       color: #828282;
       text-align: center;
-      font-family: Droid Sans;
       font-size: 20px;
       font-style: normal;
       font-weight: 400;
