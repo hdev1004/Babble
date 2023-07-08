@@ -168,9 +168,16 @@ export const frinedReq = (token, friend_token, rendering) => {
         let docRef = doc(db, "FriendReq", friend_token);
         let docSnap = await getDoc(docRef);
 
-        await updateDoc(doc(db, "FriendReq", friend_token), {
-            [token]: false
-        });
+        if(docSnap.exists()) {
+            await updateDoc(doc(db, "FriendReq", friend_token), {
+                [token]: false
+            });
+        } else {
+            await setDoc(doc(db, "FriendReq", friend_token), {
+                [token]: false
+            });
+        }
+
           
     }).catch((err) => {
     alert("오류가 발생했습니다.");
