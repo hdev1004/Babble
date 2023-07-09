@@ -37,7 +37,7 @@ const App = () => {
                         <></>
                     ) : (
                         <Routes>
-                            <Route path="/" element = {<MainBoard board={tab[0].link}></MainBoard>}></Route>
+                            <Route path="/" element = {<MainBoard board={tab[0]}></MainBoard>}></Route>
                             {
                                 tab.map((item) => (
                                     <Route path={item.name} element={<MainBoard board={item}/>} />

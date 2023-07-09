@@ -36,6 +36,7 @@ const App = ({ board }) => {
       
     }
   }
+  
 
   return (
     // <div>
