@@ -78,12 +78,14 @@ const App = ({ isFriend, setIsFriend, friendMenuRef, friendReqState , setFriendR
   }
 
   const rendering = () => {
+    if(loginInfo.token === "") return;
     getFrinedList(setFrind, loginInfo.token);
     getFriendRequest(setRequestList, loginInfo.token);
     getFriendRequestSend(setRequestSendTokenList, loginInfo.token);
   }
 
   useEffect(() => {
+    if(loginInfo.token === "") return;
     const unsub = onSnapshot(doc(db, "FriendReq", loginInfo.token), (doc) => {
       let data = doc.data();
 
@@ -285,9 +287,6 @@ const App = ({ isFriend, setIsFriend, friendMenuRef, friendReqState , setFriendR
                   ) : userList.map((item, index) => (
                     
                     <FriendRow>
-                      {
-                        console.log(requestSendTokenList)
-                      }
                         <img src={account} />
                         <p>{item.nickname}</p>
                         {
