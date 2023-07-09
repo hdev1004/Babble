@@ -18,7 +18,6 @@ export const CommentWrap = styled.div`
   span {
     color: #2f2f2f;
     text-align: center;
-    font-family: Domine;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -65,7 +64,6 @@ export const CommendRecordBox = styled.div `
     span{
         color: #828282;
 text-align: center;
-font-family: Domine;
 font-size: 15px;
 font-style: normal;
 font-weight: 400;
@@ -74,7 +72,6 @@ line-height: normal;
 
     & .content{
         color: #2F2F2F;
-font-family: Domine;
 font-size: 20px;
 font-style: normal;
 font-weight: 400;
@@ -91,7 +88,6 @@ border-radius: 30px;
 background: #0085FF;
 color: #FFF;
 text-align: center;
-font-family: Domine;
 font-size: 18px;
 font-style: normal;
 font-weight: 700;
