@@ -137,9 +137,9 @@ const App = ({ isFriend, setIsFriend, friendMenuRef, friendReqState , setFriendR
         setIsFriend(false);
       }
     }
-    document.addEventListener("click", handleClickOutside);
+    document.addEventListener("mouseup", handleClickOutside);
     return () => {
-      document.removeEventListener("click", handleClickOutside);
+      document.removeEventListener("mouseup", handleClickOutside);
     };
   }, [isFriend]);
 
@@ -283,7 +283,11 @@ const App = ({ isFriend, setIsFriend, friendMenuRef, friendReqState , setFriendR
                       검색결과가 없습니다.
                     </div>
                   ) : userList.map((item, index) => (
+                    
                     <FriendRow>
+                      {
+                        console.log(requestSendTokenList)
+                      }
                         <img src={account} />
                         <p>{item.nickname}</p>
                         {
@@ -291,8 +295,9 @@ const App = ({ isFriend, setIsFriend, friendMenuRef, friendReqState , setFriendR
                             <button onClick={() => {unFriend(item.token)}}>친구끊기</button>
                           ) : requestTokenList.includes(item.token) ? (
                             <button onClick={() => {friendReqCancle(item.token)}}>신청취소</button>
-                          ) :
-                          (
+                          ) : requestSendTokenList.filter((prev) => prev.token.includes(item.token)) ? (
+                            <button onClick={() => {setTab("add")}}>요청대기</button>
+                          ) : (
                             <button onClick={() => {friendAddRequest(item.token)}}>친구신청</button>
                           )
                         }

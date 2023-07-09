@@ -4,7 +4,7 @@ export const ProfileDiv = styled.div`
   height: 100%;
   overflow-y: auto;
   width: 43.4%;
-  min-width: 400px;
+  min-width: 43.4%;
   background-color: white;
   z-index: 50;
 `;
