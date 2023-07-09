@@ -33,9 +33,9 @@ const App = ({ isFriend, setIsFriend, friendMenuRef, friendReqState , setFriendR
   const [friend, setFrind] = useState(null); //친구 리스트
   const [friendTokenList, setFriendTokenList] = useState([]); //친구 리스트 토큰 배열만 저장
   const [userList, setUserList] = useState([]); //검색 리스트
-  const [requestList, setRequestList] = useState(null); //친구 요청 받은 리스트
+  const [requestList, setRequestList] = useState(null); //직접 친구 신청을 누른 리스트
   const [requestTokenList, setRequestTokenList] = useState([]); //친구 요청 토큰 배열만 저장
-  const [requestSendTokenList, setRequestSendTokenList] = useState(null); //직접 친구 신청을 누른 리스트
+  const [requestSendTokenList, setRequestSendTokenList] = useState(null); //친구 요청 받은 리스트
 
   const loginInfo = useRecoilValue(loginInfoState);
 
@@ -295,8 +295,6 @@ const App = ({ isFriend, setIsFriend, friendMenuRef, friendReqState , setFriendR
                             <button onClick={() => {unFriend(item.token)}}>친구끊기</button>
                           ) : requestTokenList.includes(item.token) ? (
                             <button onClick={() => {friendReqCancle(item.token)}}>신청취소</button>
-                          ) : requestSendTokenList.filter((prev) => prev.token.includes(item.token)) ? (
-                            <button onClick={() => {setTab("add")}}>요청대기</button>
                           ) : (
                             <button onClick={() => {friendAddRequest(item.token)}}>친구신청</button>
                           )
