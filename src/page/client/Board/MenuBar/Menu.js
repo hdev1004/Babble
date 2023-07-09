@@ -21,6 +21,7 @@ import Friend from "./Friend";
 
 import babble from "images/babble.png";
 import { useNavigate } from "react-router-dom";
+import { PulseLoader } from "react-spinners";
 
 
 const App = ({ tab }) => {
@@ -72,9 +73,6 @@ const App = ({ tab }) => {
     },
   };
 
-  useEffect(() => {
-    console.log("NOW : ", friendReqState);
-  }, [friendReqState])
 
   return (
     <MenuDiv>
@@ -123,7 +121,7 @@ const App = ({ tab }) => {
               <i className={friendReqState ? "alarm" : "alarm hidden"}></i>
               <div>친구</div>
             </MenuRow>
-            <MenuRow>
+            <MenuRow  onClick={() => {navigate('/')}}>
               <img src={PowerOff}></img>
               <div>로그아웃</div>
             </MenuRow>
@@ -132,59 +130,24 @@ const App = ({ tab }) => {
           <hr></hr>
 
           <MenuSubGroup>
-            <MenuRow
-              onClick={() => {
-                navigate("/board/aa");
-              }}
-            >
-              <img src={Account}></img>
-              <div>모모 게시판</div>
-            </MenuRow>
-
-            <MenuRow
-              onClick={() => {
-                navigate("/board/bb");
-              }}
-            >
-              <img src={Account}></img>
-              <div>덕질 게시판</div>
-            </MenuRow>
-
-            <MenuRow
-              onClick={() => {
-                navigate("/board/cc");
-              }}
-            >
-              <img src={Account}></img>
-              <div>자유 게시판</div>
-            </MenuRow>
-
-            <MenuRow
-              onClick={() => {
-                navigate("/board/dd");
-              }}
-            >
-              <img src={Account}></img>
-              <div>문어 게시판</div>
-            </MenuRow>
-
-            <MenuRow
-              onClick={() => {
-                navigate("/board/ee");
-              }}
-            >
-              <img src={Account}></img>
-              <div>응애 게시판</div>
-            </MenuRow>
-
-            <MenuRow
-              onClick={() => {
-                navigate("/board/ff");
-              }}
-            >
-              <img src={Account}></img>
-              <div>개발 게시판</div>
-            </MenuRow>
+            {
+              tab === null ? (
+                <div style={{background: "lightgray", textAlign: "center", paddingTop: "20px" }}>
+                <PulseLoader color="#0085ff" speedMultiplier={0.85} size={10}/>
+              </div>
+              ) : (
+                tab.map((item) => (
+                  <MenuRow
+                  onClick={() => {
+                    navigate("/board/" + item.name);
+                  }}>
+                    <img src={Account}></img>
+                    <div>{item.name}</div>
+                  </MenuRow>
+                ))
+              )
+              
+            }
           </MenuSubGroup>
         </MenuSubForm>
 

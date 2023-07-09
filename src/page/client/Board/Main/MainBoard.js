@@ -21,25 +21,22 @@ import number1 from "images/number1.png";
 import number2 from "images/number2.png";
 import { useNavigate } from "react-router-dom";
 
-import { db } from "noSQL/firebase";
-import { doc, setDoc, onSnapshot } from "firebase/firestore"; 
 import { useRecoilValue } from "recoil";
 import { loginInfoState } from "state/login/recoil";
+import { PulseLoader } from "react-spinners";
 
-const App = ({ type }) => {
+const App = ({ board }) => {
   const [isBtnHover, setIsBtnHover] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const naviate = useNavigate();
   const loginInfo = useRecoilValue(loginInfoState);
-
-
-
 
   const keyPress = (e) => {
     if(e.key === "Enter") {
       
     }
   }
+  
 
   return (
     // <div>
@@ -49,7 +46,7 @@ const App = ({ type }) => {
     <MainDiv>
       <MainHeader>
         <BoardTitle>
-          <div>자유게시판</div>
+          <div>{board.name}</div>
         </BoardTitle>
         <SearchForm>
           <input value={searchInput} onChange={(e) => {setSearchInput(e.target.value)}} onKeyUp={keyPress} placeholder="검색어를 입력해 주세요" />

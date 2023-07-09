@@ -7,6 +7,13 @@ export const check_token = (loginState, setLoginState, naviate, setLoading) => {
         naviate("/");
         return;
     }
+    
+    console.log("INFO : ", loginState);
+    if(loginState.token === "") {
+        alert("로그인을 진행해야 합니다.");
+        naviate("/");
+        return;
+    }
 
     axios.get(process.env.REACT_APP_SERVER_URL + "/login/jwt/token/" + loginState.token, {
         headers: {
