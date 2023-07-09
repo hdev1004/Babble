@@ -295,6 +295,8 @@ const App = ({ isFriend, setIsFriend, friendMenuRef, friendReqState , setFriendR
                             <button onClick={() => {unFriend(item.token)}}>친구끊기</button>
                           ) : requestTokenList.includes(item.token) ? (
                             <button onClick={() => {friendReqCancle(item.token)}}>신청취소</button>
+                          ) : requestSendTokenList.filter((prev) => prev.token.includes(item.token)).length === 1 ? (
+                            <button onClick={() => {setTab("add")}}>요청대기</button>
                           ) : (
                             <button onClick={() => {friendAddRequest(item.token)}}>친구신청</button>
                           )
