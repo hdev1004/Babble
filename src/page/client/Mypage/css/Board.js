@@ -1,67 +1,76 @@
 import styled from "styled-components";
 
-export const BoardForm = styled.div`
+export const BoardWrap = styled.div`
   max-width: 86%;
   width: 941px;
   /* height: 934px; */
-  height: 820px;
+  height: 800px;
   background-color: white;
   border: 0px;
   border-radius: 15px;
   box-shadow: 0px 0px 20px lightgray;
-
-  margin-top: 110px;
+  margin-top: 90px;
   margin-left: auto;
   margin-right: auto;
+  padding: 25px 40px;
+  position: relative;
+`;
+export const BoradTable = styled.div`
+  table {
+    border-collapse: collapse;
+  }
+  td {
+    width: 200px;
+    text-align: center;
+    &.title {
+      width: 300px;
+      text-align: left;
+    }
+    &.btns {
+      display: flex;
+      margin-top: 8px;
+    }
+    & .edit {
+      width: 83px;
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 30px;
+      font-size: 0.875rem;
+      line-height: 40px;
+      text-align: center;
+      color: #0085ff;
+      background: #ffffff;
+      border: 1px solid #0085ff;
+    }
+    & .remove {
+      width: 83px;
+      height: 40px;
+      border-radius: 30px;
+      font-size: 0.875rem;
+      line-height: 40px;
+      text-align: center;
+      color: #ffffff;
+      background-color: #0085ff;
+      border: none;
+    }
+  }
+
+  tr {
+    height: 60px;
+    border-bottom: 1px solid #eaeaea;
+  }
+  & .border_row {
+    border-bottom: 2px solid #828282;
+  }
 `;
 
-export const BoardTable = styled.div`
-  font-size: 1.125rem;
-
-  & > table {
-    width: 90%;
-    border-collapse: collapse;
-    margin-left: 40px;
-  }
-
-  & > table > thead > tr > td {
-    color: #525252;
-    padding: 22px;
-    border-bottom: solid 1px #000000;
-    text-align: center;
-  }
-
-  & > table > thead > tr > td:nth-child(2) {
-    text-align: left;
-  }
-
-  & > table > tbody > tr > td {
-    padding: 12px;
-    border-bottom: solid 1px #eaeaea;
-    text-align: center;
-  }
-
-  & > table > tbody > tr > td:nth-child(2) {
-    text-align: left;
-  }
-
-  & > table > tbody > tr > td > button {
-    width: 83px;
-    height: 40px;
-    border-radius: 30px;
-    font-size: 0.875rem;
-  }
-  .edit_btn {
-    color: #0085ff;
-    background-color: #ffffff;
-    border: 1px solid #0085ff;
-
-    margin-right: 10px;
-  }
-  .remove_btn {
-    border-radius: 30px;
-    color: #ffffff;
-    background-color: #0085ff;
+export const BoardPage = styled.div`
+  position: absolute;
+  left: 380px;
+  bottom: 20px;
+  display: flex;
+  button {
+    background: #ffffff;
     border: none;
   }
 `;
