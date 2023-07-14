@@ -14,11 +14,22 @@ export const ChatDiv = styled.div`
     background-color: #F5F6F8;
     left: 380px;
     border-radius: 14px;
-    display: flex;
+
+    .title {
+        height: 64px;
+        display: flex;
+        flex-direction: row;
+        background-color: white;
+    }
+
+    .Chat_back {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 
     img {
-        padding-top : 20px;
-        padding-left : 20px;
+        margin-left: 15px;
         width : 30px;
         height : 30px;
         background-color: white;
@@ -26,12 +37,12 @@ export const ChatDiv = styled.div`
     }
 
     .Chat_in_name {
-        padding-top : 24px;
-        padding-left : 20px;
+        padding-left: 10px;
         font-size: 18px;
         font-weight : bold;
         background-color: white;
-        height : 45px;
+        height : 64px;
+        line-height: 64px;
         width : 310px;
     }
 `

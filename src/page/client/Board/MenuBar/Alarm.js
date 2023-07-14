@@ -110,11 +110,14 @@ const App = ({isAlarm, setIsAlarm ,alarmMenuRef}) => {
                 </AlarmDiv>
 
                 <ChatDiv>
-                    <div onClick={() => {setInnserChat(false)}}>
-                      <img src={left} />
-                    </div>
+                    <div className="title">
+                      <div className="Chat_back" onClick={() => {setInnserChat(false)}}>
+                        <img src={left} />
+                      </div>
 
-                    <div className="Chat_in_name">하얀곰</div>
+                      <div className="Chat_in_name">하얀곰</div>
+                    </div>
+                    
                 </ChatDiv>
                 
             </motion.div>
