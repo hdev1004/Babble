@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { AlarmDiv, AlarmForm, AlarmSubForm, AlarmTitle, ChatDiv, AlarmList, AlarmRow, AlarmRow2, ChattingList, ChattingOne, ChattingTwo, ChattingThree } from "./css/Alarm";
+import { AlarmDiv, AlarmForm, AlarmSubForm, AlarmTitle, ChatDiv, AlarmList, AlarmRow, AlarmRow2, ChattingList, ChattingOne, ChattingTwo, ChattingThree, Chat_today } from "./css/Alarm";
 import { motion } from "framer-motion";
 import chatprofile from "images/chatprofile.jpg";
 import left from "images/left.png";
+import send from "images/paper-plane.png";
 
 const App = ({isAlarm, setIsAlarm ,alarmMenuRef}) => {
     const [tab, setTab] = useState("alarm"); //alarm : 알림, chat : 채팅
@@ -97,11 +98,11 @@ const App = ({isAlarm, setIsAlarm ,alarmMenuRef}) => {
                                 </ChattingOne>
                                 <ChattingTwo>
                                   <div className="Chat_name">하얀곰</div>
-                                  <div className="Chat_content">사우지마세요 사우지마세요</div>
+                                  <div className="Chat_content">사우지마세요</div>
                                 </ChattingTwo>
                                 <ChattingThree>
                                   <div className="Chat_lasttime">오전 11:13</div>
-                                  <div className="Chat_message">3</div>
+                                  <div className="Chat_message">2</div>
                                 </ChattingThree>
                               </ChattingList>
                             </div>
@@ -118,6 +119,23 @@ const App = ({isAlarm, setIsAlarm ,alarmMenuRef}) => {
                       <div className="Chat_in_name">하얀곰</div>
                     </div>
                     
+                    <div className="Chat_today">2023년 7월 14일 금요일</div>
+
+                    <div className="Chat_youone">
+                      <img className="cute_img" src={chatprofile} />
+                      <div className="Chat_one">누가 싸운다고요?</div>
+                      <div className="Chat_time_one">오후 11:11</div>
+                    </div>
+
+                    <div className="Chat_youtwo">
+                      <div className="Chat_two">사우지마세요</div>
+                      <div className="Chat_time_two">오후 11:13</div>
+                    </div>
+
+                    <div className="Chat_send">
+                      <div className="Chat_message">메세지 입력</div>
+                      <img className="Chat_sendimg" src={send} />
+                    </div>
                 </ChatDiv>
                 
             </motion.div>

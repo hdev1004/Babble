@@ -29,11 +29,9 @@ export const ChatDiv = styled.div`
     }
 
     img {
-        margin-left: 15px;
+        margin-left: 20px;
         width : 30px;
         height : 30px;
-        background-color: white;
-        
     }
 
     .Chat_in_name {
@@ -44,6 +42,91 @@ export const ChatDiv = styled.div`
         height : 64px;
         line-height: 64px;
         width : 310px;
+    }
+
+    .Chat_today {
+        border-radius: 30px;
+        height : 30px;
+        width : 250px;
+        background:#F5F6F8;
+        border: 1px solid #2F2F2F;
+        text-align : center;
+        padding-top : 10px;
+        margin-left : 60px;
+        font-size: 16px;
+
+        margin-top:20px;
+        margin-bottom:20px;
+    }
+
+    .cute_img {
+        border-radius: 15px;
+        width: 50px;
+        height: 50px;
+        margin-right : 20px;
+    }
+
+    .Chat_youone {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .Chat_one {
+        background : white;
+        font-size: 16px;
+        height : 30px;
+        width : 130px;
+        padding : 12px 6px 2px 6px;
+        margin-top : 8px;
+        text-align : center;
+        border-radius: 15px;
+        box-shadow: 0px 0px 5px 1px lightgray;
+    }
+
+    .Chat_time_one {
+        margin : 30px 0px 0px 10px;
+    }
+
+    .Chat_youtwo {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .Chat_two {
+        background : white;
+        font-size: 16px;
+        height : 30px;
+        width : 100px;
+        padding : 12px 6px 2px 6px;
+        margin-top : 10px;
+        margin-left : 90px;
+        text-align : center;
+        border-radius: 15px;
+        box-shadow: 0px 0px 5px 1px lightgray;
+    }
+
+    .Chat_time_two {
+        margin : 30px 0px 0px 10px;
+    }
+
+    .Chat_send {
+        display: flex;
+        flex-direction: row;
+        align-items:center;
+        position: relative;
+        
+        background : white;
+        box-shadow: 0px 0px 5px 1px lightgray;
+        border-radius: 15px;
+        height : 60px;
+        width : 340px;
+        margin : 160px 0px 0px 20px;
+
+        .Chat_message {
+            color : #828282;
+            margin-left : 20px;
+            margin-right : 176px;
+        }
     }
 `
 
@@ -181,4 +264,8 @@ export const ChattingThree = styled.div`
         height:20px;
         width:60px;
     }
+`
+
+export const Chat_today = styled.div`
+    
 `
