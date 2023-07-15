@@ -11,10 +11,15 @@ import account_black from "images/account_black.png";
 import edit from "images/edit.png";
 import { useRecoilState } from "recoil";
 import { loginInfoState } from "state/login/recoil";
+import { useNavigate } from "react-router-dom";
 
 const App = ({ tab, setTab }) => {
-  const [loginInfo, setLoginInfo] = useRecoilState(loginInfoState);
 
+  let navigate = useNavigate();
+  const [loginInfo, setLoginInfo] = useRecoilState(loginInfoState);
+  const moveHandle = (id) => {
+    navigate(id);
+  }
   return (
     <ProfileDiv>
       <ProfileForm>
@@ -66,7 +71,7 @@ const App = ({ tab, setTab }) => {
         <ProfileSubMenuForm>
           <div className="menu">문의하기</div>
           <div className="menu">로그아웃</div>
-          <div className="menu">회원탈퇴</div>
+          <div className="menu" onClick={()=>{moveHandle("/withdrawal")}}>회원탈퇴</div>
         </ProfileSubMenuForm>
       </ProfileForm>
     </ProfileDiv>

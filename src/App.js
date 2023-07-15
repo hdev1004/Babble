@@ -18,6 +18,7 @@ import Regster from "page/client/login/Register";
 
 import MyPage from "page/client/Mypage/MyPage";
 import { AnimatePresence } from "framer-motion";
+import Withdrawal from "page/client/Mypage/Withdrawal";
 //import ClientMain from "./page/client/main/ClientMain";
 
 const AppDiv = styled.div`
@@ -51,6 +52,7 @@ const App = () => {
 
             <Route path="/test_editor/*" element={<Test_TextEditor />} />
             
+            <Route path = "/withdrawal/*" element={<Withdrawal />} />
 
             <Route path="/*" element={<NotFound />} />
           </Routes>

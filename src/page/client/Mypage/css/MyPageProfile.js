@@ -73,5 +73,6 @@ export const ProfileSubMenuForm = styled.div`
     color: #828282;
     text-align: center;
     width: 100px;
+    cursor: pointer;
   }
 `;

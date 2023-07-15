@@ -10,6 +10,7 @@ font-style: normal;
 font-weight: 600;
 line-height: normal;
 text-align: left;
+cursor: pointer;
 margin-top: 100px;
 position: relative;
 left: -30px;

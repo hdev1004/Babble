@@ -8,9 +8,13 @@ import { useRecoilState } from "recoil";
 import { loginInfoState } from "state/login/recoil";
 import RecentLog from "images/RecentLog.png"
 import LastInfoList from "images/lastInfoList.png";
+import { useNavigate } from "react-router-dom";
 const App = () => {
     const [loginInfo, setLoginInfo] = useRecoilState(loginInfoState);
-
+    let navigate = useNavigate();
+    const moveHandle = (id) =>{
+        navigate(id);
+    }
     return (
         <ProfileForm>
             <ProfileTop>
@@ -62,7 +66,7 @@ const App = () => {
                     <div className="font">마지막 정보수정 이력</div>
                     <div className="date">없음</div>
                 </div>
-                <div className="secession">
+                <div className="secession" onClick={()=>{moveHandle("/withdrawal")}}>
                     회원탈퇴 &gt;
                 </div>
               
