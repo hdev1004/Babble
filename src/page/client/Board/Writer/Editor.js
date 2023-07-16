@@ -1,10 +1,17 @@
-import React from "react";
-import { EditorDiv, EditorForm, EditorLine, EditorTitle, EditorBtn, RegistrationBtn, CancelBtn } from "./css/Editor";
+import React, { useState } from "react";
+import { EditorDiv, EditorForm, EditorLine, EditorTitle, EditorBtn, RegistrationBtn, CancelBtn, Placehodler } from "./css/Editor";
 
 const App = ({html, setHtml}) => {
-    
+    const [title, setTitle] = useState('');
+
+    const submit = () => {
+        console.log("--- HTML ---");
+        console.log(title);
+        console.log(html)
+    }
+
     const handleChange = (e) => {
-        setHtml(e.target.value);
+        setHtml(e.target.innerHTML);
      }
  
      function escapeHtml(text) {
@@ -73,22 +80,38 @@ const App = ({html, setHtml}) => {
                 </select>
 
                 <div className="title">
-                    <input placeholder="제목을 입력해주세요"></input>
+                    <input placeholder="제목을 입력해주세요" value={title} onChange={(e) => {setTitle(e.target.value)}}></input>
                 </div>
                 <EditorLine></EditorLine>
+                
+                {
+                    html.trim() === '' ? (
+                        <Placehodler>
+                        <div>* 게시판 용도와 무관하거나 아래의 내용이 포함된 경우 사전 안내없이 삭제됩니다. </div>
+                        <br/>
+                        <div>- 욕설, 차별, 혐오, 비방글 등 타인의 명예를 훼손하는 게시글</div>
+                        <div>- 개인정보 노출이 있거나 거래를 시도하는 게시글</div>
+                        <div>- 범죄, 불법촬영물 등 법령을 위반하는 게시글</div>
+                        <div>- 정치 및 사회에 관련된 게시글</div>
+                    </Placehodler>
+                    ) : (
+                        <></>
+                    )
+                }
             </EditorTitle>
 
             <EditorForm
                 spellCheck={false}
                 contentEditable={true}
                 disabled={false}
-                onChange={handleChange}
+                onInput={handleChange}
                 onPaste={handlePaste}
                 tagName="pre"
-            />
+            >
+            </EditorForm>
 
             <EditorBtn>
-                <RegistrationBtn>등록</RegistrationBtn>
+                <RegistrationBtn onClick={submit}>등록</RegistrationBtn>
                 <CancelBtn>취소</CancelBtn>
             </EditorBtn>
         </div>

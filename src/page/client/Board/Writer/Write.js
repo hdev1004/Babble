@@ -37,7 +37,7 @@ const App = () => {
                         <img src={Babble}></img>
                     </EditorBabble>
 
-                    <MenuAlign>
+                    <MenuAlign onMouseDown={(e) => {e.preventDefault()}}>
                         <div className="picture">
                             <PicktureButton img={Picture} name="사진"></PicktureButton>
                             <PicktureButton img={Link} name="링크">

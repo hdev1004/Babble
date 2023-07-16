@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import { BoardWrap, BoradTable, BoardPage } from "./css/Board";
 import left from "images/left.png";
 import right from "images/right.png";
@@ -6,10 +6,16 @@ import more_left from "images/more_left.png";
 import more_right from "images/more_right.png";
 import number1 from "images/number1.png";
 import number2 from "images/number2.png";
+import BoardRemoveAlert from "global/alert/BoardRemoveAlert";
 
 const App = () => {
+  const [isRemove, setIsRemove] = useState(false);
   return (
     <BoardWrap>
+      <BoardRemoveAlert
+        show={isRemove}
+        setShow={setIsRemove}
+      ></BoardRemoveAlert>
       <BoradTable>
         <table className="board">
           <tr className="border_row">
@@ -27,7 +33,14 @@ const App = () => {
             <td>2023.07.03</td>
             <td className="btns">
               <div className="edit">수정</div>
-              <div className="remove">삭제</div>
+              <div
+                className="remove"
+                onClick={() => {
+                  setIsRemove(true);
+                }}
+              >
+                삭제
+              </div>
             </td>
           </tr>
           <tr>
@@ -37,7 +50,14 @@ const App = () => {
             <td>2023.04.28</td>
             <td className="btns">
               <div className="edit">수정</div>
-              <div className="remove">삭제</div>
+              <div
+                className="remove"
+                onClick={() => {
+                  setIsRemove(true);
+                }}
+              >
+                삭제
+              </div>
             </td>
           </tr>
         </table>
