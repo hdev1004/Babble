@@ -81,10 +81,18 @@ export const EditorForm = styled.div`
 `
 
 export const EditorBtn = styled.div`
+    width: 70%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
     margin-top : 30px;
 `
 
 export const RegistrationBtn = styled.button `
+    position: absolute;
+    right: 120px;
+
+    cursor: pointer;
     width: 121px;
     height: 45px;
     border-radius: 30px;
@@ -97,10 +105,13 @@ export const RegistrationBtn = styled.button `
     line-height: normal;
     letter-spacing: 5.4px;
     border: none;
-    margin-left : 1400px;
 `
 
 export const CancelBtn = styled.button `
+    position: absolute;
+    right: -25px;
+
+    cursor: pointer;
     width: 121px;
     height: 45px;
     border-radius: 30px;
@@ -115,3 +126,16 @@ export const CancelBtn = styled.button `
     border: 1px solid #0085FF;
     margin-left : 15px;
 `
+
+export const Placehodler = styled.div`
+    pointer-events: none; 
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    position: absolute;
+    left: 30px;
+    top: 106px;
+    color: gray;
+`
+
