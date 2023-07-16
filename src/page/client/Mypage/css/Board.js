@@ -18,12 +18,15 @@ export const BoardWrap = styled.div`
 export const BoradTable = styled.div`
   table {
     border-collapse: collapse;
+    font-size: 1.125rem;
   }
   td {
     width: 200px;
+    height: 50px;
     text-align: center;
+
     &.title {
-      width: 300px;
+      width: 350px;
       text-align: left;
     }
     &.btns {
@@ -56,7 +59,7 @@ export const BoradTable = styled.div`
   }
 
   tr {
-    height: 60px;
+    height: 50px;
     border-bottom: 1px solid #eaeaea;
   }
   & .border_row {
