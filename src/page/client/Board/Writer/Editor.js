@@ -64,12 +64,12 @@ const App = ({html, setHtml}) => {
         <div style={{width: "100%", display: "flex", flexDirection: "column"}}>
             <EditorTitle>
                 <select className="category">
+                    <option disabled>카테고리 선택</option>
                     <option>자유게시판</option>
                     <option>후엥게시판</option>
                     <option>우웩게시판</option>
                     <option>개발게시판</option>
                     <option>공포게시판</option>
-                    
                 </select>
 
                 <div className="title">

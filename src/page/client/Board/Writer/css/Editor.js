@@ -19,6 +19,26 @@ export const EditorTitle = styled.div`
     margin-left: auto;
     margin-right: auto;
 
+    .category {
+        border-radius: 30px;
+        width : 180px;
+        height : 40px;
+        font-size: 15px;
+        color : #2F2F2F;
+        padding-left : 20px;       
+    }
+
+    .title > input { 
+        border : none;
+        font-size: 20px;
+        color : #2F2F2F;
+        padding-left : 35px;
+        padding-top : 6px;
+    }
+
+    .title > input:focus {
+        outline : none;
+    }
 `
 
 export const EditorLine = styled.div`
