@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { EditorDiv, EditorForm, EditorLine, EditorTitle, EditorBtn, RegistrationBtn, CancelBtn, Placehodler } from "./css/Editor";
 
 const App = ({html, setHtml}) => {
-    
+    const [title, setTitle] = useState('');
+
     const submit = () => {
         console.log("--- HTML ---");
+        console.log(title);
         console.log(html)
     }
 
@@ -78,7 +80,7 @@ const App = ({html, setHtml}) => {
                 </select>
 
                 <div className="title">
-                    <input placeholder="제목을 입력해주세요"></input>
+                    <input placeholder="제목을 입력해주세요" value={title} onChange={(e) => {setTitle(e.target.value)}}></input>
                 </div>
                 <EditorLine></EditorLine>
                 
