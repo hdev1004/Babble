@@ -1,5 +1,5 @@
 import React from "react";
-import { EditorDiv, EditorForm, EditorLine, EditorTitle } from "./css/Editor";
+import { EditorDiv, EditorForm, EditorLine, EditorTitle, EditorBtn, RegistrationBtn, CancelBtn } from "./css/Editor";
 
 const App = ({html, setHtml}) => {
     
@@ -86,6 +86,11 @@ const App = ({html, setHtml}) => {
                 onPaste={handlePaste}
                 tagName="pre"
             />
+
+            <EditorBtn>
+                <RegistrationBtn>등록</RegistrationBtn>
+                <CancelBtn>취소</CancelBtn>
+            </EditorBtn>
         </div>
        
             

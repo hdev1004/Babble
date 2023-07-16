@@ -47,7 +47,6 @@ export const EditorLine = styled.div`
     height: 1px;
     background-color: #828282;
     width: calc(100% - 50px);
-
 `
 
 export const EditorForm = styled.div`
@@ -79,4 +78,40 @@ export const EditorForm = styled.div`
         background-color: #828282;
         border-radius: 15px;
     }
+`
+
+export const EditorBtn = styled.div`
+    margin-top : 30px;
+`
+
+export const RegistrationBtn = styled.button `
+    width: 121px;
+    height: 45px;
+    border-radius: 30px;
+    background: #0085FF;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 5.4px;
+    border: none;
+    margin-left : 1400px;
+`
+
+export const CancelBtn = styled.button `
+    width: 121px;
+    height: 45px;
+    border-radius: 30px;
+    background: #FFFFFF;
+    color: #0085FF;
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 5.4px;
+    border: 1px solid #0085FF;
+    margin-left : 15px;
 `
