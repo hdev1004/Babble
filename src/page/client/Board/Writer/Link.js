@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { LinkOutlined } from "@ant-design/icons";
@@ -55,14 +55,15 @@ const LinkDiv = styled.div`
     }
 `
 
-const App = ({isClick, setIsClick}) => {
+const App = ({isClick, setIsClick, parentRef}) => {
     let searchRef = useRef(null);
+    let [linkValue, setLinkValue] = useState('');
 
     useEffect(() => {
         function handleOutside(e) {
           // current.contains(e.target) : 컴포넌트 특정 영역 외 클릭 감지를 위해 사용
-          if (searchRef.current && !searchRef.current.contains(e.target)) {
-            setIsClick(false);
+          if (searchRef.current && !searchRef.current.contains(e.target) && !parentRef.current.contains(e.target)) {
+            //setIsClick(false);
           }
         }
         document.addEventListener("mouseup", handleOutside);
@@ -84,11 +85,11 @@ const App = ({isClick, setIsClick}) => {
                 </div>
 
                 <div className="value">
-                    <input placeholder="http://www.naver.com"></input>
+                    <input spellCheck="false" placeholder="ex) http://www.naver.com" value={linkValue} onChange={(e) => { setLinkValue(e.target.value)}}></input>
                 </div>
 
-                <div className="link">
-                    <LinkOutlined />
+                <div className="link" onMouseDown={(e) => {e.preventDefault()}} onClick={() => {document.execCommand("createLink", false, linkValue)}}>
+                    <LinkOutlined/>
                 </div>
             </LinkDiv>
         </motion.div>

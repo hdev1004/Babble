@@ -43,7 +43,7 @@ export const EditorTitle = styled.div`
 
 export const EditorLine = styled.div`
     position: absolute;
-    margin-top: 47px;
+    margin-top: 60px;
     height: 1px;
     background-color: #828282;
     width: calc(100% - 50px);
@@ -56,7 +56,7 @@ export const EditorForm = styled.div`
     min-height: 300px;
 
     color: #555;
-    padding: 0px 25px 25px 25px; 
+    padding: 25px 25px 25px 25px; 
     border-radius: 0px 0px 15px 15px;
     outline: 0px;
     border: 1px solid #828282;

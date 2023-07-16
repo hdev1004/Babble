@@ -57,10 +57,11 @@ export const EditButton= (props) =>  {
 
 export const PicktureButton = (props) => {
     const [isClick, setIsClick] = useState(false);
+    const ref = useRef(null);
 
     return (
         <Align>
-            <PicktureBtn onClick={() => {setIsClick(!isClick)}} onMouseDown={(evt) => {
+            <PicktureBtn ref={ref} onClick={() => {setIsClick(!isClick)}} onMouseDown={(evt) => {
                 evt.preventDefault(); 
                 props.cmd === "hr" ? document.execCommand("insertHTML", false, "<img class='line'></img>") : console.log("HR")
                 }}>
@@ -72,7 +73,7 @@ export const PicktureButton = (props) => {
 
             {
                 props.name === "링크"  ? (
-                    <LinkModal isClick={isClick} setIsClick={setIsClick}></LinkModal>
+                    <LinkModal isClick={isClick} setIsClick={setIsClick} parentRef={ref}></LinkModal>
                 ) : (
                     <></>
                 )           
