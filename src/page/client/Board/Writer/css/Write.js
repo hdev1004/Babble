@@ -5,6 +5,7 @@ export const WriteDiv = styled.div`
     flex-direction: column;
     width: 100%;
     height: 100%;
+    min-width: 1300px;
     background-color: #F3F9FF;
 `
 
@@ -57,6 +58,7 @@ export const WriteMenu = styled.div`
 `
 
 export const EditorBabble = styled.div`
+    min-width: 150px;
     width: 150px;
     height: 100%;
     margin-left: 58px;
@@ -87,6 +89,7 @@ export const EditorDiv = styled.div`
 `
 
 export const EditorIcon = styled.div`
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;

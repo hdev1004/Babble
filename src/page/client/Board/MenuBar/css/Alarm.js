@@ -256,7 +256,7 @@ export const ChattingThree = styled.div`
     background:white;
 
     .Chat_message {
-        margin : 10px 15px; 0px; 0px;
+        margin : 10px 15px 0px 0px;
         font-size: 15px;
         color : white;
         background : #0085FF;

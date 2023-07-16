@@ -2,25 +2,27 @@ import React, { useEffect, useRef, useState } from "react";
 import ContentEditable from 'react-contenteditable'
 import sanitizeHtml from "sanitize-html";
 import { SketchPicker, BlockPicker } from 'react-color';
-import { EditorBabble, EditorDiv, EditorIcon, MenuAlign, WriteDiv, WriteForm, WriteMenu, WriteTitle } from "./css/Write";
+import { ColorPick, EditorBabble, EditorDiv, EditorIcon, MenuAlign, WriteDiv, WriteForm, WriteMenu, WriteTitle } from "./css/Write";
 import Editor from "./Editor";
-import { CustomButton, EditButton, FontSize, LineButton, PicktureButton } from "./Button";
+import { CustomButton, EditButton, FontColor, FontSize, LineButton, PicktureButton } from "./Button";
+import { motion } from "framer-motion";
 
 import Babble from "images/babble.png";
 import Picture from "images/picture.png";
 import Link from "images/link.png";
 import Line from "images/line.png";
-import { BoldOutlined, ItalicOutlined, UnderlineOutlined, StrikethroughOutlined, EditOutlined } from "@ant-design/icons";
+
+import { BoldOutlined, ItalicOutlined, UnderlineOutlined, StrikethroughOutlined, EditOutlined, AlignLeftOutlined, AlignCenterOutlined, AlignRightOutlined } from "@ant-design/icons";
 
 const App = () => {
     const [html, setHtml] = useState("");
-    const [color, setColor] = useState("#D9E3F0");
     //document.execCommand('foreColor', false, "rgba(255,0,255,0.5)");
 
     const command = () => {
         
     }
 
+    //굵게, 이탈릭, 밑줄, 취소선
     const onMouseDown = (evt, cmd, arg) => {
         evt.preventDefault(); // Avoids loosing focus from the editable area
         document.execCommand(cmd, false, arg); // Send the command to the browser
@@ -38,8 +40,10 @@ const App = () => {
                     <MenuAlign>
                         <div className="picture">
                             <PicktureButton img={Picture} name="사진"></PicktureButton>
-                            <PicktureButton img={Link} name="링크"></PicktureButton>
-                            <PicktureButton img={Line} name="구분선"></PicktureButton>
+                            <PicktureButton img={Link} name="링크">
+                                
+                            </PicktureButton>
+                            <PicktureButton img={Line} name="구분선" cmd="hr"></PicktureButton>
                         </div>
 
                         <div className="line"> <div></div> </div>
@@ -62,16 +66,7 @@ const App = () => {
                                 <StrikethroughOutlined/>
                             </EditorIcon>
 
-                            <EditorIcon>
-                                <EditOutlined/>
-                            </EditorIcon>
-                            {/*<EditButton cmd="italic" name="이탈릭"></EditButton>*/}
-
-                            <LineButton name="구분선"></LineButton>
-                            <CustomButton name="커스텀"></CustomButton>
-                            <div style={{marginTop: "30px", display: "none"}}>
-                                <BlockPicker color={color} onChangeComplete={(c) => {setColor(c.hex)}}/>
-                            </div>
+                           <FontColor></FontColor>
                         </div>
 
                         
@@ -79,13 +74,17 @@ const App = () => {
 
                         <div className="align">
                         <div className="custom">
-                            <EditButton cmd="bold" name="굵게"></EditButton>
-                            <EditButton cmd="italic" name="이탈릭"></EditButton>
-                            <LineButton name="구분선"></LineButton>
-                            <CustomButton name="커스텀"></CustomButton>
-                            <div style={{marginTop: "30px", display: "none"}}>
-                                <BlockPicker color={color} onChangeComplete={(c) => {setColor(c.hex)}}/>
-                            </div>
+                            <EditorIcon>
+                                <AlignLeftOutlined onMouseDown={(evt) => {onMouseDown(evt, "justifyLeft")}}/>
+                            </EditorIcon>
+
+                            <EditorIcon>
+                                <AlignCenterOutlined onMouseDown={(evt) => {onMouseDown(evt, "justifyCenter")}}/>
+                            </EditorIcon>
+                            
+                            <EditorIcon>
+                                <AlignRightOutlined onMouseDown={(evt) => {onMouseDown(evt, "justifyRight")}}/>
+                            </EditorIcon>
                         </div>
                         </div>
                     </MenuAlign>

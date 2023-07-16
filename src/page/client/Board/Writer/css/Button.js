@@ -45,6 +45,7 @@ export const Align = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
     //display: "flex", flexDirection: "column", justifyContent: "center"
 `
 
