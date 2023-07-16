@@ -69,7 +69,7 @@ const App = ({ tab, setTab }) => {
         <hr></hr>
 
         <ProfileSubMenuForm>
-          <div className="menu">문의하기</div>
+          <div className="menu" onClick={()=>{moveHandle("/inquire")}}>문의하기</div>
           <div className="menu">로그아웃</div>
           <div className="menu" onClick={()=>{moveHandle("/withdrawal")}}>회원탈퇴</div>
         </ProfileSubMenuForm>

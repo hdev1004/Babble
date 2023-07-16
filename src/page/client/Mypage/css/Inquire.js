@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const WithdrawalBg = styled.div`
+export const InquireBack = styled.div`
   width: 100vw;
   height: 100vh;
 
@@ -8,9 +8,9 @@ export const WithdrawalBg = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
+`
 
-export const WithdrawalWrap = styled.div`
+export const InquireWrap = styled.div`
   position: relative;
   max-width: 86%;
   padding: 50px;
@@ -27,7 +27,8 @@ export const WithdrawalWrap = styled.div`
     font-weight: 700;
     line-height: normal;
   }
-  & .title_content {
+
+  & .inquire_content {
     margin: 0;
     margin-top: 30px;
     color: #2f2f2f;
@@ -35,54 +36,73 @@ export const WithdrawalWrap = styled.div`
     font-weight: 700;
     margin-bottom: 50px;
   }
-  h4 {
+
+  .inquire_writetitle {
+    display : flex;
+    flex-direction: row;
+
+    margin-top : 50px;
+    margin-left : 10px;
     color: #2f2f2f;
     font-size: 25px;
-    font-weight: 400;
   }
 
-  & .content {
-    color: #828282;
+  .inquire_writetitle > input { 
+    border:none;
+    width : 400px;
     font-size: 20px;
-    font-weight: 400;
-    margin-bottom: 50px;
+    color : #2F2F2F;
+    padding-left : 60px;
   }
 
-  & .mb {
-    margin-bottom: 20px;
+  .inquire_writetitle > input:focus {
+    outline : none;
   }
 
-  input[type="checkbox"] {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    border: 1px solid #eaeaea;
-    background: #fff;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
-    position: relative;
-    top: 13px;
-    margin-right: 10px;
+  .inquire_select {
+    padding-right : 60px;
+    padding-left : 100px;
   }
 
-`;
+  .category {
+    border-radius: 30px;
+    padding-left : 20px; 
+    font-size: 15px;
+    width : 180px;
+    height : 40px;
+  }
 
-export const BottomSection = styled.div`
-  display: flex;
-  justify-content: space-between;
-   
-  span {
+  .inquire_writecontent {
     color: #2f2f2f;
+    font-size: 25px;
+    margin-left : 10px;
+    margin-top : 30px;
+
+    display : flex;
+    flex-direction: row;    
+  }
+
+  .inquire_writecontent > textarea {
+    resize : none;
     font-size: 20px;
-    font-weight: 700;
+    padding-left : 60px;
+    margin-bottom : 40px;
+    border:none;
+    color: #2f2f2f;
+  }
+
+  .inquire_writecontent > textarea:focus {
+    outline : none;
   }
 
   & .Btn_section {
     display: flex;
     position: relative;
-    top: 10px;
+    top: 30px;
+    float : right;
 
     div {
-        cursor: pointer;
+      cursor: pointer;
       width: 97px;
       height: 45px;
       flex-shrink: 0;
@@ -97,13 +117,19 @@ export const BottomSection = styled.div`
         background: #FFF;
         color: #0085FF;
         margin-right: 10px;
+        font-weight: 700;        
     }
 
-    & .check{
+    & .inquire{
         border-radius: 30px;
         border: 1px solid #FFF;
         background: #0085FF;
         color:#ffffff;
+        font-weight: 700;
     }
   }
-`;
+`
+
+export const inquireBtn = styled.div`
+  
+`
