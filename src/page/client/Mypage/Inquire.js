@@ -21,10 +21,10 @@ const Inquire = () => {
                 <hr />
 
                 <div className="inquire_writetitle">
-                    <div>제목</div>
+                    <div style={{lineHeight: "40px"}}>제목</div>
                     <input placeholder="제목을 입력해 주세요."></input>
 
-                    <div className="inquire_select">문의종류</div>
+                    <div style={{lineHeight: "40px"}} className="inquire_select">문의종류</div>
                     <select className="category">
                         <option disabled>종류 선택</option>
                         <option>회원</option>
