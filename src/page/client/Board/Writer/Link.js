@@ -85,10 +85,17 @@ const App = ({isClick, setIsClick, parentRef}) => {
                 </div>
 
                 <div className="value">
-                    <input spellCheck="false" placeholder="ex) http://www.naver.com" value={linkValue} onChange={(e) => { setLinkValue(e.target.value)}}></input>
+                    <input spellCheck="false" placeholder="ex) http://www.naver.com" value={linkValue} 
+                        onMouseDown={(e) => {
+                        }}
+                        onChange={(e) => { 
+                        setLinkValue(e.target.value)
+                    }}></input>
                 </div>
 
-                <div className="link" onMouseDown={(e) => {e.preventDefault()}} onClick={() => {document.execCommand("createLink", false, linkValue)}}>
+                <div className="link" onMouseDown={(e) => {
+                    e.preventDefault()
+                }} onClick={() => {document.execCommand("createLink", false, linkValue)}}>
                     <LinkOutlined/>
                 </div>
             </LinkDiv>

@@ -49,7 +49,7 @@ const App = () => {
             <Route path="/board/*" element={<ClientMainRouter/>}></Route>
             
             <Route path="/main/*" element={<ClientMain />} />
-            <Route path="/writer/*" element={<Writer/>}></Route>
+            <Route path="/writer/:category" element={<Writer/>}></Route>
 
             <Route path="/test_editor/*" element={<Test_TextEditor />} />
             

@@ -70,77 +70,32 @@ const App = ({ board }) => {
           <table>
             <thead>
               <tr>
-                <td>번호</td>
-                <td>제목</td>
-                <td>글쓴이</td>
-                <td>좋아요</td>
-                <td>등록일</td>
+                <td className="num">번호</td>
+                <td className="title">제목</td>
+                <td className="writer">글쓴이</td>
+                <td className="likes">좋아요</td>
+                <td className="uplaod">등록일</td>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr className="noti">
                 <td>안내</td>
-                <td>개인 정보에 관련하여 포스팅 및 언급 금지입니다.</td>
+                <td className="title">개인 정보에 관련하여 포스팅 및 언급 금지입니다.</td>
                 <td>관리자</td>
                 <td>54</td>
                 <td>2023.03.05</td>
               </tr>
+
               <tr>
                 <td>9</td>
-                <td>조던이 너무 사고싶어요</td>
+                <td className="title">조던이 너무 사고싶어요</td>
                 <td>꼬순내마루</td>
                 <td>36</td>
                 <td>2023.05.24</td>
               </tr>
-              <tr>
-                <td>8</td>
-                <td>매일 10시 / 각자 공부할 거 공부하는 스터디 할 사람?</td>
-                <td>알사탕으로경로당짱먹기</td>
-                <td>36</td>
-                <td>2023.05.14</td>
-              </tr>
-              <tr>
-                <td>7</td>
-                <td>프론트단 오류에 대해 포스팅 했음요</td>
-                <td>나는야이슈</td>
-                <td>34</td>
-                <td>2023.05.01</td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td>달밤에 피에 미친 폭주 누계농 ㅈㄱㄴ</td>
-                <td>누가계속농구하래</td>
-                <td>52</td>
-                <td>2023.04.28</td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>술도녀 강지구 너무 좋아</td>
-                <td>정은지는노래의신</td>
-                <td>51</td>
-                <td>2023.04.22</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>속초 맛집 추천해줄 사람 있나</td>
-                <td>쩝쩝박사</td>
-                <td>48</td>
-                <td>2023.04.21</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>콘서트 공지 언제 뜨는 거임?</td>
-                <td>케이팝고인물자체</td>
-                <td>22</td>
-                <td>2023.04.19</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>스프링 시작했다~ 스프링 끝났다~</td>
-                <td>나자바봐라</td>
-                <td>41</td>
-                <td>2023.04.01</td>
-              </tr>
+
+              
+            
             </tbody>
           </table>
         </BoardList>
@@ -165,7 +120,7 @@ const App = ({ board }) => {
               <img src={more_right} />
             </button>
           </BoardPage>
-          <button onClick={() => {naviate("/writer/자유게시판")}}>글쓰기</button>
+          <button onClick={() => {naviate("/writer/" + board.name)}}>글쓰기</button>
         </BoardBtns>
       </MainBoard>
     </MainDiv>

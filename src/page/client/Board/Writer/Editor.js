@@ -1,13 +1,48 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { EditorDiv, EditorForm, EditorLine, EditorTitle, EditorBtn, RegistrationBtn, CancelBtn, Placehodler } from "./css/Editor";
+import { useParams } from "react-router-dom";
+import { getBoardKindList } from "../Main/Function/board_utils";
+import * as encryption from "page/client/login/Function/encryption";
+import axios from "axios";
+import { loginInfoState } from "state/login/recoil";
+import { useRecoilValue } from "recoil";
 
 const App = ({html, setHtml}) => {
     const [title, setTitle] = useState('');
+    const { category } = useParams();
+    const loginInfo = useRecoilValue(loginInfoState);
+
+    const [tabList, setTabList] = useState(null);
+    const [currentTab, setCurrentTab] = useState(category);
+
+    useEffect(() => {
+        getBoardKindList(setTabList);
+    }, [])
+
 
     const submit = () => {
-        console.log("--- HTML ---");
-        console.log(title);
-        console.log(html)
+        let boardToken = encryption.createToken();
+        let data = {
+            board_token: boardToken,
+            category: category,
+            title: title,
+            token: loginInfo.token,
+            content: escapeHtml(html)
+        }
+
+        if(title.trim() === '') {
+            alert("제목을 입력해주세요.");
+        } else if(html.trim() === '') {
+            alert('내용을 입력해주세요.');
+        }
+
+        axios.post(process.env.REACT_APP_TEST_URL + "/board/add", data).then((res) => {
+            alert("글이 등록되었습니다.");
+            
+        }).catch((err) => {
+            alert("오류가 발생했습니다.");
+            console.log(err);
+        })
     }
 
     const handleChange = (e) => {
@@ -70,13 +105,13 @@ const App = ({html, setHtml}) => {
     return (
         <div style={{width: "100%", display: "flex", flexDirection: "column"}}>
             <EditorTitle>
-                <select className="category">
+                <select className="category" value={currentTab} onChange={(e) => { setCurrentTab(e.target.value)}}>
                     <option disabled>카테고리 선택</option>
-                    <option>자유게시판</option>
-                    <option>후엥게시판</option>
-                    <option>우웩게시판</option>
-                    <option>개발게시판</option>
-                    <option>공포게시판</option>
+                    {
+                        tabList && tabList.map((item) => (
+                            <option value={item.name}>{item.name}</option>
+                        ))
+                    }
                 </select>
 
                 <div className="title">

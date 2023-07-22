@@ -76,8 +76,33 @@ export const BoardList = styled.div`
     border-collapse: collapse;
   }
 
+  & .num {
+    min-width: 80px;
+    }
+
+  & .title {
+    transition: 0.3s;
+    cursor: pointer;
+    min-width: 500px;
+  }
+
+  & .title:hover {
+    color: #0085ff;
+  }
+
+  & .likes {
+    min-width: 80px;
+  }
+
+  & .writer {
+    min-width: 80px;
+  }
+
+  & > table tr {
+    height: 60px;
+  }
+
   & > table > thead > tr > td {
-    padding: 20px;
     text-align: center;
   }
 
@@ -90,14 +115,13 @@ export const BoardList = styled.div`
 
   & > table > tbody > tr > td {
     border-bottom: solid 1px #eaeaea;
-    padding: 20px;
     text-align: center;
   }
-  & > table > tbody > tr:nth-child(1) {
+  & .noti {
     font-weight: bold;
     border-top: solid 1px #eaeaea;
   }
-  & > table > tbody > tr:nth-child(1) > td:nth-child(1) {
+  & .noti > td:nth-child(1) {
     color: #ff0000;
   }
   & > table > tbody > tr > td:nth-child(2) {

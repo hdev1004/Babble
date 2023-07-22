@@ -17,6 +17,7 @@ import { BoldOutlined, ItalicOutlined, UnderlineOutlined, StrikethroughOutlined,
 const App = () => {
     const [html, setHtml] = useState("");
     //document.execCommand('foreColor', false, "rgba(255,0,255,0.5)");
+    
 
     const command = () => {
         
@@ -37,7 +38,8 @@ const App = () => {
                         <img src={Babble}></img>
                     </EditorBabble>
 
-                    <MenuAlign onMouseDown={(e) => {e.preventDefault()}}>
+                    <MenuAlign onMouseDown={(e) => {
+                    }}>
                         <div className="picture">
                             <PicktureButton img={Picture} name="사진"></PicktureButton>
                             <PicktureButton img={Link} name="링크">

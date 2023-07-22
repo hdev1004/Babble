@@ -28,12 +28,16 @@ export const EditorTitle = styled.div`
         padding-left : 20px;       
     }
 
+    .title {
+        width: 80%;
+    }
     .title > input { 
+        width: 80%;
+        height: 40px;
         border : none;
         font-size: 20px;
         color : #2F2F2F;
         padding-left : 35px;
-        padding-top : 6px;
     }
 
     .title > input:focus {
