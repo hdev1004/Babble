@@ -24,12 +24,28 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { loginInfoState } from "state/login/recoil";
 import { PulseLoader } from "react-spinners";
+import { getBoardList } from "./Function/board_utils";
 
 const App = ({ board }) => {
   const [isBtnHover, setIsBtnHover] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const naviate = useNavigate();
   const loginInfo = useRecoilValue(loginInfoState);
+  const [boardList, setBoardList] = useState(null);
+
+  useEffect(() => {
+    getBoardList(10, 1, setBoardList);
+  }, [])
+
+  const transDate = (date) => {
+    let timestamp = new Date(date);
+    let year = timestamp.getFullYear().toString();
+    let month = timestamp.getMonth().toString().padStart(2, "0");
+    let days = timestamp.getDate().toString().padStart(2, "0");
+    
+     return year + "." + month + "." + days;
+  }
+
 
   const keyPress = (e) => {
     if(e.key === "Enter") {
@@ -67,37 +83,61 @@ const App = ({ board }) => {
       </MainHeader>
       <MainBoard>
         <BoardList>
-          <table>
-            <thead>
-              <tr>
-                <td className="num">번호</td>
-                <td className="title">제목</td>
-                <td className="writer">글쓴이</td>
-                <td className="likes">좋아요</td>
-                <td className="uplaod">등록일</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="noti">
-                <td>안내</td>
-                <td className="title">개인 정보에 관련하여 포스팅 및 언급 금지입니다.</td>
-                <td>관리자</td>
-                <td>54</td>
-                <td>2023.03.05</td>
-              </tr>
+          
+          {
+            boardList !== null ? (
+              <table>
+                <thead>
+                  <tr>
+                    <td className="num">번호</td>
+                    <td className="title">제목</td>
+                    <td className="writer">글쓴이</td>
+                    <td className="likes">좋아요</td>
+                    <td className="uplaod">등록일</td>
+                  </tr>
+                </thead>
+                
+                <tbody>
+                  <tr className="noti">
+                    <td>안내</td>
+                    <td className="title">개인 정보에 관련하여 포스팅 및 언급 금지입니다.</td>
+                    <td>관리자</td>
+                    <td>54</td>
+                    <td>2023.03.05</td>
+                  </tr>
+                  
+                  <tr>
+                    <td>9</td>
+                    <td className="title">조던이 너무 사고싶어요</td>
+                    <td>꼬순내마루</td>
+                    <td>36</td>
+                    <td>2023.05.24</td>
+                  </tr>
 
-              <tr>
-                <td>9</td>
-                <td className="title">조던이 너무 사고싶어요</td>
-                <td>꼬순내마루</td>
-                <td>36</td>
-                <td>2023.05.24</td>
-              </tr>
+                  {
+                    boardList.map((item, index) => (
+                      <tr>
+                        <td>{index + 1}</td>
+                        <td className="title" onClick={() => {naviate("/board/" + item.board_token)}}>{item.title}</td>
+                        <td>{item.nickname}</td>
+                        <td>{item.likes}</td>
+                        <td>{transDate(item.upload_date)}</td>
+                      </tr>
+                    ))
+                  }
+                
+                </tbody>
+              </table>
+            ) : (
+              <div style={{width: "100%", height:"50px", lineHeight: "50px", textAlign: "center"}}>
+                <PulseLoader color="#0085ff"></PulseLoader>
+              </div>
+            )
+          }
+         
 
-              
-            
-            </tbody>
-          </table>
+
+         
         </BoardList>
         <BoardBtns>
           <BoardPage>

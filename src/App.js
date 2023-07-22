@@ -6,6 +6,7 @@ import ClientHeader from "page/client/header/ClientHeader";
 import ClientLogin from "page/client/login/ClientLogin";
 
 import ClientMainRouter from "page/client/Board/Main/ClientMainRouter";
+import BoardView from "page/client/Board/View/BoardView";
 
 import NotFound from "page/notfound/Notfound";
 import { styled } from "styled-components";
@@ -47,6 +48,7 @@ const App = () => {
             <Route path="/register/*" element={<Regster />} />
 
             <Route path="/board/*" element={<ClientMainRouter/>}></Route>
+            <Route path="/board/:board_token" element={<BoardView/>}></Route>
             
             <Route path="/main/*" element={<ClientMain />} />
             <Route path="/writer/:category" element={<Writer/>}></Route>

@@ -36,9 +36,9 @@ const App = ({html, setHtml}) => {
             alert('내용을 입력해주세요.');
         }
 
-        axios.post(process.env.REACT_APP_TEST_URL + "/board/add", data).then((res) => {
+        axios.post(process.env.REACT_APP_SERVER_URL + "/board/add", data).then((res) => {
             alert("글이 등록되었습니다.");
-            
+
         }).catch((err) => {
             alert("오류가 발생했습니다.");
             console.log(err);
