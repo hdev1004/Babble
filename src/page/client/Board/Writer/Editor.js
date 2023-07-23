@@ -25,7 +25,7 @@ const App = ({html, setHtml}) => {
         let boardToken = encryption.createToken();
         let data = {
             board_token: boardToken,
-            category: category,
+            category: currentTab,
             title: title,
             token: loginInfo.token,
             content: escapeHtml(html)
@@ -39,7 +39,7 @@ const App = ({html, setHtml}) => {
 
         axios.post(process.env.REACT_APP_SERVER_URL + "/board/add", data).then((res) => {
             alert("글이 등록되었습니다.");
-            naviate(`/board/${category}/${boardToken}`);
+            naviate(`/board/${currentTab}/${boardToken}`);
 
         }).catch((err) => {
             alert("오류가 발생했습니다.");
