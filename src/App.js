@@ -48,7 +48,7 @@ const App = () => {
             <Route path="/register/*" element={<Regster />} />
 
             <Route path="/board/*" element={<ClientMainRouter/>}></Route>
-            <Route path="/board/:board_token" element={<BoardView/>}></Route>
+            <Route path="/board/:category/:board_token" element={<BoardView/>}></Route>
             
             <Route path="/main/*" element={<ClientMain />} />
             <Route path="/writer/:category" element={<Writer/>}></Route>

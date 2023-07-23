@@ -13,11 +13,12 @@ import Link from "images/link.png";
 import Line from "images/line.png";
 
 import { BoldOutlined, ItalicOutlined, UnderlineOutlined, StrikethroughOutlined, EditOutlined, AlignLeftOutlined, AlignCenterOutlined, AlignRightOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
 const App = () => {
     const [html, setHtml] = useState("");
     //document.execCommand('foreColor', false, "rgba(255,0,255,0.5)");
-    
+    let navigate = useNavigate();
 
     const command = () => {
         
@@ -35,7 +36,7 @@ const App = () => {
                 <WriteMenu>
 
                     <EditorBabble>
-                        <img src={Babble}></img>
+                        <img onClick={() => {navigate("/board")}} src={Babble}></img>
                     </EditorBabble>
 
                     <MenuAlign onMouseDown={(e) => {

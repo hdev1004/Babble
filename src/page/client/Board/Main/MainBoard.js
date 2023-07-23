@@ -24,7 +24,7 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { loginInfoState } from "state/login/recoil";
 import { PulseLoader } from "react-spinners";
-import { getBoardList } from "./Function/board_utils";
+import { getBoardKindList, getBoardList } from "./Function/board_utils";
 
 const App = ({ board }) => {
   const [isBtnHover, setIsBtnHover] = useState(false);
@@ -34,13 +34,17 @@ const App = ({ board }) => {
   const [boardList, setBoardList] = useState(null);
 
   useEffect(() => {
-    getBoardList(10, 1, setBoardList);
+    getBoardList(1, 10, setBoardList);
   }, [])
+
+  useEffect(() => {
+    console.log(boardList);
+  }, [boardList])
 
   const transDate = (date) => {
     let timestamp = new Date(date);
     let year = timestamp.getFullYear().toString();
-    let month = timestamp.getMonth().toString().padStart(2, "0");
+    let month = (timestamp.getMonth() + 1).toString().padStart(2, "0");
     let days = timestamp.getDate().toString().padStart(2, "0");
     
      return year + "." + month + "." + days;
@@ -105,20 +109,12 @@ const App = ({ board }) => {
                     <td>54</td>
                     <td>2023.03.05</td>
                   </tr>
-                  
-                  <tr>
-                    <td>9</td>
-                    <td className="title">조던이 너무 사고싶어요</td>
-                    <td>꼬순내마루</td>
-                    <td>36</td>
-                    <td>2023.05.24</td>
-                  </tr>
 
                   {
                     boardList.map((item, index) => (
                       <tr>
                         <td>{index + 1}</td>
-                        <td className="title" onClick={() => {naviate("/board/" + item.board_token)}}>{item.title}</td>
+                        <td className="title" onClick={() => {naviate(`/board/${item.name}/${item.board_token}`)}}>{item.title}</td>
                         <td>{item.nickname}</td>
                         <td>{item.likes}</td>
                         <td>{transDate(item.upload_date)}</td>
