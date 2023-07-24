@@ -32,7 +32,7 @@ const App = (props) => {
                 style={{
                     borderRadius: "15px",
                     width: "612px", 
-                    height: "213px", 
+                    height: "188px", 
                     backgroundColor: "white",
                     boxShadow: "0px 0px 10px #828282",
                     position: "relative"
