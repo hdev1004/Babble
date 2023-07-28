@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Close from "images/close.png";
 import Change from "images/change.png";
 import { Link } from "react-router-dom";
+import { styled } from "styled-components";
 
 const App = (props) => {
   let searchRef = useRef(null);
@@ -33,7 +34,7 @@ const App = (props) => {
           zIndex: "500",
           borderRadius: "15px",
           width: "612px",
-          height: "213px",
+          height: "253px",
           backgroundColor: "white",
           boxShadow: "0px 0px 10px #828282",
           position: "relative",
@@ -49,16 +50,30 @@ const App = (props) => {
         </AlertImg>
 
         <AlertText>
-          <div style={{ fontSize: "20px" }}>닉네임을 범규진짜강아지 에서</div>
-          <div style={{ fontSize: "20px" }}>
-            변경할 닉네임을 입력해 주세요 로 변경할까요?{" "}
+          <div style={{ fontSize: "20px", lineHeight: "30px" }}>
+            닉네임을{" "}
+            <span style={{ color: "#0085FF", fontWeight: "bold" }}>
+              범규진짜강아지
+            </span>{" "}
+            에서
+          </div>
+          <div style={{ fontSize: "20px", lineHeight: "30px" }}>
+            <input
+              placeholder="변경할 닉네임을 입력해 주세요."
+              style={{
+                fontSize: "18px",
+                height: "30px",
+                border: "none",
+              }}
+            ></input>{" "}
+            로 변경할까요?
           </div>
 
           <div
             style={{
               display: "flex",
               justifyContent: "center",
-              marginTop: "40px",
+              marginTop: "30px",
             }}
           >
             <button
