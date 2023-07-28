@@ -7,30 +7,22 @@ import {
   DeleteBtn,
 } from "./css/Comment";
 import profile_base from "../../../images/profile_base.png";
-import CommentRemoveAlert from "global/alert/CommentRemoveAlert";
+import { useRecoilState } from "recoil";
+import { commentRemoveAlertState } from "state/alert/alert_recoil";
 
 const App = () => {
-  const [isRemove, setIsRemove] = useState(false);
-  const [checkedList, setCheckedList] = useState([]); //체크된 댓글들
-  const [isChekced, setIsChecked] = useState(false); //체크된 상태
-
-  const checkedHandler = () => {
-    setIsChecked(true);
-    setCheckedList([]);
-  };
+  const [removeComment, setRemoveCommnet] = useRecoilState(
+    commentRemoveAlertState
+  );
 
   return (
     <>
       <CommentWrap>
-        <CommentRemoveAlert
-          show={isRemove}
-          setShow={setIsRemove}
-        ></CommentRemoveAlert>
         <span>
           전체 댓글 <span className="count">3</span>
         </span>
         <ContentsInner>
-          <input type="checkbox" onClick={checkedHandler} />
+          <input type="checkbox" />
           <img src={profile_base} alt="프로필 이미지" />
           <CommendRecordBox>
             <div className="title">
@@ -76,8 +68,8 @@ const App = () => {
         </ContentsInner>
 
         <DeleteBtn
-          onClick={(checkedList) => {
-            setIsRemove(true);
+          onClick={() => {
+            setRemoveCommnet(true);
           }}
         >
           삭제
