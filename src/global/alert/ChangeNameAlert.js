@@ -30,6 +30,7 @@ const App = (props) => {
       <motion.div
         ref={searchRef}
         style={{
+          zIndex: "500",
           borderRadius: "15px",
           width: "612px",
           height: "213px",
@@ -72,7 +73,7 @@ const App = (props) => {
                 marginRight: "20px",
               }}
             >
-              삭제
+              변경
             </button>
             <button
               style={{
