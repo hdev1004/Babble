@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as jwt from "page/client/Board/Main/Function/jwt";
 import { loginInfoState } from "state/login/recoil";
-import { changeNameAlertState } from "state/alert/alert_recoil";
+import {
+  changeNameAlertState,
+  commentRemoveAlertState,
+} from "state/alert/alert_recoil";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { MyPageDiv } from "./css/MyPage";
 import MyPageDetail from "./MyPageDetail";
 import MyPageProfile from "./MyPageProfile";
 import { motion } from "framer-motion";
+
+//Alert
 import ChangeNameAlert from "global/alert/ChangeNameAlert";
+import CommentRemoveAlert from "global/alert/CommentRemoveAlert";
 
 const App = () => {
   const navigate = useNavigate();
@@ -16,6 +22,9 @@ const App = () => {
   const [tab, setTab] = useState("profile");
 
   const [changeName, setChangeName] = useRecoilState(changeNameAlertState);
+  const [removeComment, setRemoveCommnet] = useRecoilState(
+    commentRemoveAlertState
+  );
   //profile, board, comment, history
 
   jwt.check_token(loginInfo, setLoginInfo, navigate);
@@ -40,9 +49,12 @@ const App = () => {
         show={changeName}
         setShow={setChangeName}
       ></ChangeNameAlert>
-
-      <MyPageProfile tab={tab} setTab={setTab}></MyPageProfile>
-
+      <CommentRemoveAlert
+        show={removeComment}
+        setShow={setRemoveCommnet}
+      ></CommentRemoveAlert>
+      <MyPageProfile tab={tab} setTab={setTab}></MyPageProfile>{" "}
+      {/* 이게 왼쪽꺼 */}
       <div
         style={{
           height: "100%",
@@ -52,8 +64,7 @@ const App = () => {
           zIndex: 30,
         }}
       ></div>
-
-      <MyPageDetail tab={tab}></MyPageDetail>
+      <MyPageDetail tab={tab}></MyPageDetail> {/* 이게 오른쪽꺼 */}
     </motion.div>
   );
 };
