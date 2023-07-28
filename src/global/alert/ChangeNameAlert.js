@@ -57,13 +57,21 @@ const App = (props) => {
             </span>{" "}
             에서
           </div>
-          <div style={{ fontSize: "20px", lineHeight: "30px" }}>
+          <div style={{ fontSize: "20px", lineHeight: "35px" }}>
             <input
-              placeholder="변경할 닉네임을 입력해 주세요."
+              placeholder="새로운 닉네임"
+              spellCheck="false"
               style={{
-                fontSize: "18px",
+                fontSize: "20px",
                 height: "30px",
-                border: "none",
+                width: "190px",
+                borderRight: "0px",
+                borderTop: "0px",
+                borderLeft: "0px",
+                textAlign: "center",
+                outline: "none",
+                color: "#0085FF",
+                fontWeight: "bold",
               }}
             ></input>{" "}
             로 변경할까요?
