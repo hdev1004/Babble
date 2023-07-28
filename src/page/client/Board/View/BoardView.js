@@ -5,6 +5,7 @@ import { PulseLoader } from "react-spinners";
 import { BabbleTitle, BoardViewDiv, BoardViewForm, InfoGroup, LikeGroup, Post, TitleGroup } from "./css/BoardView";
 import Babble from "images/babble.png";
 import Comment from "images/comment.png";
+import BoardComment from "./BoardComment";
 
 const App = () => {
     let [boardInfo, setBoardInfo] = useState(null); 
@@ -94,6 +95,12 @@ const App = () => {
                                 <div className="num">0</div>
                             </div>
                         </LikeGroup>
+
+                        <br/>
+                        <div className="line"></div>
+                        <br/>
+
+                        <BoardComment></BoardComment>
                     </BoardViewForm>
                 )
             }
