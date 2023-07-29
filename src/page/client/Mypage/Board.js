@@ -18,10 +18,6 @@ const App = () => {
   
   return (
     <BoardWrap>
-      {/* <BoardRemoveAlert
-        show={isRemove}
-        setShow={setIsRemove}
-      ></BoardRemoveAlert> */}
       <BoradTable>
         <table className="board">
           <tr className="border_row">

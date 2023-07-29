@@ -16,3 +16,8 @@ export const boardRemoveAlertState = atom({
   key: "boardRemoveAlert",
   default: false
 })
+
+export const inquireAnswerAlertState = atom({
+  key: 'inquireAnswerAlert',
+  default: false
+})

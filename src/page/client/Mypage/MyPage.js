@@ -5,7 +5,8 @@ import { loginInfoState } from "state/login/recoil";
 import {
   changeNameAlertState,
   commentRemoveAlertState,
-  boardRemoveAlertState
+  boardRemoveAlertState,
+  inquireAnswerAlertState
 } from "state/alert/alert_recoil";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { MyPageDiv } from "./css/MyPage";
@@ -17,6 +18,7 @@ import { motion } from "framer-motion";
 import ChangeNameAlert from "global/alert/ChangeNameAlert";
 import CommentRemoveAlert from "global/alert/CommentRemoveAlert";
 import BoardRemoveAlert from "global/alert/BoardRemoveAlert";
+import InquireAnswerAlert from "global/alert/InquireAnswerAlert"
 
 
 const App = () => {
@@ -29,6 +31,7 @@ const App = () => {
     commentRemoveAlertState
   );
   const [removeBoard, setRemoveBoard] = useRecoilState(boardRemoveAlertState)
+  const [inquireAnswer, setInquireAnswer] = useRecoilState(inquireAnswerAlertState)
   //profile, board, comment, history
 
   jwt.check_token(loginInfo, setLoginInfo, navigate);
@@ -53,15 +56,22 @@ const App = () => {
         show={changeName}
         setShow={setChangeName}
       ></ChangeNameAlert>
-      <CommentRemoveAlert
-        show={removeComment}
-        setShow={setRemoveCommnet}
-      ></CommentRemoveAlert>
       <BoardRemoveAlert
         show={removeBoard}
         setShow={setRemoveBoard}
       >
       </BoardRemoveAlert>
+      <CommentRemoveAlert
+        show={removeComment}
+        setShow={setRemoveCommnet}
+      >
+      </CommentRemoveAlert>
+      <InquireAnswerAlert
+        show={inquireAnswer}
+        setShow={setInquireAnswer}
+      ></InquireAnswerAlert>
+      
+      
       <MyPageProfile tab={tab} setTab={setTab}></MyPageProfile>{" "}
       {/* 이게 왼쪽꺼 */}
       <div

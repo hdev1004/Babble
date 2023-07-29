@@ -1,7 +1,13 @@
 import React from "react";
 import { HistoryWrap } from "./css/History";
+import { useRecoilState } from "recoil";
+import { inquireAnswerAlertState } from "state/alert/alert_recoil";
 
 const App = () => {
+
+    const [inquireAnswer, setInquireAnswer] = useRecoilState(inquireAnswerAlertState)
+
+    
     return (
         <>
         <HistoryWrap>
@@ -90,7 +96,7 @@ const App = () => {
 
                 <tr>
                     <td>기타</td>
-                    <td className="title">대충 사용자 제재 좀 해달라는 내용</td>
+                    <td className="title" onClick={() => setInquireAnswer(true)}>대충 사용자 제재 좀 해달라는 내용</td>
                     <td></td>
 
                     <td>2023.06.02</td>
