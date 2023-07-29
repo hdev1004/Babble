@@ -7,15 +7,21 @@ import more_right from "images/more_right.png";
 import number1 from "images/number1.png";
 import number2 from "images/number2.png";
 import BoardRemoveAlert from "global/alert/BoardRemoveAlert";
+import { useRecoilState } from "recoil";
+import { boardRemoveAlertState } from "state/alert/alert_recoil";
 
 const App = () => {
-  const [isRemove, setIsRemove] = useState(false);
+  // const [isRemove, setIsRemove] = useState(false);
+
+  const [removeBoard, setRemoveBoard] = useRecoilState(boardRemoveAlertState)
+
+  
   return (
     <BoardWrap>
-      <BoardRemoveAlert
+      {/* <BoardRemoveAlert
         show={isRemove}
         setShow={setIsRemove}
-      ></BoardRemoveAlert>
+      ></BoardRemoveAlert> */}
       <BoradTable>
         <table className="board">
           <tr className="border_row">
@@ -36,7 +42,7 @@ const App = () => {
               <div
                 className="remove"
                 onClick={() => {
-                  setIsRemove(true);
+                  setRemoveBoard(true);
                 }}
               >
                 삭제
@@ -53,7 +59,7 @@ const App = () => {
               <div
                 className="remove"
                 onClick={() => {
-                  setIsRemove(true);
+                  setRemoveBoard(true);
                 }}
               >
                 삭제

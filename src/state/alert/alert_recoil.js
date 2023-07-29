@@ -10,3 +10,9 @@ export const commentRemoveAlertState = atom({
   key: "commentRemoveAlert",
   default: false,
 });
+
+
+export const boardRemoveAlertState = atom({
+  key: "boardRemoveAlert",
+  default: false
+})
