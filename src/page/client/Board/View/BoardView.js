@@ -6,6 +6,7 @@ import { BabbleTitle, BoardViewDiv, BoardViewForm, InfoGroup, LikeGroup, Post, T
 import Babble from "images/babble.png";
 import Comment from "images/comment.png";
 import BoardComment from "./BoardComment";
+import BoardEditor from "./BoardEditor";
 
 const App = () => {
     let [boardInfo, setBoardInfo] = useState(null); 
@@ -101,6 +102,12 @@ const App = () => {
                         <br/>
 
                         <BoardComment></BoardComment>
+
+                        <br/>
+                        <div className="line"></div>
+                        <br/>
+
+                        <BoardEditor></BoardEditor>
                     </BoardViewForm>
                 )
             }
