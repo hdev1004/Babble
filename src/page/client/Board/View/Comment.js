@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CommentBlock, CommentDiv, CommentNickname, CommentNoti, CommentText, CommentTitle } from "./css/BoardComment";
 import Account from "images/account.png";
+import { Mention, MentionsInput } from "react-mentions";
+import mentions from "./css/sub_mentions.module.css";
 
 const App = ({data}) => {
     const transDate = (data) => {
@@ -19,7 +21,7 @@ const App = ({data}) => {
     return (
         <>
         {
-            data.status === 0 ? (
+            data.target_token === null ? (
                 <CommentBlock>
                 <CommentTitle>
                     <CommentNickname>
@@ -46,37 +48,53 @@ const App = ({data}) => {
                 </CommentTitle>
     
                 
-                <CommentText>
-                    {
-                        data.comment
-                    }
-                </CommentText>
+                <MentionsInput
+                    disabled
+                    placeholder="댓글을 입력해 주세요."
+                    spellCheck={false}
+                    classNames={mentions}
+                    a11ySuggestionsListLabel={"Suggested mentions"}
+                    value={data.comment}
+                >
+                    <Mention className={mentions.mentions__mention} />
+                </MentionsInput>
             </CommentBlock>
             ) : (
             <CommentBlock style={{marginLeft: "20px"}}>
-                <CommentTitle>
+               <CommentTitle>
                     <CommentNickname>
-                        <span>=></span>
-                        <div>
-                            누가계속농구하래
+                        <div style={{marginRight: "10px"}}>
+                            => 
                         </div>
-                        <div>
-                            2023.04.28 19:02
+                        <div className="image">
+                            <img src={Account}></img>
+                        </div>
+                        <div className="name">
+                            {data.nickname}
+                        </div>
+                        <div className="date">
+                            {transDate(data.reply_upload_date)}
                         </div>
                     </CommentNickname>
-
+    
                     <CommentNoti>
-                        <div>
+    
+                        <div className="right">
                             신고
                         </div>
                     </CommentNoti>
                 </CommentTitle>
 
-                
-                <CommentText>
-                    <div style={{marginLeft:"15px"}}></div>
-                    <div>그래 빨리 나와봐라</div>
-                </CommentText>
+                <MentionsInput
+                    disabled
+                    placeholder="댓글을 입력해 주세요."
+                    spellCheck={false}
+                    classNames={mentions}
+                    a11ySuggestionsListLabel={"Suggested mentions"}
+                    value={data.reply_comment}
+                >
+                    <Mention className={mentions.mentions__mention} />
+                </MentionsInput>
             </CommentBlock>
             )
         }
