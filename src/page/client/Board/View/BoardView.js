@@ -12,6 +12,7 @@ const App = () => {
     let [boardInfo, setBoardInfo] = useState(null); 
     let {board_token} = useParams();
     let [likeClick, setLikeClick] = useState(false);
+    let [commentData, setCommentData] = useState(null); //댓글 정보들
     let naviate = useNavigate();
 
     function decodeHtml(text) {
@@ -69,7 +70,6 @@ const App = () => {
                     </div>
                 ) : (
                     <BoardViewForm>
-
                         <TitleGroup>
                             <div className="category">{boardInfo.name}</div>
                             <div className="title">{boardInfo.title}</div>
@@ -88,12 +88,14 @@ const App = () => {
 
                         <LikeGroup>
                             <div className="content">
-                                <span className={likeClick ? "heart active" : "heart"} onClick={()=>{setLikeClick(!likeClick)}}></span>
+                                <span className={likeClick ? "heart active" : "heart"} onClick={()=>{
+                                    setLikeClick(!likeClick)}}
+                                ></span>
                                 <span className={likeClick ? "num active" : "num"}>{boardInfo.likes}</span>
                             </div>
                             <div className="comment">
                                 <img src={Comment}></img>
-                                <div className="num">0</div>
+                                <div className="num">{commentData ? commentData.length : "..."}</div>
                             </div>
                         </LikeGroup>
 
@@ -101,13 +103,13 @@ const App = () => {
                         <div className="line"></div>
                         <br/>
 
-                        <BoardComment></BoardComment>
+                        <BoardComment commentData={commentData} setCommentData={setCommentData}></BoardComment>
 
                         <br/>
                         <div className="line"></div>
                         <br/>
 
-                        <BoardEditor></BoardEditor>
+                        <BoardEditor commentData={commentData} setCommentData={setCommentData}></BoardEditor>
                     </BoardViewForm>
                 )
             }

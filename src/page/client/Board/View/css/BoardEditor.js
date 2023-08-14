@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const BoardEditorDiv = styled.div`
     display: flex;
     flex-direction: row;
+    position: relative;
 
     width: 98%;
     margin-left: auto;
@@ -54,9 +55,11 @@ export const BoardReply = styled.div`
 `
 
 export const BoardWriteDiv = styled.div`
+    position: absolute;
+    right: 5px;
     display: flex;
     flex-direction: row;
-    margin-top: 48px;
+    bottom: 0px;
 
     .length {
         margin-left: 15px;

@@ -3,8 +3,15 @@ import { CommentBlock, CommentDiv, CommentNickname, CommentNoti, CommentText, Co
 import Account from "images/account.png";
 import { Mention, MentionsInput } from "react-mentions";
 import mentions from "./css/sub_mentions.module.css";
+import defaultMentionStyle from './css/defaultMentionStyle'
+import { replyComment } from "state/board/board_recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { loginInfoState } from "state/login/recoil";
 
 const App = ({data}) => {
+    const [replyState, setReplyState] = useRecoilState(replyComment);
+    const loginInfo= useRecoilValue(loginInfoState);
+
     const transDate = (data) => {
         let date = new Date(data);
         let year = date.getFullYear().toString();
@@ -37,7 +44,14 @@ const App = ({data}) => {
                     </CommentNickname>
     
                     <CommentNoti>
-                        <div className="left">
+                        <div className="left" onClick={() => {
+                            console.log(data);
+                            setReplyState({
+                                writer_token: loginInfo.token,
+                                target_token: data.comment_token,
+                                nickname: data.nickname
+                            })
+                        }}>
                             대댓글
                         </div>
     
@@ -53,10 +67,16 @@ const App = ({data}) => {
                     placeholder="댓글을 입력해 주세요."
                     spellCheck={false}
                     classNames={mentions}
-                    a11ySuggestionsListLabel={"Suggested mentions"}
                     value={data.comment}
+                    className="mentions"
+                    a11ySuggestionsListLabel={"Suggested mentions"}
                 >
-                    <Mention className={mentions.mentions__mention} />
+                     <Mention
+                        markup="{{__id__}}"
+                        displayTransform={id => `@${id}`}
+                        className={mentions.mentions__mention}
+                        style={defaultMentionStyle}
+                    />
                 </MentionsInput>
             </CommentBlock>
             ) : (
@@ -90,10 +110,16 @@ const App = ({data}) => {
                     placeholder="댓글을 입력해 주세요."
                     spellCheck={false}
                     classNames={mentions}
-                    a11ySuggestionsListLabel={"Suggested mentions"}
                     value={data.reply_comment}
+                    className="mentions"
+                    a11ySuggestionsListLabel={"Suggested mentions"}
                 >
-                    <Mention className={mentions.mentions__mention} />
+                     <Mention
+                        markup="{{__id__}}"
+                        displayTransform={id => `@${id}`}
+                        className={mentions.mentions__mention}
+                        style={defaultMentionStyle}
+                    />
                 </MentionsInput>
             </CommentBlock>
             )

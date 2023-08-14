@@ -1,4 +1,5 @@
 .mentions {
+  width: calc(100% - 120px);
   margin-left: 5px;
   margin-top: 10px;
 }
@@ -16,14 +17,15 @@
 }
 
 .mentions--multiLine .mentions__control {
-  font-size: 14px;
+  font-size: 16px;
 }
 .mentions--multiLine .mentions__highlighter {
   border: 1px solid transparent;
   padding: 9px;
-  min-height: 63px;
+  min-height: 85px;
 }
 .mentions--multiLine .mentions__input {
+  color: rgba(0, 0, 0, 0.733);
   border: 1px solid silver;
   padding: 9px;
   outline: 0;
@@ -50,8 +52,6 @@
   border-radius: 5px;
   position: relative;
   z-index: 1;
-  color: #0085FF;
-  background-color: #cee4e5;
 
   pointer-events: none;
 }

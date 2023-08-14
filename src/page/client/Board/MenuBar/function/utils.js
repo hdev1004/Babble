@@ -103,6 +103,26 @@ export const getFrinedList = (setData, token) => {
     })
 }
 
+export const getFrinedList_metions = (setData, token) => {
+    axios.get(process.env.REACT_APP_SERVER_URL + "/friend/list/" + token).then((res) => {
+        let data = res.data.data;
+        let result = [];
+
+        data.map((item) => {
+            result.push({
+                token: item.friend_token,
+                id: item.nickname
+            }) 
+        })
+
+        console.log(result);
+        setData(result);
+    }).catch((err) => {
+      alert("오류가 발생했습니다.");
+    })
+}
+
+
 export const getFriendRequest = (setData, token) => {
     axios.get(process.env.REACT_APP_SERVER_URL + "/friend/request/" + token).then((res) => {
         setData(res.data.data);
