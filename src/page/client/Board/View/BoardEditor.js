@@ -36,7 +36,7 @@ const App = ({commentData, setCommentData}) => {
             comment: text
         }
 
-        axios.post(process.env.REACT_APP_TEST_URL + "/board/comment/add", body).then((res) => {
+        axios.post(process.env.REACT_APP_SERVER_URL + "/board/comment/add", body).then((res) => {
             alert("댓글이 등록되었습니다.");
             setReplyState({
                 nickname: undefined,
