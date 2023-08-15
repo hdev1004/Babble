@@ -5,7 +5,7 @@ import Comment from "./Comment";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
-import { getCommentList } from "./Function/getComment";
+import { getCommentList } from "./Function/utils";
 
 const App = ({commentData, setCommentData}) => {
     const param = useParams();

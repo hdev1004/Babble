@@ -11,7 +11,7 @@ import { loginInfoState } from "state/login/recoil";
 import { useRecoilValue, useRecoilState } from "recoil";
 import { replyComment } from "state/board/board_recoil";
 import defaultMentionStyle from './css/defaultMentionStyle'
-import { getCommentList } from "./Function/getComment";
+import { getCommentList } from "./Function/utils";
 import { getFrinedList, getFrinedList_metions } from "../MenuBar/function/utils";
 const App = ({commentData, setCommentData}) => {
     const loginInfo = useRecoilValue(loginInfoState);

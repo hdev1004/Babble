@@ -7,13 +7,30 @@ import Babble from "images/babble.png";
 import Comment from "images/comment.png";
 import BoardComment from "./BoardComment";
 import BoardEditor from "./BoardEditor";
+import { addBoardLike, cancelBoardLike, checkBoardLike } from "./Function/utils";
+import { useRecoilValue } from "recoil";
+import { loginInfoState } from "state/login/recoil";
 
 const App = () => {
     let [boardInfo, setBoardInfo] = useState(null); 
     let {board_token} = useParams();
     let [likeClick, setLikeClick] = useState(false);
     let [commentData, setCommentData] = useState(null); //댓글 정보들
+    let loginInfo = useRecoilValue(loginInfoState);
     let naviate = useNavigate();
+    let [boardLikeData, setBoardLikeData] = useState(null);
+
+    useEffect(() => {
+        if(boardLikeData === null) return;
+
+        if(boardLikeData.isLike === true) {
+            setLikeClick(true);
+        } else {
+            setLikeClick(false);
+        }
+
+
+    }, [boardLikeData] )
 
     function decodeHtml(text) {
         const decodeEntityMap = {
@@ -46,7 +63,9 @@ const App = () => {
         axios.get(process.env.REACT_APP_SERVER_URL + "/board/" + board_token).then((res) => {
             let data = res.data.data[0];
             console.log(data);
+            if(data === undefined) return;
             setBoardInfo(data);
+            checkBoardLike(data.board_token, loginInfo.token, setBoardLikeData);
         }).catch((err) => {
             console.log(err);
         })
@@ -88,10 +107,15 @@ const App = () => {
 
                         <LikeGroup>
                             <div className="content">
-                                <span className={likeClick ? "heart active" : "heart"} onClick={()=>{
-                                    setLikeClick(!likeClick)}}
+                                <span className={boardLikeData?.isLike ? "heart active" : "heart"} onClick={()=>{
+                                    if(boardLikeData?.isLike) {
+                                        cancelBoardLike(boardInfo.board_token, loginInfo.token, setBoardLikeData)
+                                    } else {
+                                        addBoardLike(boardInfo.board_token, loginInfo.token, setBoardLikeData)
+                                    }
+                                }}
                                 ></span>
-                                <span className={likeClick ? "num active" : "num"}>{boardInfo.likes}</span>
+                                <span className={boardLikeData?.isLike ? "num active" : "num"}>{boardLikeData === null ? "..." : boardLikeData.board_count}</span>
                             </div>
                             <div className="comment">
                                 <img src={Comment}></img>
