@@ -90,7 +90,7 @@ const App = ({data}) => {
                             <img src={Account}></img>
                         </div>
                         <div className="name">
-                            {data.nickname}
+                            {data.reply_writer_nickname}
                         </div>
                         <div className="date">
                             {transDate(data.reply_upload_date)}
