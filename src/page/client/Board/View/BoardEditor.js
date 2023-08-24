@@ -13,6 +13,8 @@ import { replyComment } from "state/board/board_recoil";
 import defaultMentionStyle from './css/defaultMentionStyle'
 import { getCommentList } from "./Function/utils";
 import { getFrinedList, getFrinedList_metions } from "../MenuBar/function/utils";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { db } from "noSQL/firebase";
 const App = ({commentData, setCommentData}) => {
     const loginInfo = useRecoilValue(loginInfoState);
     const [replyState, setReplyState] = useRecoilState(replyComment);
@@ -26,7 +28,7 @@ const App = ({commentData, setCommentData}) => {
     }, [])
 
 
-    const submit = () => {
+    const submit = async () => {
         let body = {
             board_token: param.board_token,
             target_token: replyState.target_token,
@@ -34,6 +36,31 @@ const App = ({commentData, setCommentData}) => {
             writer_token: loginInfo.token,
             status: 0,
             comment: text
+        }
+        let date = new Date();
+
+        let sendData = {
+            category: param.category,
+            comment: "새로운 댓글이 달렸습니다.",
+            date: new Date(),
+            move: param.board_token,
+            type: "board", 
+            isRead: false
+        }
+
+        const docRef = doc(db, "Alarm", loginInfo.token); //글 작성한 사람의 토큰으로 수정해야함
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            let fireData = docSnap.data().data;
+            fireData.push(sendData);
+            setDoc(doc(db, "Alarm", loginInfo.token), {
+                data: fireData
+            })
+        } else {
+            setDoc(doc(db, "Alarm", loginInfo.token), {
+                data: [sendData]
+              })
         }
 
         axios.post(process.env.REACT_APP_SERVER_URL + "/board/comment/add", body).then((res) => {

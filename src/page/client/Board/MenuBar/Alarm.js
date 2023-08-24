@@ -4,12 +4,31 @@ import { motion } from "framer-motion";
 import chatprofile from "images/chatprofile.jpg";
 import left from "images/left.png";
 import send from "images/paper-plane.png";
+import { doc, onSnapshot, setDoc } from "firebase/firestore";
+import { db } from "noSQL/firebase"; 
+import { useRecoilValue } from "recoil";
+import { loginInfoState } from "state/login/recoil";
+import { useNavigate } from "react-router-dom";
 
 const App = ({isAlarm, setIsAlarm ,alarmMenuRef}) => {
     const [tab, setTab] = useState("alarm"); //alarm : 알림, chat : 채팅
     const [innerChat, setInnserChat] = useState(false); 
     const tabRef = useRef(null);
+    const loginInfo = useRecoilValue(loginInfoState);
+    const [alarmList, setAlarmList] = useState(null);
+    const naviate = useNavigate();
 
+    const transDate = (data) => {
+      let date = new Date(data);
+      let year = date.getFullYear().toString();
+      let month = (date.getMonth() + 1).toString().padStart(2, "0");
+      let day = date.getDate().toString().padStart(2, "0");
+  
+      let hour = date.getHours().toString().padStart(2, "0");
+      let min = date.getMinutes().toString().padStart(2, "0");
+      return year + "." + month + "." + day + " " + hour + ":" + min;
+  }
+  
     useEffect(() => {
         function handleClickOutside(e) {
           const isInside = tabRef?.current?.contains(e.target);
@@ -24,6 +43,30 @@ const App = ({isAlarm, setIsAlarm ,alarmMenuRef}) => {
           document.removeEventListener('click', handleClickOutside);
         };
       }, [isAlarm]);
+
+    useEffect(() => {
+        if(loginInfo.token === "") return;
+        const unsub = onSnapshot(doc(db, "Alarm", loginInfo.token), (doc) => {
+          let data = doc.data().data;
+    
+          if(data === undefined || data.length === 0) {
+            //데이터가 없을 때
+            setAlarmList([]);
+          } else {
+            //데이터가 있을 때
+            const sortedDate = data.sort((a, b) => new Date(b.date.toDate()) - new Date(a.date.toDate()))
+            console.log(data);
+            setAlarmList(sortedDate);
+          }
+        });
+    }, [])
+
+    const moveController = (type, category, move) => {
+      if(type === "board") {
+        naviate(`/board/${category}/${move}`);
+      }
+      
+    }
 
     return (
         <motion.div style={{
@@ -59,35 +102,19 @@ const App = ({isAlarm, setIsAlarm ,alarmMenuRef}) => {
 
                     <motion.div style={{position: "relative"}} animate={{x: tab === "alarm" ? 0 : -380}}>
                         <AlarmSubForm className="left">
-                            <AlarmList>
-                              <AlarmRow>
-                                <div className="Alarm_kind">자유게시판</div>
-                                <div className="Alarm_time">5.31 11:15</div>
-                              </AlarmRow>
-                              <AlarmRow2>
-                                <div className="Alarm_content">새로운 댓글이 달렸습니다.</div>
-                              </AlarmRow2>
-                            </AlarmList>
-
-                            <AlarmList>
-                              <AlarmRow>
-                                <div className="Alarm_kind">친구추가</div>
-                                <div className="Alarm_time">5.29 22:43</div>
-                              </AlarmRow>
-                              <AlarmRow2>
-                                <div className="Alarm_content">남고상언 님이 친구추가를 했습니다.</div>
-                              </AlarmRow2>
-                            </AlarmList>
-
-                            <AlarmList>
-                              <AlarmRow>
-                                <div className="Alarm_kind">덕질게시판</div>
-                                <div className="Alarm_time">5.26 14:15</div>
-                              </AlarmRow>
-                              <AlarmRow2>
-                                <div className="Alarm_content">꼬순내마루 님이 태그했습니다.</div>
-                              </AlarmRow2>
-                            </AlarmList>
+                          {
+                             alarmList?.map((item) => (
+                              <AlarmList onClick={() => {moveController(item.type, item.category, item.move)}}>
+                                <AlarmRow>
+                                  <div className="Alarm_kind">{item.category}</div>
+                                  <div className="Alarm_time">{transDate(item.date.toDate())}</div>
+                                </AlarmRow>
+                                <AlarmRow2>
+                                  <div className="Alarm_content">{item.comment}</div>
+                                </AlarmRow2>
+                              </AlarmList>
+                             ))
+                          }
                         </AlarmSubForm>
                         
                         <AlarmSubForm className="right">

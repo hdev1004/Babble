@@ -185,6 +185,12 @@ export const AlarmList = styled.div`
     background : #FFFFFF;
     box-shadow: 0px 0px 5px 1px lightgray;
     margin-bottom : 25px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+        background-color: #e2e2e2;
+    }
 `
 
 export const AlarmRow = styled.div`
