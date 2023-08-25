@@ -47,7 +47,7 @@ const App = ({isAlarm, setIsAlarm ,alarmMenuRef}) => {
     useEffect(() => {
         if(loginInfo.token === "") return;
         const unsub = onSnapshot(doc(db, "Alarm", loginInfo.token), (doc) => {
-          let data = doc.data().data;
+          let data = doc.data()?.data;
     
           if(data === undefined || data.length === 0) {
             //데이터가 없을 때

@@ -15,7 +15,8 @@ import { getCommentList } from "./Function/utils";
 import { getFrinedList, getFrinedList_metions } from "../MenuBar/function/utils";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "noSQL/firebase";
-const App = ({commentData, setCommentData}) => {
+
+const App = ({boardInfo, commentData, setCommentData}) => {
     const loginInfo = useRecoilValue(loginInfoState);
     const [replyState, setReplyState] = useRecoilState(replyComment);
 
@@ -48,21 +49,25 @@ const App = ({commentData, setCommentData}) => {
             isRead: false
         }
 
-        const docRef = doc(db, "Alarm", loginInfo.token); //글 작성한 사람의 토큰으로 수정해야함
+        console.log(text);
+        let pattern = /\{\{([^}]+)\}\}/g
+        let matches = [...text.matchAll(pattern)]
+        //이어서 해야함
+
+        const docRef = doc(db, "Alarm", boardInfo.token); 
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
             let fireData = docSnap.data().data;
             fireData.push(sendData);
-            setDoc(doc(db, "Alarm", loginInfo.token), {
+            setDoc(doc(db, "Alarm", boardInfo.token), {
                 data: fireData
             })
         } else {
-            setDoc(doc(db, "Alarm", loginInfo.token), {
+            setDoc(doc(db, "Alarm", boardInfo.token), {
                 data: [sendData]
               })
         }
-
         axios.post(process.env.REACT_APP_SERVER_URL + "/board/comment/add", body).then((res) => {
             alert("댓글이 등록되었습니다.");
             setReplyState({

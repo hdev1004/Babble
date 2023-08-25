@@ -133,7 +133,7 @@ const App = () => {
                         <div className="line"></div>
                         <br/>
 
-                        <BoardEditor commentData={commentData} setCommentData={setCommentData}></BoardEditor>
+                        <BoardEditor boardInfo={boardInfo} commentData={commentData} setCommentData={setCommentData}></BoardEditor>
                     </BoardViewForm>
                 )
             }
