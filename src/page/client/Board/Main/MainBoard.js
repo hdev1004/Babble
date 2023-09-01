@@ -25,6 +25,7 @@ import { useRecoilValue } from "recoil";
 import { loginInfoState } from "state/login/recoil";
 import { PulseLoader } from "react-spinners";
 import { getBoardKindList, getBoardList } from "./Function/board_utils";
+import axios from "axios";
 
 const App = ({ board }) => {
   const [isBtnHover, setIsBtnHover] = useState(false);
@@ -53,8 +54,19 @@ const App = ({ board }) => {
 
   const keyPress = (e) => {
     if(e.key === "Enter") {
-      
+      searchTitle()
     }
+  }
+
+  const searchTitle =() => {
+    axios.get(process.env.REACT_APP_TEST_URL + `/board/search/${searchInput}`).then((res) =>{
+      let data = res.data.data;
+      console.log('Data2 : ' ,data);
+
+      setBoardList(data);
+
+      
+    })
   }
   
 
@@ -78,7 +90,7 @@ const App = ({ board }) => {
               setIsBtnHover(false);
             }}
           >
-            <img src={isBtnHover ? search_white : search} />
+            <img src={isBtnHover ? search_white : search} onClick={searchTitle}/>
           </button>
         </SearchForm>
         <BoradTotal>
