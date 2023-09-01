@@ -72,8 +72,8 @@ const App = ({data}) => {
                     a11ySuggestionsListLabel={"Suggested mentions"}
                 >
                      <Mention
-                        markup="{{__id__}}"
-                        displayTransform={id => `@${id}`}
+                        markup="{{__display__:__id__}}"
+                        displayTransform={(id, display) => `@${display}`}
                         className={mentions.mentions__mention}
                         style={defaultMentionStyle}
                     />
@@ -115,8 +115,8 @@ const App = ({data}) => {
                     a11ySuggestionsListLabel={"Suggested mentions"}
                 >
                      <Mention
-                        markup="{{__id__}}"
-                        displayTransform={id => `@${id}`}
+                        markup="{{__display__:__id__}}"
+                        displayTransform={(id, display) => `@${display}`}
                         className={mentions.mentions__mention}
                         style={defaultMentionStyle}
                     />

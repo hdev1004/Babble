@@ -9,7 +9,6 @@ export const AlarmDiv = styled.div`
 
 export const ChatDiv = styled.div`
     position: absolute;
-    width: 380px;
     height: 500px;
     background-color: #F5F6F8;
     left: 380px;
@@ -167,9 +166,33 @@ export const AlarmForm = styled.div`
 export const AlarmSubForm = styled.div`
     position: absolute;
     width: 380px;
+    height: 420px;
+    border-radius: 15px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+        /* 임의의 영역 생성 */
+    /* 아래의 모든 코드는 영역::코드로 사용 */
+    &::-webkit-scrollbar {
+        width: 5px;  /* 스크롤바의 너비 */
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        height: 30%; /* 스크롤바의 길이 */
+        background: #0085FF; /* 스크롤바의 색상 */
+        
+        border-radius: 10px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: rgba(33, 122, 244, .1);  /*스크롤바 뒷 배경 색상*/
+    }
 
     &.left {
-        padding: 25px;
         left: 0px;
     }
 
@@ -184,9 +207,10 @@ export const AlarmList = styled.div`
     padding : 18px;
     background : #FFFFFF;
     box-shadow: 0px 0px 5px 1px lightgray;
-    margin-bottom : 25px;
     cursor: pointer;
     transition: 0.3s;
+    margin-top: 10px;
+    margin-bottom: 10px;
 
     &:hover {
         background-color: #e2e2e2;

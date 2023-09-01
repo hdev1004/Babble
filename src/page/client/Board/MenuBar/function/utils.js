@@ -110,8 +110,8 @@ export const getFrinedList_metions = (setData, token) => {
 
         data.map((item) => {
             result.push({
-                token: item.friend_token,
-                id: item.nickname
+                id: item.friend_token,
+                display: item.nickname
             }) 
         })
 

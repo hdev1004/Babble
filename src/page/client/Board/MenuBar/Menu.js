@@ -35,6 +35,7 @@ const App = ({ tab }) => {
   const navigate = useNavigate();
 
   const [friendReqState, setFriendReqState] = useState(false);
+  const [alramState, setAlaramState] = useState(false);
 
   const swipeConfidenceThreshold = 10000;
   const swipePower = (offset, velocity) => {
@@ -80,6 +81,8 @@ const App = ({ tab }) => {
         isAlarm={isAlarm}
         setIsAlarm={setIsAlarm}
         alarmMenuRef={alarmMenuRef}
+        alramState={alramState}
+        setAlaramState={setAlaramState}
       ></Alarm>
       <Friend
         isFriend={isFriend}
@@ -109,6 +112,7 @@ const App = ({ tab }) => {
               ref={alarmMenuRef}
             >
               <img src={Bell}></img>
+              <i className={alramState ? "alarm" : "alarm hidden"}></i>
               <div>알림</div>
             </MenuRow>
             <MenuRow

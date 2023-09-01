@@ -10,7 +10,7 @@ import { useRecoilValue } from "recoil";
 import { loginInfoState } from "state/login/recoil";
 import { useNavigate } from "react-router-dom";
 
-const App = ({isAlarm, setIsAlarm ,alarmMenuRef}) => {
+const App = ({isAlarm, setIsAlarm ,alarmMenuRef, alarmState, setAlaramState}) => {
     const [tab, setTab] = useState("alarm"); //alarm : 알림, chat : 채팅
     const [innerChat, setInnserChat] = useState(false); 
     const tabRef = useRef(null);
@@ -55,8 +55,14 @@ const App = ({isAlarm, setIsAlarm ,alarmMenuRef}) => {
           } else {
             //데이터가 있을 때
             const sortedDate = data.sort((a, b) => new Date(b.date.toDate()) - new Date(a.date.toDate()))
+            let isReadArray = [];
             console.log(data);
             setAlarmList(sortedDate);
+            
+            isReadArray = data.filter(prev => prev.isRead === false);
+            if(isReadArray.length > 0) {
+              setAlaramState(true)
+            }
           }
         });
     }, [])
@@ -95,7 +101,9 @@ const App = ({isAlarm, setIsAlarm ,alarmMenuRef}) => {
             <motion.div style={{position: "relative"}} animate={{x: innerChat ? -380 : 0}}>
                 <AlarmDiv>
                     <AlarmTitle tab={tab}>
-                        <div className="alarm" onClick={() => {setTab("alarm")}} style={{color: tab === "alarm" ? "#000" : "#828282"}}>알림</div>
+                        <div className="alarm" onClick={() => {setTab("alarm")}} style={{color: tab === "alarm" ? "#000" : "#828282"}}>
+                          알림
+                          </div>
                         <div className="chat" onClick={() => {setTab("chat")}} style={{color: tab === "chat" ? "#000" : "#828282"}}>채팅</div>
                         <i className="bar" style={{left: tab === "alarm" ? "45px" : "235px"}}></i>
                     </AlarmTitle>

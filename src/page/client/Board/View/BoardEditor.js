@@ -49,11 +49,40 @@ const App = ({boardInfo, commentData, setCommentData}) => {
             isRead: false
         }
 
-        console.log(text);
-        let pattern = /\{\{([^}]+)\}\}/g
-        let matches = [...text.matchAll(pattern)]
-        //이어서 해야함
+        let pattern = /\{\{([^}]+)\}\}/g;
+        let matches = [...text.matchAll(pattern)].map(prev => prev[1])
+        
+        //태그 멘션
+        matches.map(async(item) => {
+            let metionNickname = item.split(":")[0];
+            let metionToken = item.split(":")[1];
+            let tagData = {
+                category: param.category,
+                comment: `${loginInfo.nickname} 님이 태그했습니다.`,
+                date: new Date(),
+                move: param.board_token,
+                type: "board", 
+                isRead: false
+            }
 
+            let docRef = doc(db, "Alarm", metionToken); 
+            let docSnap = await getDoc(docRef);
+    
+            if (docSnap.exists()) {
+                let fireData = docSnap.data().data;
+                fireData.push(tagData);
+                setDoc(doc(db, "Alarm", metionToken), {
+                    data: fireData
+                })
+            } else {
+                setDoc(doc(db, "Alarm", metionToken), {
+                    data: [tagData]
+                  })
+            }
+
+            
+        })
+        
         const docRef = doc(db, "Alarm", boardInfo.token); 
         const docSnap = await getDoc(docRef);
 
@@ -114,9 +143,10 @@ const App = ({boardInfo, commentData, setCommentData}) => {
                     className="mentions"
                     a11ySuggestionsListLabel={"Suggested mentions"}
                 >
-                     <Mention
-                        markup="{{__id__}}"
-                        displayTransform={id => `@${id}`}
+                        <Mention
+                       // markup="{{[__id__][__display__]}}"
+                        markup="{{__display__:__id__}}"
+                        displayTransform={(id, display) => `@${display}`}
                         data={users}
                         onAdd={() => {}}
                         className={mentions.mentions__mention}
