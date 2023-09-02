@@ -90,6 +90,7 @@ export const LikeGroup = styled.div`
     width: 98%;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
 
     .content {
         padding: 13px 20px;
@@ -115,6 +116,19 @@ export const LikeGroup = styled.div`
     .heart.active {
         background-position: right;
         animation: animate .8s steps(28) 1;
+    }
+
+    .board-edit-btn {
+        position: absolute;
+        right: 5px;
+        top: 15px;
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 5px;
+        cursor: pointer;
+        border: 1px solid lightgray;
     }
 
 
@@ -146,13 +160,16 @@ export const LikeGroup = styled.div`
         display: flex;
         flex-direction: row;
         align-items: center;
-        width: 90px;
     }
     .comment img {
         height: 29px;
     }
     .comment .num {
         margin-left: 6px;
+    }
+    .comment .board-edit-btn {
+        width: 100%;
+        background-color: lightgray;
     }
 `
 

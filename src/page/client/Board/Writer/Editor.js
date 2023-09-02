@@ -7,7 +7,7 @@ import axios from "axios";
 import { loginInfoState } from "state/login/recoil";
 import { useRecoilValue } from "recoil";
 
-const App = ({html, setHtml}) => {
+const App = ({html, setHtml, updateData}) => {
     const [title, setTitle] = useState('');
     const { category } = useParams();
     const loginInfo = useRecoilValue(loginInfoState);
@@ -17,9 +17,9 @@ const App = ({html, setHtml}) => {
     const naviate = useNavigate();
 
     useEffect(() => {
+        console.log("Update Data : " , updateData)
         getBoardKindList(setTabList);
     }, [])
-
 
     const submit = () => {
         let boardToken = encryption.createToken();

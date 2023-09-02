@@ -1,17 +1,45 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AlertDiv, AlertImg, AlertText, AlertTitle } from "./css/Alert";
 import { motion } from "framer-motion";
 import Close from "images/close.png";
 import Change from "images/change.png";
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { loginInfoState } from "state/login/recoil";
+import axios from "axios";
 
 const App = (props) => {
   let searchRef = useRef(null);
+  let [nickname, setNickname] = useState("");
+  let [loginInfo, setLoginInfo] = useRecoilState(loginInfoState);
 
   const closeBtn = () => {
     props.setShow(false);
   };
+
+  const changeNickname = () => {
+    let data = {
+      user_token: loginInfo.token,
+      nickname: nickname
+    }
+
+    console.log("Post : ", data);
+
+    axios.post(process.env.REACT_APP_TEST_URL + "/board/changeNickname", data).then((res) => {
+      let result = res.data.data;
+      setLoginInfo({
+        ...loginInfo,
+        nickname: nickname 
+      })
+      alert("변경 완료");
+      
+    }).catch((err) => {
+      console.log(err);
+      alert("변경 오류")
+    })
+    
+  }
 
   useEffect(() => {
     function handleOutside(e) {
@@ -53,12 +81,14 @@ const App = (props) => {
           <div style={{ fontSize: "20px", lineHeight: "30px" }}>
             닉네임을{" "}
             <span style={{ color: "#0085FF", fontWeight: "bold" }}>
-              범규진짜강아지
+              {loginInfo.nickname}
             </span>{" "}
             에서
           </div>
           <div style={{ fontSize: "20px", lineHeight: "35px" }}>
             <input
+              onChange={(e) => {setNickname(e.target.value)}}
+              value={nickname}
               placeholder="새로운 닉네임"
               spellCheck="false"
               style={{
@@ -86,6 +116,7 @@ const App = (props) => {
           >
             <button
               style={{
+                cursor: "pointer",
                 width: "121px",
                 height: "45px",
                 fontSize: "1.125rem",
@@ -95,11 +126,13 @@ const App = (props) => {
                 color: "#FFFFFF",
                 marginRight: "20px",
               }}
+              onClick={changeNickname}
             >
               변경
             </button>
             <button
               style={{
+                cursor: "pointer",
                 width: "121px",
                 height: "45px",
                 fontSize: "1.125rem",

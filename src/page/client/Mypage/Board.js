@@ -7,15 +7,38 @@ import more_right from "images/more_right.png";
 import number1 from "images/number1.png";
 import number2 from "images/number2.png";
 import BoardRemoveAlert from "global/alert/BoardRemoveAlert";
-import { useRecoilState } from "recoil";
+import { constSelector, useRecoilState, useRecoilValue } from "recoil";
 import { boardRemoveAlertState } from "state/alert/alert_recoil";
+import { useEffect } from "react";
+import axios from "axios";
+import { loginInfoState } from "state/login/recoil";
+import { PulseLoader } from "react-spinners";
 
 const App = () => {
   // const [isRemove, setIsRemove] = useState(false);
 
+  const loginInfo = useRecoilValue(loginInfoState);
+  const [myPostList, setMyPostList] = useState(null);
   const [removeBoard, setRemoveBoard] = useRecoilState(boardRemoveAlertState)
 
-  
+  const getPostList = () => {
+    let body =  {
+      user_token: "cc7fad93f28f16fd962e4a6b1b799258"
+    }
+    
+    axios.post(process.env.REACT_APP_TEST_URL + "/board/myPost", body).then((res) => {
+      let data = res.data.data;
+      console.log("DATA : ", res.data.data);
+      setMyPostList(data);
+    }).catch((err) => {
+      console.log("err : ", err);
+    })
+  }
+
+  useEffect(() => {
+    getPostList();
+  }, []);
+
   return (
     <BoardWrap>
       <BoradTable>
@@ -28,40 +51,38 @@ const App = () => {
             <td>관리</td>
           </tr>
 
-          <tr>
-            <td>자유</td>
-            <td className="title">춘배마루팝업스토어 오픈런 후기글</td>
-            <td>3342</td>
-            <td>2023.07.03</td>
-            <td className="btns">
-              <div className="edit">수정</div>
-              <div
-                className="remove"
-                onClick={() => {
-                  setRemoveBoard(true);
-                }}
-              >
-                삭제
+          {
+            myPostList === null ? (
+              <div>
+                <PulseLoader color="#0085ff"></PulseLoader>
               </div>
-            </td>
-          </tr>
-          <tr>
-            <td>자유</td>
-            <td className="title">마루라이팅의 끝은 어디까지일까...</td>
-            <td>46</td>
-            <td>2023.04.28</td>
-            <td className="btns">
-              <div className="edit">수정</div>
-              <div
-                className="remove"
-                onClick={() => {
-                  setRemoveBoard(true);
-                }}
-              >
-                삭제
-              </div>
-            </td>
-          </tr>
+            ) : (
+              myPostList?.map((item) => (
+                <tr>
+                  <td>{item.category}</td>
+                  <td className="title">{item.title}</td>
+                  <td>{item.likes}</td>
+                  <td>{item.upload_date}</td>
+                  <td className="btns">
+                    <div className="edit" style={{cursor: "pointer"}}>수정</div>
+                    <div
+                      style={{
+                        cursor: "pointer"
+                      }}
+                      className="remove"
+                      onClick={() => {
+                        setRemoveBoard(true);
+                      }}
+                    >
+                      삭제
+                    </div>
+                  </td>
+                </tr>
+              ))
+            )
+           
+          }
+          
         </table>
       </BoradTable>
       <BoardPage>

@@ -32,6 +32,16 @@ const App = () => {
 
     }, [boardLikeData] )
 
+    const boardEditBtn = () => {
+        if(window.confirm("수정하시겠습니까?")) {
+            naviate("/writer/자유%20게시판", {state: {
+                title: "테스트 타이틀"
+            }})
+        } else {
+
+        }
+    }
+
     function decodeHtml(text) {
         const decodeEntityMap = {
           '&amp;': '&',
@@ -121,6 +131,7 @@ const App = () => {
                                 <img src={Comment}></img>
                                 <div className="num">{commentData ? commentData.length : "..."}</div>
                             </div>
+                            <div className="board-edit-btn" onClick={() => {boardEditBtn()}}>수정</div>
                         </LikeGroup>
 
                         <br/>
