@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ProfileDiv,
   ProfileForm,
@@ -12,6 +12,7 @@ import edit from "images/edit.png";
 import { useRecoilState } from "recoil";
 import { loginInfoState } from "state/login/recoil";
 import { useNavigate } from "react-router-dom";
+import { FontSize } from "../Board/Writer/Button";
 
 const App = ({ tab, setTab }) => {
 
@@ -20,16 +21,21 @@ const App = ({ tab, setTab }) => {
   const moveHandle = (id) => {
     navigate(id);
   }
+
+  const [showModal, setShowModal] = useState(false);
   return (
     <ProfileDiv>
       <ProfileForm>
         <ProfileUserForm>
           <div className="user">
-            <img src={account_black}></img>
+            <img src={account_black} onClick={()=> setShowModal(!showModal)}></img>
+            {showModal === true ? <ProfileEditModal/> : <></>}
           </div>
           <div className="nickname">{loginInfo.nickname}</div>
           <div className="email">{loginInfo.email}</div>
         </ProfileUserForm>
+
+        
 
         <ProfileMenuForm>
           <div
@@ -74,8 +80,26 @@ const App = ({ tab, setTab }) => {
           <div className="menu" onClick={()=>{moveHandle("/withdrawal")}}>회원탈퇴</div>
         </ProfileSubMenuForm>
       </ProfileForm>
+      
+    
     </ProfileDiv>
+
+    
   );
 };
 
+
+function ProfileEditModal(){
+  return(
+  
+  <div style={{position:"absolute",top:"8px",left:"360px",width:"150px", height:"105px", padding:"5px",border:"none", borderRadius:"15px", boxShadow:"0px 0px 30px 2px rgba(0, 0, 0, 0.15)",textAlign:"center", }}>
+    <p style={{FontSize:"1.25rem"}}>사진 업로드 하기</p>
+    <hr style={{width:"90px"}}></hr>
+    <p style={{FontSize:"1.25rem"}}>사진 지우기</p>
+  </div>
+
+  )
+}
+
 export default App;
+

@@ -16,6 +16,7 @@ export const ProfileForm = styled.div`
   width: 55%;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
 `;
 
 export const ProfileUserForm = styled.div`
