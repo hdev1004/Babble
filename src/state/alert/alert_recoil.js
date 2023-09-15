@@ -21,3 +21,8 @@ export const inquireAnswerAlertState = atom({
   key: 'inquireAnswerAlert',
   default: false
 })
+
+export const withdrawalAlertState = atom({
+  key:'withdrawalAlert',
+  default: false
+})

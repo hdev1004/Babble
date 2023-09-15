@@ -19,6 +19,7 @@ export const WithdrawalWrap = styled.div`
   border-radius: 15px;
   background: #fff;
   box-shadow: 0px 0px 30px 2px rgba(0, 0, 0, 0.15);
+  zoom: 90%;
 
   h3 {
     margin: 0;

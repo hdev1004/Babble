@@ -1,6 +1,9 @@
 import React from "react";
 import { BottomSection, WithdrawalBg, WithdrawalWrap } from "./css/Withdrawal";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState} from "recoil";
+import { withdrawalAlertState } from "state/alert/alert_recoil";
+import WithdrawalAlert from "global/alert/WithdrawalAlert";
 
 const Withdrawal = () => {
     let navigate = useNavigate();
@@ -8,8 +11,11 @@ const Withdrawal = () => {
         navigate(-1);
     }
 
+    const [withdrawal, setWithdrawal] = useRecoilState(withdrawalAlertState)
+
   return (
     <WithdrawalBg>
+      <WithdrawalAlert show={withdrawal} setShow={setWithdrawal}></WithdrawalAlert> 
       <WithdrawalWrap>
         <h3>회원 탈퇴 서비스</h3>
         <p className="title_content">
@@ -49,7 +55,7 @@ const Withdrawal = () => {
 
           <div className="Btn_section">
             <div className="back" onClick={()=>{moveHandle()}}>취소</div>
-            <div className="check">탈퇴</div>
+            <div className="check" onClick={() => {setWithdrawal(true)}}>탈퇴</div>
           </div>
         </BottomSection>
       </WithdrawalWrap>
