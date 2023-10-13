@@ -84,7 +84,6 @@ const App = ({data}) => {
                <CommentTitle>
                     <CommentNickname>
                         <div style={{marginRight: "10px"}}>
-                            => 
                         </div>
                         <div className="image">
                             <img src={Account}></img>

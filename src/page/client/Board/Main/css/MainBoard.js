@@ -152,8 +152,34 @@ export const BoardBtns = styled.div`
 `;
 
 export const BoardPage = styled.div`
-  & > button {
+  display: flex;
+  align-items: center;
+& > button {
     border: none;
     background-color: #fff;
+    cursor: pointer;
   }
+
+  & .number {
+    width: 32px;
+    height: 32px;
+    background: #D1D1D1;
+    border-radius: 50px;
+    font-size: 18px;
+    text-align: center;
+    color:#FDFDFD;
+    margin: 0 5px
+    
+}
+
+& .activeNumber {
+  width: 32px;
+    height: 32px;
+    background: #0085FF;
+    border-radius: 50px;
+    font-size: 18px;
+    text-align: center;
+    color:#fff;
+    margin: 0 5px
+}
 `;

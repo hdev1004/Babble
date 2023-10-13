@@ -33,15 +33,40 @@ const App = ({ board }) => {
   const naviate = useNavigate();
   const loginInfo = useRecoilValue(loginInfoState);
   const [boardList, setBoardList] = useState(null);
+  const pageBtn = [0,0,0,0,0];
+
+  const [totalCount, setTotalCount] = useState(0); // 전체 페이지 수
+  const [unit, setUnit] = useState(10);
+  const [page, setPage] = useState(1); // 선택한 페이지 버튼
+
+
+  
+  
+    /*
+    // 이전
+    const PreviousePage = () => {
+      if(activeBtn > 1) {
+        setActiveBtn(activeBtn - 1)
+      }
+    };
+
+
+    // 다음
+    const nextPage = () => {
+      if(activeBtn < TestTotalpageNum) {
+        setActiveBtn(activeBtn + 1)
+      }
+    }*/
 
   useEffect(() => {
-    getBoardList(1, 10, setBoardList);
-  }, [])
+    getBoardList(board.board_kind, page, unit, setBoardList);
+  }, [board])
 
   useEffect(() => {
-    console.log(boardList);
+    // console.log(boardList);
   }, [boardList])
 
+ 
   const transDate = (date) => {
     let timestamp = new Date(date);
     let year = timestamp.getFullYear().toString();
@@ -64,7 +89,7 @@ const App = ({ board }) => {
       console.log('Data2 : ' ,data);
 
       setBoardList(data);
-
+ 
       
     })
   }
@@ -124,7 +149,7 @@ const App = ({ board }) => {
 
                   {
                     boardList.map((item, index) => (
-                      <tr>
+                      <tr key = {index}>
                         <td>{index + 1}</td>
                         <td className="title" onClick={() => {naviate(`/board/${item.name}/${item.board_token}`)}}>{item.title}</td>
                         <td>{item.nickname}</td>
@@ -155,12 +180,10 @@ const App = ({ board }) => {
             <button>
               <img src={left} />
             </button>
-            <button>
-              <img src={number1} />
-            </button>
-            <button>
-              <img src={number2} />
-            </button>
+
+            <button className="activeNumber">1</button>
+            <button className="number">2</button>
+            <button className="number">3</button>
             <button>
               <img src={right} />
             </button>

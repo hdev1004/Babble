@@ -9,8 +9,8 @@ export const getBoardKindList = (setData) => {
     })
 }
 
-export const getBoardList = (page, unit, setData) => {
-    axios.get(process.env.REACT_APP_SERVER_URL + `/board/list/${page}/${unit}`).then((res) => {
+export const getBoardList = (kind, page, unit, setData) => {
+    axios.get(process.env.REACT_APP_SERVER_URL + `/board/list/${kind}/${page}/${unit}`).then((res) => {
         let data = res.data.data;
         setData(data);
     }).catch((err) => {
