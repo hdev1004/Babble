@@ -50,7 +50,7 @@ const App = () => {
                 </PostRow>
                 <PostRow>
                     <div className="BP_kind">자유게시판</div>
-                    <div className="BP_title">달밤에 피에 미친 폭주 누계농 ㅈㄱㄴ2</div>
+                    <div className="BP_title">달밤에 피에 미친 폭주 누계 농 ㅈㄱㄴ2</div>
                     <div className="BP_content">일요일 가비지타임 진짜 재밌는데... 다들 봐주면 참 좋겠는데.. 수동적으로 요구하기 시작했다</div>
                     <LIkeAComent>
                         <img src={Account} className="Like"></img>
